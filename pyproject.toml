@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "laya-triage"
+version = "0.1.0"
+description = "Multilingual support ticket triage with a local System 1 decision model: hierarchical intent routing plus urgency/frustration/churn signals and confidence-based escalation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+keywords = ["ticket-triage", "customer-support", "multilingual", "laya", "system-one"]
+dependencies = ["laya>=0.3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/laya_triage"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
