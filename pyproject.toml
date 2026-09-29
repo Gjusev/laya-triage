@@ -21,3 +21,7 @@ packages = ["src/laya_triage"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+markers = [
+    "slow: loads a real laya checkpoint (downloads on first run); opt in with: pytest -m slow",
+]
+addopts = "-m 'not slow'"
