@@ -290,7 +290,6 @@ try:
     token = UserSecretsClient().get_secret("HF_TOKEN")
 except Exception:
     token = None
-assert token, "add HF_TOKEN via Kaggle Add-ons -> Secrets"
 
 NEW_REPO = "YOUR_USERNAME/laya-triage-banking77"  # TODO: set before running
 
@@ -355,11 +354,16 @@ project.
 with open(os.path.join(OUTPUT_DIR, "README.md"), "w") as f:
     f.write(readme)
 
-api = HfApi(token=token)
-api.create_repo(NEW_REPO, repo_type="model", private=False, exist_ok=True)
-api.upload_folder(folder_path=OUTPUT_DIR, repo_id=NEW_REPO, repo_type="model",
-                  commit_message=f"laya fine-tuned on BANKING77 routing: intent accuracy {ft_acc:.3f}")
-print(f"published: https://huggingface.co/{NEW_REPO}")
+if not token:
+    print("HF_TOKEN secret not set: skipping the Hub upload.")
+    print(f"Weights and the generated model card stay in {OUTPUT_DIR} (kernel output);")
+    print("publish them later by re-running this cell with the secret attached.")
+else:
+    api = HfApi(token=token)
+    api.create_repo(NEW_REPO, repo_type="model", private=False, exist_ok=True)
+    api.upload_folder(folder_path=OUTPUT_DIR, repo_id=NEW_REPO, repo_type="model",
+                      commit_message=f"laya fine-tuned on BANKING77 routing: intent accuracy {ft_acc:.3f}")
+    print(f"published: https://huggingface.co/{NEW_REPO}")
 '''
 
 
@@ -507,7 +511,9 @@ def build():
             "## 6. Publish to HuggingFace with an honest model card",
             "The card is generated from THIS run's numbers (never hardcoded), states",
             "what was trained and what was not, and names the top failure modes.",
-            "Set `NEW_REPO` to your username before running.",
+            "The card is always written to the kernel output; the Hub upload runs",
+            "only when the HF_TOKEN secret is attached, otherwise it is skipped",
+            "without failing the run. Set `NEW_REPO` to your username to publish.",
         ),
         code(PUSH_CELL.splitlines(keepends=True)),
     ]
