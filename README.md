@@ -53,13 +53,14 @@ off English. Callers who know the language can pass `lang=` to skip detection.
 
 **Escalation policy.** Every answer carries a calibrated `answer_confidence`
 (the quantity laya's temperature scaling fits). If either routing decision
-(cluster or intent) falls strictly below `min_confidence`, the ticket is
-flagged for a human with one reason per low-confidence decision. The policy
-deliberately covers routing only: auxiliary signals are score-type questions
-whose confidence structurally tops out lower (measured median 0.54 for urgency
-over the Phase 1 smoke set), so gating on them would escalate almost every
-ticket. Phase 2 replaces the provisional 0.6 threshold with one chosen from a
-published coverage/accuracy curve.
+(cluster or intent) falls strictly below `min_confidence` (default 0.84), the
+ticket is flagged for a human with one reason per low-confidence decision.
+The policy deliberately covers routing only: auxiliary signals are score-type
+questions whose confidence structurally tops out lower (measured median 0.54
+for urgency), so gating on them would escalate almost every ticket. The 0.84
+default is the measured operational threshold — the coverage/accuracy curve on
+the BANKING77 eval reaches 75.2% accuracy at 60.5% coverage there (full curve
+in [docs/results/phase2.md](docs/results/phase2.md)).
 
 **Known limitations (measured on the 20-ticket smoke set, not on BANKING77
 itself — Phase 2 measures that properly).** Coarse routing misclassifies a
@@ -68,11 +69,12 @@ account, I am done with this bank" lands in fees instead of account closure).
 The multilingual checkpoint ships an invalid temperature for choices with 11+
 options (laya clamps it and warns that confidence from the affected entries is
 uncalibrated), so confidence on the 12-option coarse stage in non-English
-languages must be treated with care until Phase 2 recalibrates it. On
+languages must be treated with care; temperature recalibration is future work. On
 out-of-domain input (a batch of realistic IT-operations tickets: API outage,
-SSO lockout, dark-mode request), 6 of 8 escalate to a human at the provisional
-threshold and the 2 auto-handled ones map to the closest banking analog —
-the safety property that matters when the hierarchy cannot name the intent.
+SSO lockout, dark-mode request), 7 of 8 escalate to a human at the measured
+0.84 threshold — the one auto-handled ticket (SSO lockout) maps to the closest
+banking analog, `unable_to_verify_identity`. That is the safety property that
+matters when the hierarchy cannot name the intent.
 
 ```python
 from laya_triage import TriagePipeline, build_router
@@ -86,12 +88,35 @@ result.escalate, result.escalation_reasons          # human handoff
 # long tickets: pipeline.triage(text, long=True) scores every window
 ```
 
+## Phase 2 results (measured)
+
+Full tables and reproducible artifacts: [docs/results/phase2.md](docs/results/phase2.md)
+(`python -m evals.run_all --limit 200` re-runs everything; the published artifact used seed 13).
+
+- **Hierarchical beats flat by 14.5 points** on a 200-ticket BANKING77 test
+  sample (seed 13): 51.0% vs 36.5% intent accuracy (macro-F1 0.443 vs 0.284);
+  coarse accuracy 68.0%. The documented choice-collapse is real and the
+  hierarchy is the fix.
+- **Escalation curve published**: auto-handling 60% of tickets keeps 75.8%
+  accuracy; the chosen threshold is 0.84 (75.2% accuracy at 60.5% coverage).
+- **Hand-labeled dataset** (200 tickets, 6 languages; AI-authored and
+  AI-annotated per the published guide — two blind passes + adjudication):
+  inter-pass kappa 0.781 (urgency) / 0.792 (frustration), weighted 0.908 /
+  0.893. Model MAE: 0.81 urgency, 1.07 frustration.
+- **Multilingual in-domain coarse accuracy degrades off English**: en 71.7%,
+  es 55.0%, fr 52.0%, hi 53.3%, de 36.0%, ar 20.0% (small n per language) —
+  the clearest target for the Phase 3 fine-tune. On out-of-domain multilingual
+  input (MASSIVE), escalation is uniform and high in every language: 45–64%
+  at the old provisional 0.6 threshold and 69–79% at the measured 0.84 — no
+  language is silently auto-handled.
+- GPT-4o-mini baseline and fine-tuned comparison: TODO(run) / TODO(Phase 3).
+
 ## Roadmap
 
 - [x] Hierarchical intent routing: coarse clusters to fine intents (BANKING77 mapping)
 - [x] Auxiliary signals in the same pass: urgency, frustration, churn risk, refund requested
-- [ ] Escalation policy: coverage/accuracy curve over answer confidence, threshold documented
-- [ ] Multilingual eval (MASSIVE: es, fr, de, hi, ar) plus a hand-labeled set of 200 tickets published
+- [x] Escalation policy: coverage/accuracy curve over answer confidence, threshold documented
+- [x] Multilingual eval (MASSIVE: es, fr, de, hi, ar) plus a hand-labeled set of 200 tickets published
 - [ ] Fine-tuned checkpoint (BANKING77) released on HuggingFace; Streamlit app on HF Spaces
 
 ## Development setup
