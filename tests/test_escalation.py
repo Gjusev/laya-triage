@@ -53,8 +53,8 @@ def test_curve_handles_a_threshold_where_everything_escalates():
 
 def test_choose_threshold_maximizes_coverage_at_target():
     curve = coverage_accuracy_curve(RECORDS)
-    # target 0.75 achievable at threshold 0.5 (coverage 0.75) — not at 0.0 (0.75 too)
-    # 0.0 and 0.5 both give accuracy >= 0.75; max coverage wins -> threshold 0.0.
+    # thresholds 0.0 and 0.3 both reach accuracy 0.75 at coverage 1.0;
+    # max coverage with ties broken to the lower threshold wins -> 0.0.
     chosen = choose_threshold(curve, target_accuracy=0.75)
     assert chosen.threshold == 0.0
     assert chosen.coverage == 1.0

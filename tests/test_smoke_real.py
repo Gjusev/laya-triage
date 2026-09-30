@@ -10,9 +10,9 @@ import pytest
 from laya_triage import TriagePipeline, build_router
 from laya_triage import schema
 
-# Provisional threshold until Phase 2 picks one from a published
-# coverage/accuracy curve. TODO(measure): replace with the measured threshold.
-PROVISIONAL_MIN_CONFIDENCE = 0.6
+# Measured operational threshold from evals/results/banking77.json
+# (75.2% accuracy at 60.5% coverage on the 200-ticket seed-13 sample).
+MEASURED_MIN_CONFIDENCE = 0.84
 
 # 20 tickets, Spanish and English, spread across clusters and signal levels.
 SMOKE_TICKETS = [
@@ -82,7 +82,7 @@ OOD_IT_TICKETS = [
 
 @pytest.fixture(scope="module")
 def pipeline() -> TriagePipeline:
-    return TriagePipeline(build_router(), min_confidence=PROVISIONAL_MIN_CONFIDENCE)
+    return TriagePipeline(build_router(), min_confidence=MEASURED_MIN_CONFIDENCE)
 
 
 @pytest.mark.slow

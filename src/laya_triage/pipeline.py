@@ -51,7 +51,7 @@ class TriagePipeline:
     winning cluster's intents (the documented fix for flat-choice collapse).
     """
 
-    def __init__(self, router, min_confidence: float = 0.6):
+    def __init__(self, router, min_confidence: float = 0.84):
         if not 0.0 <= min_confidence <= 1.0:
             raise ValueError("min_confidence must be in [0, 1]")
         self.router = router

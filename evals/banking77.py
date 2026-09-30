@@ -22,7 +22,7 @@ from laya_triage.escalation import coverage_accuracy_curve, choose_threshold, ev
 from evals import data
 
 RESULTS_PATH = Path(__file__).resolve().parent / "results" / "banking77.json"
-DEFAULT_LIMIT = 500
+DEFAULT_LIMIT = 200  # matches the published artifact; raise for tighter CIs
 DEFAULT_SEED = 13
 # Accuracy the operational threshold must guarantee before auto-handling.
 TARGET_ACCURACY = 0.75
