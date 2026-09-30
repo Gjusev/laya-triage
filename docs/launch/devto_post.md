@@ -2,9 +2,9 @@
 
 > Draft dev.to post. Every number below is a measurement from
 > `evals/results/` in the [laya-triage](https://github.com/Gjusev/laya-triage)
-> repo; reproduce them with `python -m evals.run_all --limit 200`. Update the
-> fine-tuned and GPT-4o-mini numbers after their runs before publishing.
-> TODO(publish): fill in the Space link and the checkpoint link.
+> repo; reproduce them with `python -m evals.run_all --limit 200`. The
+> fine-tuned numbers are from the published run; only the GPT-4o-mini
+> baseline is still pending. TODO(publish): fill in the Space link.
 
 Most triage demos show you a classifier. Almost none show you the two things
 that decide whether it can run a support queue: what happens when the model
@@ -49,15 +49,18 @@ you can argue with beats a vibe.
 Non-English banking tickets degrade: coarse accuracy drops from 71.7%
 (English) to 36-55% (German/French/Spanish/Hindi) and 20% (Arabic) on a
 200-ticket hand-labeled set. That is the single clearest argument for the
-fine-tune (notebook included in the repo). Meanwhile, on out-of-domain
-input in five languages, the escalation policy fires in 69-79% of cases
-per language. No language silently gets nonsense answers.
+fine-tune — which is now run and published (English side): hierarchical
+accuracy jumps from 51.0% to **90.5%** (macro-F1 0.848) with the signal
+heads untouched, and the multilingual gap is the documented follow-up.
+Meanwhile, on out-of-domain input in five languages, the escalation policy
+fires in 69-79% of cases per language. No language silently gets nonsense
+answers.
 
 ## Try it
 
 - Repo with all evals and artifacts: [laya-triage](https://github.com/Gjusev/laya-triage)
 - App (single ticket / CSV batch / metrics): TODO(publish): Space link
-- Fine-tuned BANKING77 checkpoint: TODO(publish): checkpoint link
+- Fine-tuned BANKING77 checkpoint: [Gjusev/laya-triage-banking77](https://huggingface.co/Gjusev/laya-triage-banking77)
 
 The whole stack (model, evals, escalation curve, hand-labeled dataset,
 fine-tune notebook) is Apache 2.0.
