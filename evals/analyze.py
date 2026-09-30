@@ -133,7 +133,7 @@ def render() -> str:
             f"(both routing decisions; the signal heads keep their base weights).",
             "",
             f"- Coarse accuracy {_pct(fs['coarse_accuracy'])}; fitted temperatures (choice, score, noul): "
-            f"{ft['config'].get('fitted_temperatures')}.",
+            f"{[round(t, 3) for t in ft['config'].get('fitted_temperatures', [])] or 'unknown'}.",
             f"- Signal regression check (English hand-labeled subset, n={fs['signals_en']['n']}): "
             f"urgency MAE {_num(fs['signals_en']['urgency_mae'])}, "
             f"frustration MAE {_num(fs['signals_en']['frustration_mae'])}{sig_base}.",

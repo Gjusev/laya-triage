@@ -1,8 +1,8 @@
 # Phase 2 results
 
 All numbers are measurements from the artifacts in `evals/results/`
-(reproduce with `python -m evals.run_all`). Fine-tuned and GPT-4o-mini
-columns stay TODO until their runs happen.
+(reproduce with `python -m evals.run_all`). The GPT-4o-mini column
+stays TODO until that run happens.
 
 ## BANKING77 (test split)
 
@@ -10,9 +10,9 @@ Sample: 200 tickets, seed 13 (PolyAI-LDN/task-specific-datasets banking_data).
 
 | Metric | direct 77-way | hierarchical | fine-tuned |
 |---|---|---|---|
-| Intent accuracy | 36.5% | 51.0% | TODO(Phase 3) |
-| Macro-F1 | 0.284 | 0.443 | TODO(Phase 3) |
-| Seconds (sample) | 182.7 | 577.4 | TODO(Phase 3) |
+| Intent accuracy | 36.5% | 51.0% | 90.5% |
+| Macro-F1 | 0.284 | 0.443 | 0.848 |
+| Seconds (sample) | 182.7 | 577.4 | 16.1 |
 
 Coarse (cluster) accuracy: 68.0%.
 
@@ -36,6 +36,14 @@ Operational threshold at target accuracy 75%: **0.84** (coverage 60.5%, accuracy
 Provisional 0.6 policy: coverage 79.5%, accuracy 60.4%, escalates 41/200.
 
 Margin note: this point auto-handles 121 tickets with 91 correct; one fewer correct ticket puts it at 74.4%, below the 75% target. Treat the threshold as approximate at this sample size.
+
+### Fine-tuned checkpoint (Phase 3)
+
+Trained by `finetune/laya_triage_banking77.ipynb` on the BANKING77 train split (both routing decisions; the signal heads keep their base weights).
+
+- Coarse accuracy 96.0%; fitted temperatures (choice, score, noul): [3.825, 1.2, 1.2].
+- Signal regression check (English hand-labeled subset, n=60): urgency MAE 0.701, frustration MAE 0.693 (zero-shot all-language baseline: 0.813 / 1.071).
+- Escalation: the 75% accuracy target is met at threshold **0.00** with 100.0% coverage (90.5% accuracy among auto-handled).
 
 ## Multilingual robustness (MASSIVE, cluster-only pass)
 

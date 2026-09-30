@@ -26,7 +26,7 @@
 </p>
 
 > [!NOTE]
-> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, and fine-tuning notebook are available; the fine-tuned checkpoint and hosted Hugging Face Space have not been published yet.
+> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, and the fine-tuning run are available; the fine-tuned checkpoint's Hugging Face release and the hosted Space are still pending.
 
 ## What it does
 
@@ -84,11 +84,12 @@ All headline numbers come from committed artifacts in [`evals/results/`](evals/r
 
 | Measurement | Result | Evaluation set |
 |---|---:|---|
-| Hierarchical intent accuracy | **51.0%** | 200 BANKING77 test tickets, seed 13 |
+| Fine-tuned hierarchical intent accuracy | **90.5%** (macro-F1 0.848) | 200 BANKING77 test tickets, seed 13 |
+| Zero-shot hierarchical intent accuracy | 51.0% | Same sample |
 | Flat 77-way intent accuracy | 36.5% | Same sample |
-| Improvement over flat routing | **+14.5 pp** | Same sample |
-| Accuracy at the `0.84` threshold | **75.2%** | 60.5% auto-handled coverage |
-| Coarse-cluster accuracy | 68.0% | Same sample |
+| Improvement over flat routing (zero-shot) | **+14.5 pp** | Same sample |
+| Accuracy at the `0.84` threshold (zero-shot) | **75.2%** | 60.5% auto-handled coverage |
+| Coarse-cluster accuracy | 96.0% fine-tuned / 68.0% zero-shot | Same sample |
 | Urgency / frustration MAE | 0.81 / 1.07 | Hand-labeled 200-ticket set |
 
 At roughly 60% coverage, the measured escalation curve reaches about 75% intent accuracy. This operating point is based on 200 tickets—use it as an evidence-backed starting point, not a universal production guarantee. See the [full Phase 2 report](docs/results/phase2.md) for macro-F1, the complete coverage/accuracy curve, multilingual breakdowns, annotation agreement, and timing.
@@ -167,7 +168,7 @@ Kaggle settings:
 - Optional publishing secret: `HF_TOKEN`
 - Output: `/kaggle/working/laya_triage_banking77`
 
-You can also [inspect or download the notebook directly](finetune/laya_triage_banking77.ipynb). It has not yet been executed for the published Phase 3 checkpoint.
+You can also [inspect or download the notebook directly](finetune/laya_triage_banking77.ipynb). The committed run trained on 2×T4 and measured **90.5%** hierarchical intent accuracy on the seed-13 test sample (vs 51.0% zero-shot), with the signal heads untouched (urgency MAE 0.70 on the English hand-labeled subset, vs 0.81 zero-shot) and a hold-out-fitted choice temperature of 3.825. The full artifact is [`evals/results/banking77_finetuned.json`](evals/results/banking77_finetuned.json).
 
 ## Intent map
 
@@ -223,8 +224,8 @@ pytest -m slow
 - The hierarchy is domain-specific: out-of-domain requests are mapped to the nearest banking concept when confidence is high enough. On an eight-ticket IT-operations smoke set, seven escalated at `0.84`; the remaining SSO lockout mapped to `unable_to_verify_identity`.
 - Multilingual in-domain coarse accuracy is lower than English on the small per-language evaluation, especially for Arabic and German. The multilingual fine-tune remains future work.
 - The multilingual checkpoint ships an invalid temperature for choices with 11+ options; laya clamps it. This affects calibration on the 12-option non-English coarse stage and is why recalibration is on the roadmap.
-- The published latency numbers were measured on the development CPU (182.7 s flat / 577.4 s hierarchical for 200 tickets), not a deployment target. p50/p95 latency and cost per 1,000 tickets remain to be benchmarked.
-- The GPT-4o-mini baseline and fine-tuned checkpoint comparison have not been run yet.
+- The published latency numbers were measured on the development CPU (182.7 s flat / 577.4 s hierarchical for 200 tickets), not a deployment target; the fine-tuned checkpoint's 16.1 s sample time is a Kaggle T4 measurement. p50/p95 latency and cost per 1,000 tickets remain to be benchmarked.
+- The GPT-4o-mini baseline has not been run yet.
 
 ## Roadmap
 
@@ -233,7 +234,8 @@ pytest -m slow
 - [x] Measured confidence-based escalation curve
 - [x] Multilingual and hand-labeled evaluations
 - [x] Streamlit app and Kaggle-ready fine-tuning notebook
-- [ ] Run and publish the fine-tuned checkpoint on Hugging Face
+- [x] Run the fine-tune on Kaggle 2×T4 and publish the measured artifact
+- [ ] Publish the fine-tuned checkpoint on Hugging Face
 - [ ] Deploy and link the Hugging Face Space
 - [ ] Publish deployment-target latency and cost benchmarks
 - [ ] Run the GPT-4o-mini comparison

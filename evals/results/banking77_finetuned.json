@@ -1,0 +1,2864 @@
+{
+ "config": {
+  "checkpoint": "kaggle://gjusev/laya-triage-banking77 (kernel output)",
+  "limit": 200,
+  "seed": 13,
+  "split": "test",
+  "source": "PolyAI-LDN/task-specific-datasets banking_data",
+  "n": 200,
+  "fitted_temperatures": [
+   3.8246283531188965,
+   1.2,
+   1.2
+  ]
+ },
+ "summary": {
+  "fine_tuned_accuracy": 0.905,
+  "fine_tuned_macro_f1": 0.8479629317291655,
+  "coarse_accuracy": 0.96,
+  "fine_tuned_seconds": 16.1,
+  "signals_en": {
+   "n": 60,
+   "urgency_mae": 0.7009883333333333,
+   "frustration_mae": 0.692665
+  }
+ },
+ "escalation": {
+  "target_accuracy": 0.75,
+  "chosen_threshold": 0.0,
+  "chosen_coverage": 1.0,
+  "chosen_accuracy": 0.905,
+  "curve": [
+   {
+    "threshold": 0.0,
+    "coverage": 1.0,
+    "accuracy": 0.905,
+    "n_handled": 200
+   },
+   {
+    "threshold": 0.1815,
+    "coverage": 1.0,
+    "accuracy": 0.905,
+    "n_handled": 200
+   },
+   {
+    "threshold": 0.2179,
+    "coverage": 0.995,
+    "accuracy": 0.9095477386934674,
+    "n_handled": 199
+   },
+   {
+    "threshold": 0.2463,
+    "coverage": 0.99,
+    "accuracy": 0.9141414141414141,
+    "n_handled": 198
+   },
+   {
+    "threshold": 0.2768,
+    "coverage": 0.985,
+    "accuracy": 0.9187817258883249,
+    "n_handled": 197
+   },
+   {
+    "threshold": 0.489,
+    "coverage": 0.98,
+    "accuracy": 0.923469387755102,
+    "n_handled": 196
+   },
+   {
+    "threshold": 0.5192,
+    "coverage": 0.975,
+    "accuracy": 0.9230769230769231,
+    "n_handled": 195
+   },
+   {
+    "threshold": 0.5854,
+    "coverage": 0.97,
+    "accuracy": 0.9226804123711341,
+    "n_handled": 194
+   },
+   {
+    "threshold": 0.6458,
+    "coverage": 0.965,
+    "accuracy": 0.927461139896373,
+    "n_handled": 193
+   },
+   {
+    "threshold": 0.7087,
+    "coverage": 0.96,
+    "accuracy": 0.9270833333333334,
+    "n_handled": 192
+   },
+   {
+    "threshold": 0.7272,
+    "coverage": 0.955,
+    "accuracy": 0.9319371727748691,
+    "n_handled": 191
+   },
+   {
+    "threshold": 0.7409,
+    "coverage": 0.95,
+    "accuracy": 0.9368421052631579,
+    "n_handled": 190
+   },
+   {
+    "threshold": 0.9045,
+    "coverage": 0.945,
+    "accuracy": 0.9365079365079365,
+    "n_handled": 189
+   },
+   {
+    "threshold": 0.9183,
+    "coverage": 0.94,
+    "accuracy": 0.9361702127659575,
+    "n_handled": 188
+   },
+   {
+    "threshold": 0.9195,
+    "coverage": 0.935,
+    "accuracy": 0.9358288770053476,
+    "n_handled": 187
+   },
+   {
+    "threshold": 0.9212,
+    "coverage": 0.93,
+    "accuracy": 0.9408602150537635,
+    "n_handled": 186
+   },
+   {
+    "threshold": 0.9213,
+    "coverage": 0.92,
+    "accuracy": 0.9402173913043478,
+    "n_handled": 184
+   },
+   {
+    "threshold": 0.9256,
+    "coverage": 0.915,
+    "accuracy": 0.9398907103825137,
+    "n_handled": 183
+   },
+   {
+    "threshold": 0.9308,
+    "coverage": 0.91,
+    "accuracy": 0.9395604395604396,
+    "n_handled": 182
+   },
+   {
+    "threshold": 0.9326,
+    "coverage": 0.905,
+    "accuracy": 0.9392265193370166,
+    "n_handled": 181
+   },
+   {
+    "threshold": 0.933,
+    "coverage": 0.9,
+    "accuracy": 0.9388888888888889,
+    "n_handled": 180
+   },
+   {
+    "threshold": 0.9337,
+    "coverage": 0.895,
+    "accuracy": 0.9385474860335196,
+    "n_handled": 179
+   },
+   {
+    "threshold": 0.9343,
+    "coverage": 0.89,
+    "accuracy": 0.9438202247191011,
+    "n_handled": 178
+   },
+   {
+    "threshold": 0.9355,
+    "coverage": 0.885,
+    "accuracy": 0.943502824858757,
+    "n_handled": 177
+   },
+   {
+    "threshold": 0.9356,
+    "coverage": 0.88,
+    "accuracy": 0.9488636363636364,
+    "n_handled": 176
+   },
+   {
+    "threshold": 0.9388,
+    "coverage": 0.875,
+    "accuracy": 0.9485714285714286,
+    "n_handled": 175
+   },
+   {
+    "threshold": 0.9391,
+    "coverage": 0.87,
+    "accuracy": 0.9482758620689655,
+    "n_handled": 174
+   },
+   {
+    "threshold": 0.9395,
+    "coverage": 0.865,
+    "accuracy": 0.953757225433526,
+    "n_handled": 173
+   },
+   {
+    "threshold": 0.94,
+    "coverage": 0.86,
+    "accuracy": 0.9534883720930233,
+    "n_handled": 172
+   },
+   {
+    "threshold": 0.9401,
+    "coverage": 0.855,
+    "accuracy": 0.9532163742690059,
+    "n_handled": 171
+   },
+   {
+    "threshold": 0.941,
+    "coverage": 0.845,
+    "accuracy": 0.9585798816568047,
+    "n_handled": 169
+   },
+   {
+    "threshold": 0.9411,
+    "coverage": 0.835,
+    "accuracy": 0.9580838323353293,
+    "n_handled": 167
+   },
+   {
+    "threshold": 0.9422,
+    "coverage": 0.825,
+    "accuracy": 0.9636363636363636,
+    "n_handled": 165
+   },
+   {
+    "threshold": 0.9425,
+    "coverage": 0.82,
+    "accuracy": 0.9634146341463414,
+    "n_handled": 164
+   },
+   {
+    "threshold": 0.9432,
+    "coverage": 0.815,
+    "accuracy": 0.9631901840490797,
+    "n_handled": 163
+   },
+   {
+    "threshold": 0.9435,
+    "coverage": 0.81,
+    "accuracy": 0.9691358024691358,
+    "n_handled": 162
+   },
+   {
+    "threshold": 0.9439,
+    "coverage": 0.805,
+    "accuracy": 0.968944099378882,
+    "n_handled": 161
+   },
+   {
+    "threshold": 0.9441,
+    "coverage": 0.8,
+    "accuracy": 0.96875,
+    "n_handled": 160
+   },
+   {
+    "threshold": 0.9442,
+    "coverage": 0.795,
+    "accuracy": 0.9685534591194969,
+    "n_handled": 159
+   },
+   {
+    "threshold": 0.9443,
+    "coverage": 0.785,
+    "accuracy": 0.9681528662420382,
+    "n_handled": 157
+   },
+   {
+    "threshold": 0.9448,
+    "coverage": 0.775,
+    "accuracy": 0.9741935483870968,
+    "n_handled": 155
+   },
+   {
+    "threshold": 0.9449,
+    "coverage": 0.77,
+    "accuracy": 0.974025974025974,
+    "n_handled": 154
+   },
+   {
+    "threshold": 0.9451,
+    "coverage": 0.765,
+    "accuracy": 0.9738562091503268,
+    "n_handled": 153
+   },
+   {
+    "threshold": 0.9453,
+    "coverage": 0.76,
+    "accuracy": 0.9736842105263158,
+    "n_handled": 152
+   },
+   {
+    "threshold": 0.9454,
+    "coverage": 0.755,
+    "accuracy": 0.9735099337748344,
+    "n_handled": 151
+   },
+   {
+    "threshold": 0.9455,
+    "coverage": 0.75,
+    "accuracy": 0.9733333333333334,
+    "n_handled": 150
+   },
+   {
+    "threshold": 0.9456,
+    "coverage": 0.74,
+    "accuracy": 0.972972972972973,
+    "n_handled": 148
+   },
+   {
+    "threshold": 0.9457,
+    "coverage": 0.735,
+    "accuracy": 0.9727891156462585,
+    "n_handled": 147
+   },
+   {
+    "threshold": 0.9458,
+    "coverage": 0.73,
+    "accuracy": 0.9726027397260274,
+    "n_handled": 146
+   },
+   {
+    "threshold": 0.9462,
+    "coverage": 0.725,
+    "accuracy": 0.9724137931034482,
+    "n_handled": 145
+   },
+   {
+    "threshold": 0.9463,
+    "coverage": 0.715,
+    "accuracy": 0.972027972027972,
+    "n_handled": 143
+   },
+   {
+    "threshold": 0.9464,
+    "coverage": 0.71,
+    "accuracy": 0.971830985915493,
+    "n_handled": 142
+   },
+   {
+    "threshold": 0.9465,
+    "coverage": 0.7,
+    "accuracy": 0.9714285714285714,
+    "n_handled": 140
+   },
+   {
+    "threshold": 0.9466,
+    "coverage": 0.685,
+    "accuracy": 0.9781021897810219,
+    "n_handled": 137
+   },
+   {
+    "threshold": 0.9468,
+    "coverage": 0.67,
+    "accuracy": 0.9776119402985075,
+    "n_handled": 134
+   },
+   {
+    "threshold": 0.947,
+    "coverage": 0.66,
+    "accuracy": 0.9772727272727273,
+    "n_handled": 132
+   },
+   {
+    "threshold": 0.9472,
+    "coverage": 0.655,
+    "accuracy": 0.9770992366412213,
+    "n_handled": 131
+   },
+   {
+    "threshold": 0.9473,
+    "coverage": 0.645,
+    "accuracy": 0.9767441860465116,
+    "n_handled": 129
+   },
+   {
+    "threshold": 0.9476,
+    "coverage": 0.635,
+    "accuracy": 0.9763779527559056,
+    "n_handled": 127
+   },
+   {
+    "threshold": 0.9477,
+    "coverage": 0.63,
+    "accuracy": 0.9761904761904762,
+    "n_handled": 126
+   },
+   {
+    "threshold": 0.9479,
+    "coverage": 0.625,
+    "accuracy": 0.976,
+    "n_handled": 125
+   },
+   {
+    "threshold": 0.948,
+    "coverage": 0.61,
+    "accuracy": 0.9754098360655737,
+    "n_handled": 122
+   },
+   {
+    "threshold": 0.9481,
+    "coverage": 0.6,
+    "accuracy": 0.975,
+    "n_handled": 120
+   },
+   {
+    "threshold": 0.9483,
+    "coverage": 0.595,
+    "accuracy": 0.9747899159663865,
+    "n_handled": 119
+   },
+   {
+    "threshold": 0.9485,
+    "coverage": 0.59,
+    "accuracy": 0.9745762711864406,
+    "n_handled": 118
+   },
+   {
+    "threshold": 0.9487,
+    "coverage": 0.575,
+    "accuracy": 0.9739130434782609,
+    "n_handled": 115
+   },
+   {
+    "threshold": 0.9488,
+    "coverage": 0.565,
+    "accuracy": 0.9734513274336283,
+    "n_handled": 113
+   },
+   {
+    "threshold": 0.9489,
+    "coverage": 0.555,
+    "accuracy": 0.972972972972973,
+    "n_handled": 111
+   },
+   {
+    "threshold": 0.949,
+    "coverage": 0.54,
+    "accuracy": 0.9722222222222222,
+    "n_handled": 108
+   },
+   {
+    "threshold": 0.9491,
+    "coverage": 0.535,
+    "accuracy": 0.9719626168224299,
+    "n_handled": 107
+   },
+   {
+    "threshold": 0.9494,
+    "coverage": 0.53,
+    "accuracy": 0.9716981132075472,
+    "n_handled": 106
+   },
+   {
+    "threshold": 0.9495,
+    "coverage": 0.525,
+    "accuracy": 0.9714285714285714,
+    "n_handled": 105
+   },
+   {
+    "threshold": 0.9497,
+    "coverage": 0.52,
+    "accuracy": 0.9711538461538461,
+    "n_handled": 104
+   },
+   {
+    "threshold": 0.9498,
+    "coverage": 0.51,
+    "accuracy": 0.9705882352941176,
+    "n_handled": 102
+   },
+   {
+    "threshold": 0.9499,
+    "coverage": 0.505,
+    "accuracy": 0.9702970297029703,
+    "n_handled": 101
+   },
+   {
+    "threshold": 0.95,
+    "coverage": 0.5,
+    "accuracy": 0.97,
+    "n_handled": 100
+   },
+   {
+    "threshold": 0.9501,
+    "coverage": 0.495,
+    "accuracy": 0.9696969696969697,
+    "n_handled": 99
+   },
+   {
+    "threshold": 0.9502,
+    "coverage": 0.49,
+    "accuracy": 0.9693877551020408,
+    "n_handled": 98
+   },
+   {
+    "threshold": 0.9504,
+    "coverage": 0.485,
+    "accuracy": 0.9690721649484536,
+    "n_handled": 97
+   },
+   {
+    "threshold": 0.9505,
+    "coverage": 0.48,
+    "accuracy": 0.96875,
+    "n_handled": 96
+   },
+   {
+    "threshold": 0.9506,
+    "coverage": 0.475,
+    "accuracy": 0.968421052631579,
+    "n_handled": 95
+   },
+   {
+    "threshold": 0.9507,
+    "coverage": 0.45,
+    "accuracy": 0.9777777777777777,
+    "n_handled": 90
+   },
+   {
+    "threshold": 0.9508,
+    "coverage": 0.445,
+    "accuracy": 0.9775280898876404,
+    "n_handled": 89
+   },
+   {
+    "threshold": 0.9509,
+    "coverage": 0.425,
+    "accuracy": 0.9764705882352941,
+    "n_handled": 85
+   },
+   {
+    "threshold": 0.951,
+    "coverage": 0.415,
+    "accuracy": 0.9759036144578314,
+    "n_handled": 83
+   },
+   {
+    "threshold": 0.9511,
+    "coverage": 0.41,
+    "accuracy": 0.975609756097561,
+    "n_handled": 82
+   },
+   {
+    "threshold": 0.9512,
+    "coverage": 0.405,
+    "accuracy": 0.9753086419753086,
+    "n_handled": 81
+   },
+   {
+    "threshold": 0.9513,
+    "coverage": 0.395,
+    "accuracy": 0.9746835443037974,
+    "n_handled": 79
+   },
+   {
+    "threshold": 0.9514,
+    "coverage": 0.385,
+    "accuracy": 0.974025974025974,
+    "n_handled": 77
+   },
+   {
+    "threshold": 0.9515,
+    "coverage": 0.38,
+    "accuracy": 0.9736842105263158,
+    "n_handled": 76
+   },
+   {
+    "threshold": 0.9517,
+    "coverage": 0.37,
+    "accuracy": 0.972972972972973,
+    "n_handled": 74
+   },
+   {
+    "threshold": 0.9518,
+    "coverage": 0.36,
+    "accuracy": 0.9722222222222222,
+    "n_handled": 72
+   },
+   {
+    "threshold": 0.9519,
+    "coverage": 0.355,
+    "accuracy": 0.9859154929577465,
+    "n_handled": 71
+   },
+   {
+    "threshold": 0.952,
+    "coverage": 0.34,
+    "accuracy": 0.9852941176470589,
+    "n_handled": 68
+   },
+   {
+    "threshold": 0.9521,
+    "coverage": 0.325,
+    "accuracy": 0.9846153846153847,
+    "n_handled": 65
+   },
+   {
+    "threshold": 0.9522,
+    "coverage": 0.32,
+    "accuracy": 0.984375,
+    "n_handled": 64
+   },
+   {
+    "threshold": 0.9523,
+    "coverage": 0.315,
+    "accuracy": 0.9841269841269841,
+    "n_handled": 63
+   },
+   {
+    "threshold": 0.9526,
+    "coverage": 0.305,
+    "accuracy": 0.9836065573770492,
+    "n_handled": 61
+   },
+   {
+    "threshold": 0.9527,
+    "coverage": 0.295,
+    "accuracy": 0.9830508474576272,
+    "n_handled": 59
+   },
+   {
+    "threshold": 0.9528,
+    "coverage": 0.29,
+    "accuracy": 0.9827586206896551,
+    "n_handled": 58
+   },
+   {
+    "threshold": 0.9531,
+    "coverage": 0.28,
+    "accuracy": 0.9821428571428571,
+    "n_handled": 56
+   },
+   {
+    "threshold": 0.9532,
+    "coverage": 0.275,
+    "accuracy": 0.9818181818181818,
+    "n_handled": 55
+   },
+   {
+    "threshold": 0.9533,
+    "coverage": 0.27,
+    "accuracy": 0.9814814814814815,
+    "n_handled": 54
+   },
+   {
+    "threshold": 0.9534,
+    "coverage": 0.26,
+    "accuracy": 0.9807692307692307,
+    "n_handled": 52
+   },
+   {
+    "threshold": 0.9535,
+    "coverage": 0.25,
+    "accuracy": 0.98,
+    "n_handled": 50
+   },
+   {
+    "threshold": 0.9536,
+    "coverage": 0.245,
+    "accuracy": 1.0,
+    "n_handled": 49
+   },
+   {
+    "threshold": 0.9538,
+    "coverage": 0.235,
+    "accuracy": 1.0,
+    "n_handled": 47
+   },
+   {
+    "threshold": 0.9541,
+    "coverage": 0.225,
+    "accuracy": 1.0,
+    "n_handled": 45
+   },
+   {
+    "threshold": 0.9543,
+    "coverage": 0.215,
+    "accuracy": 1.0,
+    "n_handled": 43
+   },
+   {
+    "threshold": 0.9544,
+    "coverage": 0.2,
+    "accuracy": 1.0,
+    "n_handled": 40
+   },
+   {
+    "threshold": 0.9545,
+    "coverage": 0.195,
+    "accuracy": 1.0,
+    "n_handled": 39
+   },
+   {
+    "threshold": 0.9546,
+    "coverage": 0.185,
+    "accuracy": 1.0,
+    "n_handled": 37
+   },
+   {
+    "threshold": 0.9547,
+    "coverage": 0.18,
+    "accuracy": 1.0,
+    "n_handled": 36
+   },
+   {
+    "threshold": 0.9549,
+    "coverage": 0.17,
+    "accuracy": 1.0,
+    "n_handled": 34
+   },
+   {
+    "threshold": 0.955,
+    "coverage": 0.165,
+    "accuracy": 1.0,
+    "n_handled": 33
+   },
+   {
+    "threshold": 0.9551,
+    "coverage": 0.16,
+    "accuracy": 1.0,
+    "n_handled": 32
+   },
+   {
+    "threshold": 0.9552,
+    "coverage": 0.15,
+    "accuracy": 1.0,
+    "n_handled": 30
+   },
+   {
+    "threshold": 0.9553,
+    "coverage": 0.145,
+    "accuracy": 1.0,
+    "n_handled": 29
+   },
+   {
+    "threshold": 0.9555,
+    "coverage": 0.135,
+    "accuracy": 1.0,
+    "n_handled": 27
+   },
+   {
+    "threshold": 0.9558,
+    "coverage": 0.13,
+    "accuracy": 1.0,
+    "n_handled": 26
+   },
+   {
+    "threshold": 0.956,
+    "coverage": 0.115,
+    "accuracy": 1.0,
+    "n_handled": 23
+   },
+   {
+    "threshold": 0.9561,
+    "coverage": 0.11,
+    "accuracy": 1.0,
+    "n_handled": 22
+   },
+   {
+    "threshold": 0.9562,
+    "coverage": 0.1,
+    "accuracy": 1.0,
+    "n_handled": 20
+   },
+   {
+    "threshold": 0.9563,
+    "coverage": 0.085,
+    "accuracy": 1.0,
+    "n_handled": 17
+   },
+   {
+    "threshold": 0.9564,
+    "coverage": 0.08,
+    "accuracy": 1.0,
+    "n_handled": 16
+   },
+   {
+    "threshold": 0.9565,
+    "coverage": 0.075,
+    "accuracy": 1.0,
+    "n_handled": 15
+   },
+   {
+    "threshold": 0.9567,
+    "coverage": 0.07,
+    "accuracy": 1.0,
+    "n_handled": 14
+   },
+   {
+    "threshold": 0.9568,
+    "coverage": 0.06,
+    "accuracy": 1.0,
+    "n_handled": 12
+   },
+   {
+    "threshold": 0.957,
+    "coverage": 0.055,
+    "accuracy": 1.0,
+    "n_handled": 11
+   },
+   {
+    "threshold": 0.9574,
+    "coverage": 0.05,
+    "accuracy": 1.0,
+    "n_handled": 10
+   },
+   {
+    "threshold": 0.9575,
+    "coverage": 0.045,
+    "accuracy": 1.0,
+    "n_handled": 9
+   },
+   {
+    "threshold": 0.9576,
+    "coverage": 0.04,
+    "accuracy": 1.0,
+    "n_handled": 8
+   },
+   {
+    "threshold": 0.9577,
+    "coverage": 0.035,
+    "accuracy": 1.0,
+    "n_handled": 7
+   },
+   {
+    "threshold": 0.958,
+    "coverage": 0.03,
+    "accuracy": 1.0,
+    "n_handled": 6
+   },
+   {
+    "threshold": 0.9581,
+    "coverage": 0.025,
+    "accuracy": 1.0,
+    "n_handled": 5
+   },
+   {
+    "threshold": 0.9582,
+    "coverage": 0.02,
+    "accuracy": 1.0,
+    "n_handled": 4
+   },
+   {
+    "threshold": 0.9588,
+    "coverage": 0.01,
+    "accuracy": 1.0,
+    "n_handled": 2
+   },
+   {
+    "threshold": 0.9595,
+    "coverage": 0.005,
+    "accuracy": 1.0,
+    "n_handled": 1
+   }
+  ]
+ },
+ "records": [
+  {
+   "text": "Where is my deposit?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.951,
+   "intent_conf": 0.9603,
+   "gating_conf": 0.951,
+   "correct": true
+  },
+  {
+   "text": "Why do I have to verify my identity?",
+   "label": "why_verify_identity",
+   "pred": "why_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9588,
+   "intent_conf": 0.975,
+   "gating_conf": 0.9588,
+   "correct": true
+  },
+  {
+   "text": "Are there fees for top ups?",
+   "label": "top_up_by_card_charge",
+   "pred": "top_up_by_card_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9534,
+   "intent_conf": 0.9659,
+   "gating_conf": 0.9534,
+   "correct": true
+  },
+  {
+   "text": "Are there any fees for adding money with an international card?",
+   "label": "top_up_by_card_charge",
+   "pred": "top_up_by_card_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9326,
+   "intent_conf": 0.9662,
+   "gating_conf": 0.9326,
+   "correct": true
+  },
+  {
+   "text": "I don't know if this is an issue with the ATM or my account, but I just tried withdrawing 30 pounds from the ATM I'm at now and it only gave me 10. Is this a glitch or what exactly is going on?",
+   "label": "wrong_amount_of_cash_received",
+   "pred": "wrong_amount_of_cash_received",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.955,
+   "intent_conf": 0.9712,
+   "gating_conf": 0.955,
+   "correct": true
+  },
+  {
+   "text": "The app won't let me top up my account",
+   "label": "top_up_failed",
+   "pred": "topping_up_by_card",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9405,
+   "intent_conf": 0.2463,
+   "gating_conf": 0.2463,
+   "correct": false
+  },
+  {
+   "text": "Can you help me sign up for a virtual card?",
+   "label": "getting_virtual_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9501,
+   "intent_conf": 0.9635,
+   "gating_conf": 0.9501,
+   "correct": true
+  },
+  {
+   "text": "The app said I withdrew cash at an ATM and I didn't",
+   "label": "cash_withdrawal_not_recognised",
+   "pred": "cash_withdrawal_not_recognised",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9574,
+   "intent_conf": 0.9736,
+   "gating_conf": 0.9574,
+   "correct": true
+  },
+  {
+   "text": "I need to make a transfer, what will the fee be?",
+   "label": "top_up_by_bank_transfer_charge",
+   "pred": "top_up_by_bank_transfer_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9456,
+   "intent_conf": 0.9591,
+   "gating_conf": 0.9456,
+   "correct": true
+  },
+  {
+   "text": "Where can I find a virtual card?",
+   "label": "getting_virtual_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9508,
+   "intent_conf": 0.9629,
+   "gating_conf": 0.9508,
+   "correct": true
+  },
+  {
+   "text": "When can I order a disposable virtual card?",
+   "label": "get_disposable_virtual_card",
+   "pred": "get_disposable_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9487,
+   "intent_conf": 0.9618,
+   "gating_conf": 0.9487,
+   "correct": true
+  },
+  {
+   "text": "How do you verify an identity?",
+   "label": "verify_my_identity",
+   "pred": "verify_my_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9543,
+   "intent_conf": 0.9662,
+   "gating_conf": 0.9543,
+   "correct": true
+  },
+  {
+   "text": "The ATM gave me the wrong amount of cash today when I went to withdraw. The app says it was more.",
+   "label": "wrong_amount_of_cash_received",
+   "pred": "wrong_amount_of_cash_received",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9561,
+   "intent_conf": 0.9763,
+   "gating_conf": 0.9561,
+   "correct": true
+  },
+  {
+   "text": "How can I unblock a blocked pin number for my account?",
+   "label": "pin_blocked",
+   "pred": "pin_blocked",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9555,
+   "intent_conf": 0.9787,
+   "gating_conf": 0.9555,
+   "correct": true
+  },
+  {
+   "text": "Does delivery to the US take long?",
+   "label": "card_delivery_estimate",
+   "pred": "card_delivery_estimate",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9473,
+   "intent_conf": 0.9786,
+   "gating_conf": 0.9473,
+   "correct": true
+  },
+  {
+   "text": "I have tried transferring money numerous times.  All I keep getting is an error message.  Can you tell me what is going on and how this van be fixed?",
+   "label": "beneficiary_not_allowed",
+   "pred": "failed_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9496,
+   "intent_conf": 0.9355,
+   "gating_conf": 0.9355,
+   "correct": false
+  },
+  {
+   "text": "How long until my friend receives my transaction?",
+   "label": "transfer_not_received_by_recipient",
+   "pred": "transfer_not_received_by_recipient",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9454,
+   "intent_conf": 0.9611,
+   "gating_conf": 0.9454,
+   "correct": true
+  },
+  {
+   "text": "Can I get a card despite the fact I'm not in the UK?",
+   "label": "country_support",
+   "pred": "country_support",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9441,
+   "intent_conf": 0.992,
+   "gating_conf": 0.9441,
+   "correct": true
+  },
+  {
+   "text": "The app doesn't know it's me.",
+   "label": "unable_to_verify_identity",
+   "pred": "unable_to_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9455,
+   "intent_conf": 0.9684,
+   "gating_conf": 0.9455,
+   "correct": true
+  },
+  {
+   "text": "the card payment exchange rate is wrong",
+   "label": "card_payment_wrong_exchange_rate",
+   "pred": "card_payment_wrong_exchange_rate",
+   "cluster": "exchange_rates",
+   "cluster_conf": 0.9465,
+   "intent_conf": 0.9875,
+   "gating_conf": 0.9465,
+   "correct": true
+  },
+  {
+   "text": "How long does it take for a refund?",
+   "label": "Refund_not_showing_up",
+   "pred": "Refund_not_showing_up",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9514,
+   "intent_conf": 0.9636,
+   "gating_conf": 0.9514,
+   "correct": true
+  },
+  {
+   "text": "How young can someone be in order to open an account?",
+   "label": "age_limit",
+   "pred": "age_limit",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9575,
+   "intent_conf": 0.9914,
+   "gating_conf": 0.9575,
+   "correct": true
+  },
+  {
+   "text": "i was charged when i used a us issued card. why and what cards are free to use to add money",
+   "label": "top_up_by_card_charge",
+   "pred": "top_up_by_card_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9428,
+   "intent_conf": 0.7409,
+   "gating_conf": 0.7409,
+   "correct": true
+  },
+  {
+   "text": "For physical cards, do you charge?",
+   "label": "order_physical_card",
+   "pred": "order_physical_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.941,
+   "intent_conf": 0.9751,
+   "gating_conf": 0.941,
+   "correct": true
+  },
+  {
+   "text": "I found my card, can I add it to the app?",
+   "label": "card_linking",
+   "pred": "card_linking",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9489,
+   "intent_conf": 0.966,
+   "gating_conf": 0.9489,
+   "correct": true
+  },
+  {
+   "text": "I need to edit the personal details section of my account",
+   "label": "edit_personal_details",
+   "pred": "edit_personal_details",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9582,
+   "intent_conf": 0.9782,
+   "gating_conf": 0.9582,
+   "correct": true
+  },
+  {
+   "text": "how much do you charge to accept transfers",
+   "label": "top_up_by_bank_transfer_charge",
+   "pred": "top_up_by_bank_transfer_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9494,
+   "intent_conf": 0.9672,
+   "gating_conf": 0.9494,
+   "correct": true
+  },
+  {
+   "text": "Can I have it add money automatically in certain intervals?",
+   "label": "automatic_top_up",
+   "pred": "automatic_top_up",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9563,
+   "intent_conf": 0.9603,
+   "gating_conf": 0.9563,
+   "correct": true
+  },
+  {
+   "text": "How long does it take to process cheque deposits?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9513,
+   "intent_conf": 0.9543,
+   "gating_conf": 0.9513,
+   "correct": true
+  },
+  {
+   "text": "So the transfer finally worked but now it's been pending for quite a long time. How long do you expect me to wait for it? It's quite urgent",
+   "label": "pending_transfer",
+   "pred": "pending_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9466,
+   "intent_conf": 0.954,
+   "gating_conf": 0.9466,
+   "correct": true
+  },
+  {
+   "text": "I am not seeing a refund in my statement.",
+   "label": "Refund_not_showing_up",
+   "pred": "Refund_not_showing_up",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9506,
+   "intent_conf": 0.971,
+   "gating_conf": 0.9506,
+   "correct": true
+  },
+  {
+   "text": "I couldn't use my contactless this morning, it wasn't accepted.",
+   "label": "contactless_not_working",
+   "pred": "contactless_not_working",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.949,
+   "intent_conf": 0.9766,
+   "gating_conf": 0.949,
+   "correct": true
+  },
+  {
+   "text": "When I deposit cheques and cash, my balance does not update.",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.957,
+   "intent_conf": 0.9598,
+   "gating_conf": 0.957,
+   "correct": true
+  },
+  {
+   "text": "Which ATM's will accept my card?",
+   "label": "atm_support",
+   "pred": "atm_support",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9499,
+   "intent_conf": 0.9726,
+   "gating_conf": 0.9499,
+   "correct": true
+  },
+  {
+   "text": "Is there a way to obtain a virtual card?",
+   "label": "getting_virtual_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9464,
+   "intent_conf": 0.9632,
+   "gating_conf": 0.9464,
+   "correct": true
+  },
+  {
+   "text": "Looks like my card payment was duplicated. I went to pay at the store earlier, got declined once,second time it works. App still stays pending for one of the payments. Can you please remove one of them as it's wrong and clearly was declined?",
+   "label": "transaction_charged_twice",
+   "pred": "transaction_charged_twice",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9527,
+   "intent_conf": 0.9742,
+   "gating_conf": 0.9527,
+   "correct": true
+  },
+  {
+   "text": "How do people send me money?",
+   "label": "receiving_money",
+   "pred": "receiving_money",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9472,
+   "intent_conf": 0.9502,
+   "gating_conf": 0.9472,
+   "correct": true
+  },
+  {
+   "text": "I am trying to make a transfer and am unsuccessful, can you please tell me why?",
+   "label": "failed_transfer",
+   "pred": "failed_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.95,
+   "intent_conf": 0.9537,
+   "gating_conf": 0.95,
+   "correct": true
+  },
+  {
+   "text": "I think my transfer was declined, but why?",
+   "label": "declined_transfer",
+   "pred": "declined_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9511,
+   "intent_conf": 0.9619,
+   "gating_conf": 0.9511,
+   "correct": true
+  },
+  {
+   "text": "There is an error, the app says I made an ATM withdrawal and I didn't.",
+   "label": "cash_withdrawal_not_recognised",
+   "pred": "cash_withdrawal_not_recognised",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9577,
+   "intent_conf": 0.9759,
+   "gating_conf": 0.9577,
+   "correct": true
+  },
+  {
+   "text": "Weird charges are appearing in my debit account.",
+   "label": "direct_debit_payment_not_recognised",
+   "pred": "direct_debit_payment_not_recognised",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9528,
+   "intent_conf": 0.971,
+   "gating_conf": 0.9528,
+   "correct": true
+  },
+  {
+   "text": "The refund isn't showing up on my account.",
+   "label": "Refund_not_showing_up",
+   "pred": "Refund_not_showing_up",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9517,
+   "intent_conf": 0.9715,
+   "gating_conf": 0.9517,
+   "correct": true
+  },
+  {
+   "text": "I want to get a disposable virtual card.",
+   "label": "get_disposable_virtual_card",
+   "pred": "get_disposable_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9508,
+   "intent_conf": 0.9625,
+   "gating_conf": 0.9508,
+   "correct": true
+  },
+  {
+   "text": "Do you guys accept mastercard or visa?",
+   "label": "visa_or_mastercard",
+   "pred": "visa_or_mastercard",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9515,
+   "intent_conf": 0.9621,
+   "gating_conf": 0.9515,
+   "correct": true
+  },
+  {
+   "text": "Why didn't my balance change after I transferred some money?",
+   "label": "balance_not_updated_after_bank_transfer",
+   "pred": "balance_not_updated_after_bank_transfer",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9528,
+   "intent_conf": 0.9586,
+   "gating_conf": 0.9528,
+   "correct": true
+  },
+  {
+   "text": "how old do i need to be to get an account for myself",
+   "label": "age_limit",
+   "pred": "age_limit",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9552,
+   "intent_conf": 0.9918,
+   "gating_conf": 0.9552,
+   "correct": true
+  },
+  {
+   "text": "My card is being used online to make a bunch of purchases! Someone else is using it fraudulently. Can you help me freeze it?",
+   "label": "compromised_card",
+   "pred": "compromised_card",
+   "cluster": "lost_stolen_compromised",
+   "cluster_conf": 0.9356,
+   "intent_conf": 0.99,
+   "gating_conf": 0.9356,
+   "correct": true
+  },
+  {
+   "text": "When trying to get more than one card is there a extra amount that needs to be paid?",
+   "label": "getting_spare_card",
+   "pred": "getting_spare_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9183,
+   "intent_conf": 0.9742,
+   "gating_conf": 0.9183,
+   "correct": true
+  },
+  {
+   "text": "I used an ATM in a foreign currency but the rate applied is wrong!",
+   "label": "wrong_exchange_rate_for_cash_withdrawal",
+   "pred": "wrong_exchange_rate_for_cash_withdrawal",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.952,
+   "intent_conf": 0.9791,
+   "gating_conf": 0.952,
+   "correct": true
+  },
+  {
+   "text": "I deposited cash this morning and I am still waiting",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9546,
+   "intent_conf": 0.9536,
+   "gating_conf": 0.9536,
+   "correct": true
+  },
+  {
+   "text": "Any fee for topping up?",
+   "label": "top_up_by_card_charge",
+   "pred": "top_up_by_card_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9512,
+   "intent_conf": 0.9682,
+   "gating_conf": 0.9512,
+   "correct": true
+  },
+  {
+   "text": "Card payment declined?",
+   "label": "declined_card_payment",
+   "pred": "declined_card_payment",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9541,
+   "intent_conf": 0.9742,
+   "gating_conf": 0.9541,
+   "correct": true
+  },
+  {
+   "text": "What if I need my salary in a different currency?",
+   "label": "receiving_money",
+   "pred": "receiving_money",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9538,
+   "intent_conf": 0.9581,
+   "gating_conf": 0.9538,
+   "correct": true
+  },
+  {
+   "text": "can I have a non virtual card?",
+   "label": "order_physical_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9443,
+   "intent_conf": 0.951,
+   "gating_conf": 0.9443,
+   "correct": false
+  },
+  {
+   "text": "Can you tell me what countries you operate in?",
+   "label": "country_support",
+   "pred": "country_support",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9558,
+   "intent_conf": 0.9924,
+   "gating_conf": 0.9558,
+   "correct": true
+  },
+  {
+   "text": "How do I reset my PIN?",
+   "label": "pin_blocked",
+   "pred": "change_pin",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9518,
+   "intent_conf": 0.9786,
+   "gating_conf": 0.9518,
+   "correct": false
+  },
+  {
+   "text": "I was trying to purchase something at the store today and my card has been declined.  Why has this happened?",
+   "label": "declined_card_payment",
+   "pred": "declined_card_payment",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9463,
+   "intent_conf": 0.9743,
+   "gating_conf": 0.9463,
+   "correct": true
+  },
+  {
+   "text": "Do I have to pay for exchanging currencies?",
+   "label": "exchange_charge",
+   "pred": "exchange_charge",
+   "cluster": "exchange_rates",
+   "cluster_conf": 0.9468,
+   "intent_conf": 0.9814,
+   "gating_conf": 0.9468,
+   "correct": true
+  },
+  {
+   "text": "How can I top up with Google Pay?",
+   "label": "apple_pay_or_google_pay",
+   "pred": "apple_pay_or_google_pay",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9443,
+   "intent_conf": 0.9616,
+   "gating_conf": 0.9443,
+   "correct": true
+  },
+  {
+   "text": "I have a card payment that was declined, but why?",
+   "label": "declined_card_payment",
+   "pred": "declined_card_payment",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9558,
+   "intent_conf": 0.9757,
+   "gating_conf": 0.9558,
+   "correct": true
+  },
+  {
+   "text": "Can you help with a transfer to an account",
+   "label": "beneficiary_not_allowed",
+   "pred": "transfer_into_account",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9401,
+   "intent_conf": 0.9652,
+   "gating_conf": 0.9401,
+   "correct": false
+  },
+  {
+   "text": "What is the limit to top up?",
+   "label": "top_up_limits",
+   "pred": "top_up_limits",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9506,
+   "intent_conf": 0.9586,
+   "gating_conf": 0.9506,
+   "correct": true
+  },
+  {
+   "text": "I do not have what is required to prove my identity",
+   "label": "unable_to_verify_identity",
+   "pred": "unable_to_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9551,
+   "intent_conf": 0.9674,
+   "gating_conf": 0.9551,
+   "correct": true
+  },
+  {
+   "text": "Someone needs to make me aware when there are extra charges for payments. I happened to be looking at the app earlier and noticed a charge associated to a payment that was extra that no one made me aware of before at all.",
+   "label": "card_payment_fee_charged",
+   "pred": "card_payment_fee_charged",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9489,
+   "intent_conf": 0.9575,
+   "gating_conf": 0.9489,
+   "correct": true
+  },
+  {
+   "text": "I want to know if there is a maximum I can top up.",
+   "label": "top_up_limits",
+   "pred": "top_up_limits",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9477,
+   "intent_conf": 0.959,
+   "gating_conf": 0.9477,
+   "correct": true
+  },
+  {
+   "text": "Am I able to change my PIN at any cash machines?",
+   "label": "change_pin",
+   "pred": "change_pin",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9497,
+   "intent_conf": 0.9748,
+   "gating_conf": 0.9497,
+   "correct": true
+  },
+  {
+   "text": "Can I use my card at any ATMs?",
+   "label": "atm_support",
+   "pred": "atm_support",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9538,
+   "intent_conf": 0.9774,
+   "gating_conf": 0.9538,
+   "correct": true
+  },
+  {
+   "text": "My top-up has been cancelled.",
+   "label": "top_up_reverted",
+   "pred": "top_up_reverted",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.958,
+   "intent_conf": 0.9612,
+   "gating_conf": 0.958,
+   "correct": true
+  },
+  {
+   "text": "What do I do if I forget my passcode?  Because I did.",
+   "label": "passcode_forgotten",
+   "pred": "passcode_forgotten",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9549,
+   "intent_conf": 0.9775,
+   "gating_conf": 0.9549,
+   "correct": true
+  },
+  {
+   "text": "i want to close an account but im not sure about setting up a new one in the future, what do you recommend",
+   "label": "terminate_account",
+   "pred": "terminate_account",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9462,
+   "intent_conf": 0.9756,
+   "gating_conf": 0.9462,
+   "correct": true
+  },
+  {
+   "text": "I sent a cheque  a few days ago and nothing has happened to my account yet. Can you please check on this for me?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9519,
+   "intent_conf": 0.9552,
+   "gating_conf": 0.9519,
+   "correct": true
+  },
+  {
+   "text": "How do I receive my physical card",
+   "label": "order_physical_card",
+   "pred": "order_physical_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9512,
+   "intent_conf": 0.9712,
+   "gating_conf": 0.9512,
+   "correct": true
+  },
+  {
+   "text": "how do i change name?",
+   "label": "edit_personal_details",
+   "pred": "edit_personal_details",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9551,
+   "intent_conf": 0.9761,
+   "gating_conf": 0.9551,
+   "correct": true
+  },
+  {
+   "text": "I made a purchase and it says it's pending. What does that mean?",
+   "label": "pending_card_payment",
+   "pred": "pending_card_payment",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9468,
+   "intent_conf": 0.9779,
+   "gating_conf": 0.9468,
+   "correct": true
+  },
+  {
+   "text": "Can you unlock my pin? I think I entered the wrong pin too many times.",
+   "label": "pin_blocked",
+   "pred": "pin_blocked",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9545,
+   "intent_conf": 0.9755,
+   "gating_conf": 0.9545,
+   "correct": true
+  },
+  {
+   "text": "Can you give me information about verification code?",
+   "label": "verify_top_up",
+   "pred": "verify_my_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.5734,
+   "intent_conf": 0.2768,
+   "gating_conf": 0.2768,
+   "correct": false
+  },
+  {
+   "text": "How can I tell where my funds came from?",
+   "label": "verify_source_of_funds",
+   "pred": "verify_source_of_funds",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9534,
+   "intent_conf": 0.9743,
+   "gating_conf": 0.9534,
+   "correct": true
+  },
+  {
+   "text": "Is GBP a supported currency?",
+   "label": "receiving_money",
+   "pred": "fiat_currency_support",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9506,
+   "intent_conf": 0.9889,
+   "gating_conf": 0.9506,
+   "correct": false
+  },
+  {
+   "text": "Where can the card be used?",
+   "label": "card_acceptance",
+   "pred": "card_acceptance",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9488,
+   "intent_conf": 0.9643,
+   "gating_conf": 0.9488,
+   "correct": true
+  },
+  {
+   "text": "can you tell me why my transfer failed?",
+   "label": "failed_transfer",
+   "pred": "failed_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9515,
+   "intent_conf": 0.9585,
+   "gating_conf": 0.9515,
+   "correct": true
+  },
+  {
+   "text": "Can my card be used everywhere?",
+   "label": "card_acceptance",
+   "pred": "card_acceptance",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9442,
+   "intent_conf": 0.9669,
+   "gating_conf": 0.9442,
+   "correct": true
+  },
+  {
+   "text": "Why did I get less money than I asked for?",
+   "label": "wrong_amount_of_cash_received",
+   "pred": "wrong_amount_of_cash_received",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9543,
+   "intent_conf": 0.9768,
+   "gating_conf": 0.9543,
+   "correct": true
+  },
+  {
+   "text": "I got my new card but I am not sure if it need s activated and how?",
+   "label": "activate_my_card",
+   "pred": "activate_my_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9498,
+   "intent_conf": 0.9766,
+   "gating_conf": 0.9498,
+   "correct": true
+  },
+  {
+   "text": "I found a charge for a direct debit that was not made by me.",
+   "label": "direct_debit_payment_not_recognised",
+   "pred": "direct_debit_payment_not_recognised",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9541,
+   "intent_conf": 0.9764,
+   "gating_conf": 0.9541,
+   "correct": true
+  },
+  {
+   "text": "How do I deal with a blocked PIN?",
+   "label": "pin_blocked",
+   "pred": "pin_blocked",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9497,
+   "intent_conf": 0.9791,
+   "gating_conf": 0.9497,
+   "correct": true
+  },
+  {
+   "text": "How fast can you deliver?",
+   "label": "card_delivery_estimate",
+   "pred": "card_delivery_estimate",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9502,
+   "intent_conf": 0.9762,
+   "gating_conf": 0.9502,
+   "correct": true
+  },
+  {
+   "text": "I requested a refund, and never received it. What can I do?",
+   "label": "Refund_not_showing_up",
+   "pred": "Refund_not_showing_up",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9545,
+   "intent_conf": 0.9664,
+   "gating_conf": 0.9545,
+   "correct": true
+  },
+  {
+   "text": "I tried to top up. Why was it denied?",
+   "label": "top_up_failed",
+   "pred": "top_up_failed",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9488,
+   "intent_conf": 0.9547,
+   "gating_conf": 0.9488,
+   "correct": true
+  },
+  {
+   "text": "It seems I was overcharged when I used an ATM while on vacation. If I knew about your fees in advance I sure would have gone somewhere else.",
+   "label": "wrong_exchange_rate_for_cash_withdrawal",
+   "pred": "cash_withdrawal_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9337,
+   "intent_conf": 0.9627,
+   "gating_conf": 0.9337,
+   "correct": false
+  },
+  {
+   "text": "How do I get rid of my account ASAP?",
+   "label": "terminate_account",
+   "pred": "terminate_account",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9507,
+   "intent_conf": 0.9766,
+   "gating_conf": 0.9507,
+   "correct": true
+  },
+  {
+   "text": "My cash withdrawl was declined why?",
+   "label": "declined_cash_withdrawal",
+   "pred": "declined_cash_withdrawal",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9562,
+   "intent_conf": 0.9785,
+   "gating_conf": 0.9562,
+   "correct": true
+  },
+  {
+   "text": "still waiting on that card",
+   "label": "card_arrival",
+   "pred": "card_arrival",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9425,
+   "intent_conf": 0.9742,
+   "gating_conf": 0.9425,
+   "correct": true
+  },
+  {
+   "text": "Since my card is about to expire, I need a new one.",
+   "label": "card_about_to_expire",
+   "pred": "card_about_to_expire",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9485,
+   "intent_conf": 0.9697,
+   "gating_conf": 0.9485,
+   "correct": true
+  },
+  {
+   "text": "Trouble transferring transaction contact for help",
+   "label": "declined_transfer",
+   "pred": "transfer_not_received_by_recipient",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9475,
+   "intent_conf": 0.7087,
+   "gating_conf": 0.7087,
+   "correct": false
+  },
+  {
+   "text": "I need information about an extra \u20ac1 fee in my statement.",
+   "label": "extra_charge_on_statement",
+   "pred": "extra_charge_on_statement",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9546,
+   "intent_conf": 0.9729,
+   "gating_conf": 0.9546,
+   "correct": true
+  },
+  {
+   "text": "How do you get a virtual card?",
+   "label": "getting_virtual_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9485,
+   "intent_conf": 0.9627,
+   "gating_conf": 0.9485,
+   "correct": true
+  },
+  {
+   "text": "For some reason my contactless won't work for me.",
+   "label": "contactless_not_working",
+   "pred": "contactless_not_working",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9476,
+   "intent_conf": 0.9766,
+   "gating_conf": 0.9476,
+   "correct": true
+  },
+  {
+   "text": "What do I need to do to verify the source of my funds?",
+   "label": "verify_source_of_funds",
+   "pred": "verify_source_of_funds",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9565,
+   "intent_conf": 0.9755,
+   "gating_conf": 0.9565,
+   "correct": true
+  },
+  {
+   "text": "I just got my card and want to use it, how do I activate my card?",
+   "label": "activate_my_card",
+   "pred": "activate_my_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9506,
+   "intent_conf": 0.9784,
+   "gating_conf": 0.9506,
+   "correct": true
+  },
+  {
+   "text": "My card was not accepted.",
+   "label": "declined_card_payment",
+   "pred": "declined_card_payment",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9045,
+   "intent_conf": 0.9714,
+   "gating_conf": 0.9045,
+   "correct": true
+  },
+  {
+   "text": "how do i get a virtual card for one time use",
+   "label": "get_disposable_virtual_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9432,
+   "intent_conf": 0.9552,
+   "gating_conf": 0.9432,
+   "correct": false
+  },
+  {
+   "text": "I'd like to know why my top-up was canceled please.",
+   "label": "top_up_reverted",
+   "pred": "top_up_reverted",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9567,
+   "intent_conf": 0.9602,
+   "gating_conf": 0.9567,
+   "correct": true
+  },
+  {
+   "text": "Can you please make my top up go through as soon as possible. I really need the money and it has been pending for an hour already.",
+   "label": "pending_top_up",
+   "pred": "pending_top_up",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9595,
+   "intent_conf": 0.96,
+   "gating_conf": 0.9595,
+   "correct": true
+  },
+  {
+   "text": "I need to verify my identity, but how do I do that?",
+   "label": "verify_my_identity",
+   "pred": "verify_my_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9562,
+   "intent_conf": 0.9674,
+   "gating_conf": 0.9562,
+   "correct": true
+  },
+  {
+   "text": "How do I apply for a refund?",
+   "label": "request_refund",
+   "pred": "request_refund",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9517,
+   "intent_conf": 0.9669,
+   "gating_conf": 0.9517,
+   "correct": true
+  },
+  {
+   "text": "I would like to know how I can verify my Identity.",
+   "label": "verify_my_identity",
+   "pred": "verify_my_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9553,
+   "intent_conf": 0.9699,
+   "gating_conf": 0.9553,
+   "correct": true
+  },
+  {
+   "text": "I see my top-up was canceled, but why?",
+   "label": "top_up_reverted",
+   "pred": "top_up_reverted",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9582,
+   "intent_conf": 0.9603,
+   "gating_conf": 0.9582,
+   "correct": true
+  },
+  {
+   "text": "I think someone copied the numbers on my card and is using them.",
+   "label": "compromised_card",
+   "pred": "compromised_card",
+   "cluster": "lost_stolen_compromised",
+   "cluster_conf": 0.5192,
+   "intent_conf": 0.9914,
+   "gating_conf": 0.5192,
+   "correct": true
+  },
+  {
+   "text": "Why was I charged an extra fee when using a card?",
+   "label": "card_payment_fee_charged",
+   "pred": "card_payment_fee_charged",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9448,
+   "intent_conf": 0.9654,
+   "gating_conf": 0.9448,
+   "correct": true
+  },
+  {
+   "text": "Why was I charged a fee for withdrawing cash?",
+   "label": "cash_withdrawal_charge",
+   "pred": "cash_withdrawal_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.952,
+   "intent_conf": 0.9672,
+   "gating_conf": 0.952,
+   "correct": true
+  },
+  {
+   "text": "There was an error in exchange rate for my cash withdrawal",
+   "label": "wrong_exchange_rate_for_cash_withdrawal",
+   "pred": "wrong_exchange_rate_for_cash_withdrawal",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9558,
+   "intent_conf": 0.9797,
+   "gating_conf": 0.9558,
+   "correct": true
+  },
+  {
+   "text": "Can I resent my passcode?",
+   "label": "passcode_forgotten",
+   "pred": "passcode_forgotten",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9533,
+   "intent_conf": 0.9771,
+   "gating_conf": 0.9533,
+   "correct": true
+  },
+  {
+   "text": "Is there a location near me that i can change my PIN?",
+   "label": "change_pin",
+   "pred": "change_pin",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9553,
+   "intent_conf": 0.9783,
+   "gating_conf": 0.9553,
+   "correct": true
+  },
+  {
+   "text": "Once my card expires, what should I do?",
+   "label": "card_about_to_expire",
+   "pred": "card_about_to_expire",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.952,
+   "intent_conf": 0.9678,
+   "gating_conf": 0.952,
+   "correct": true
+  },
+  {
+   "text": "I transferred some money but I think it has gotten lost somewhere.",
+   "label": "balance_not_updated_after_bank_transfer",
+   "pred": "transfer_not_received_by_recipient",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9391,
+   "intent_conf": 0.9523,
+   "gating_conf": 0.9391,
+   "correct": false
+  },
+  {
+   "text": "My contanctless has stopped working",
+   "label": "contactless_not_working",
+   "pred": "contactless_not_working",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9395,
+   "intent_conf": 0.9732,
+   "gating_conf": 0.9395,
+   "correct": true
+  },
+  {
+   "text": "What is this charge on my account for a cash withdrawl?",
+   "label": "cash_withdrawal_charge",
+   "pred": "cash_withdrawal_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9479,
+   "intent_conf": 0.9695,
+   "gating_conf": 0.9479,
+   "correct": true
+  },
+  {
+   "text": "Why can't I top up with a cheque?",
+   "label": "top_up_by_cash_or_cheque",
+   "pred": "top_up_by_cash_or_cheque",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.948,
+   "intent_conf": 0.9565,
+   "gating_conf": 0.948,
+   "correct": true
+  },
+  {
+   "text": "Is my card accepted everywhere?",
+   "label": "card_acceptance",
+   "pred": "card_acceptance",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9508,
+   "intent_conf": 0.9671,
+   "gating_conf": 0.9508,
+   "correct": true
+  },
+  {
+   "text": "Is the top up feature available on the Apple Watch?",
+   "label": "apple_pay_or_google_pay",
+   "pred": "apple_pay_or_google_pay",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9466,
+   "intent_conf": 0.9662,
+   "gating_conf": 0.9466,
+   "correct": true
+  },
+  {
+   "text": "what is source of my funds, need to verify",
+   "label": "verify_source_of_funds",
+   "pred": "verify_source_of_funds",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9568,
+   "intent_conf": 0.9768,
+   "gating_conf": 0.9568,
+   "correct": true
+  },
+  {
+   "text": "I made a transaction and it is taking a very long time to go through.",
+   "label": "transfer_not_received_by_recipient",
+   "pred": "transfer_not_received_by_recipient",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9435,
+   "intent_conf": 0.9484,
+   "gating_conf": 0.9435,
+   "correct": true
+  },
+  {
+   "text": "I was at the store earlier and my virtual card didn't work. What's the solution for this problem?",
+   "label": "virtual_card_not_working",
+   "pred": "virtual_card_not_working",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9462,
+   "intent_conf": 0.9742,
+   "gating_conf": 0.9462,
+   "correct": true
+  },
+  {
+   "text": "I noticed an extra $1 charge on my statement, can you tell me why that is?",
+   "label": "extra_charge_on_statement",
+   "pred": "extra_charge_on_statement",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9522,
+   "intent_conf": 0.9727,
+   "gating_conf": 0.9522,
+   "correct": true
+  },
+  {
+   "text": "How do I find the verification code for my top-up card?",
+   "label": "verify_top_up",
+   "pred": "verify_top_up",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9442,
+   "intent_conf": 0.959,
+   "gating_conf": 0.9442,
+   "correct": true
+  },
+  {
+   "text": "What are the steps to activating a new card?",
+   "label": "activate_my_card",
+   "pred": "activate_my_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9504,
+   "intent_conf": 0.9767,
+   "gating_conf": 0.9504,
+   "correct": true
+  },
+  {
+   "text": "Can I order extra cards?",
+   "label": "getting_spare_card",
+   "pred": "getting_spare_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9519,
+   "intent_conf": 0.977,
+   "gating_conf": 0.9519,
+   "correct": true
+  },
+  {
+   "text": "The wrong rate was applied to an item I bought in a currency different from mine. Can this be changed?",
+   "label": "card_payment_wrong_exchange_rate",
+   "pred": "card_payment_wrong_exchange_rate",
+   "cluster": "exchange_rates",
+   "cluster_conf": 0.9212,
+   "intent_conf": 0.9865,
+   "gating_conf": 0.9212,
+   "correct": true
+  },
+  {
+   "text": "What are the ATMs that will accept this card?",
+   "label": "atm_support",
+   "pred": "atm_support",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.956,
+   "intent_conf": 0.9745,
+   "gating_conf": 0.956,
+   "correct": true
+  },
+  {
+   "text": "What is the importance of verifying the top-up?",
+   "label": "verify_top_up",
+   "pred": "verify_top_up",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9562,
+   "intent_conf": 0.9579,
+   "gating_conf": 0.9562,
+   "correct": true
+  },
+  {
+   "text": "Is Apple Pay a possible top up option?",
+   "label": "apple_pay_or_google_pay",
+   "pred": "apple_pay_or_google_pay",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.947,
+   "intent_conf": 0.9627,
+   "gating_conf": 0.947,
+   "correct": true
+  },
+  {
+   "text": "What are the steps I follow to transfer money into my account?",
+   "label": "transfer_into_account",
+   "pred": "transfer_into_account",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9411,
+   "intent_conf": 0.9637,
+   "gating_conf": 0.9411,
+   "correct": true
+  },
+  {
+   "text": "How many transactions can I do with one disposable card?",
+   "label": "disposable_card_limits",
+   "pred": "disposable_card_limits",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9455,
+   "intent_conf": 0.9675,
+   "gating_conf": 0.9455,
+   "correct": true
+  },
+  {
+   "text": "Do you have a top-up limit?",
+   "label": "top_up_limits",
+   "pred": "top_up_limits",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9547,
+   "intent_conf": 0.9604,
+   "gating_conf": 0.9547,
+   "correct": true
+  },
+  {
+   "text": "Help my verify my id.",
+   "label": "unable_to_verify_identity",
+   "pred": "unable_to_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9576,
+   "intent_conf": 0.9696,
+   "gating_conf": 0.9576,
+   "correct": true
+  },
+  {
+   "text": "What do I do if the ATM didn't give me the correct amount I withdrew? I pulled out 30 pounds and the ATM gave me 10 pounds.",
+   "label": "wrong_amount_of_cash_received",
+   "pred": "wrong_amount_of_cash_received",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9533,
+   "intent_conf": 0.9684,
+   "gating_conf": 0.9533,
+   "correct": true
+  },
+  {
+   "text": "Where is the money I topped off with?",
+   "label": "pending_top_up",
+   "pred": "verify_top_up",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9556,
+   "intent_conf": 0.1815,
+   "gating_conf": 0.1815,
+   "correct": false
+  },
+  {
+   "text": "can I transfer my salary if it's in a different currency?",
+   "label": "receiving_money",
+   "pred": "receiving_money",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9526,
+   "intent_conf": 0.9641,
+   "gating_conf": 0.9526,
+   "correct": true
+  },
+  {
+   "text": "I need help with a lost card",
+   "label": "lost_or_stolen_card",
+   "pred": "lost_or_stolen_card",
+   "cluster": "lost_stolen_compromised",
+   "cluster_conf": 0.9505,
+   "intent_conf": 0.9835,
+   "gating_conf": 0.9505,
+   "correct": true
+  },
+  {
+   "text": "Is there an option to have a virtual card?",
+   "label": "getting_virtual_card",
+   "pred": "getting_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9481,
+   "intent_conf": 0.9639,
+   "gating_conf": 0.9481,
+   "correct": true
+  },
+  {
+   "text": "I need you to cancel a transfer that I made.  It is the wrong account number and the app won't let me stop the transaction.  Please stop it!",
+   "label": "cancel_transfer",
+   "pred": "cancel_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9509,
+   "intent_conf": 0.9606,
+   "gating_conf": 0.9509,
+   "correct": true
+  },
+  {
+   "text": "How long will it take to get to me?",
+   "label": "card_delivery_estimate",
+   "pred": "card_delivery_estimate",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9308,
+   "intent_conf": 0.971,
+   "gating_conf": 0.9308,
+   "correct": true
+  },
+  {
+   "text": "Are there any restrictions causing my transfer to be declined?",
+   "label": "declined_transfer",
+   "pred": "declined_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9523,
+   "intent_conf": 0.9629,
+   "gating_conf": 0.9523,
+   "correct": true
+  },
+  {
+   "text": "where do I request a disposable virtual card?",
+   "label": "get_disposable_virtual_card",
+   "pred": "get_disposable_virtual_card",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9479,
+   "intent_conf": 0.9625,
+   "gating_conf": 0.9479,
+   "correct": true
+  },
+  {
+   "text": "My daughter needs a card. Can I give her one of mine that's linked to my account?",
+   "label": "getting_spare_card",
+   "pred": "getting_spare_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.933,
+   "intent_conf": 0.9642,
+   "gating_conf": 0.933,
+   "correct": true
+  },
+  {
+   "text": "Can I get paid in another currency?",
+   "label": "receiving_money",
+   "pred": "receiving_money",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9451,
+   "intent_conf": 0.9637,
+   "gating_conf": 0.9451,
+   "correct": true
+  },
+  {
+   "text": "There was an extra charge when I made a transfer.",
+   "label": "transfer_fee_charged",
+   "pred": "transfer_fee_charged",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9479,
+   "intent_conf": 0.9576,
+   "gating_conf": 0.9479,
+   "correct": true
+  },
+  {
+   "text": "I received my new card, how is it activated?",
+   "label": "activate_my_card",
+   "pred": "activate_my_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9513,
+   "intent_conf": 0.9764,
+   "gating_conf": 0.9513,
+   "correct": true
+  },
+  {
+   "text": "I go the wrong exchange rate applied to my purchase in a foreign country.",
+   "label": "card_payment_wrong_exchange_rate",
+   "pred": "card_payment_wrong_exchange_rate",
+   "cluster": "exchange_rates",
+   "cluster_conf": 0.9458,
+   "intent_conf": 0.9872,
+   "gating_conf": 0.9458,
+   "correct": true
+  },
+  {
+   "text": "My credit card was declined.",
+   "label": "declined_card_payment",
+   "pred": "declined_card_payment",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9485,
+   "intent_conf": 0.9755,
+   "gating_conf": 0.9485,
+   "correct": true
+  },
+  {
+   "text": "Freeze my account it's been hacked.",
+   "label": "compromised_card",
+   "pred": "compromised_card",
+   "cluster": "lost_stolen_compromised",
+   "cluster_conf": 0.9401,
+   "intent_conf": 0.9871,
+   "gating_conf": 0.9401,
+   "correct": true
+  },
+  {
+   "text": "I have a top up that didn't go through.  Why?",
+   "label": "top_up_failed",
+   "pred": "top_up_failed",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9554,
+   "intent_conf": 0.9343,
+   "gating_conf": 0.9343,
+   "correct": true
+  },
+  {
+   "text": "How can I resolve a problem where my card won't go through at all?",
+   "label": "card_not_working",
+   "pred": "card_not_working",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9212,
+   "intent_conf": 0.968,
+   "gating_conf": 0.9212,
+   "correct": true
+  },
+  {
+   "text": "Please tell me which cash machines will allow me to change my pin.",
+   "label": "change_pin",
+   "pred": "change_pin",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.948,
+   "intent_conf": 0.9776,
+   "gating_conf": 0.948,
+   "correct": true
+  },
+  {
+   "text": "I still don't have my card after 2 weeks.  What should I do?",
+   "label": "card_arrival",
+   "pred": "card_arrival",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9213,
+   "intent_conf": 0.9747,
+   "gating_conf": 0.9213,
+   "correct": true
+  },
+  {
+   "text": "What is the youngest someone can be to open an account?",
+   "label": "age_limit",
+   "pred": "age_limit",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9547,
+   "intent_conf": 0.9915,
+   "gating_conf": 0.9547,
+   "correct": true
+  },
+  {
+   "text": "Help me find my card pin!",
+   "label": "get_physical_card",
+   "pred": "get_physical_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9465,
+   "intent_conf": 0.9771,
+   "gating_conf": 0.9465,
+   "correct": true
+  },
+  {
+   "text": "How old do I have to be to open an account?",
+   "label": "age_limit",
+   "pred": "age_limit",
+   "cluster": "eligibility_and_coverage",
+   "cluster_conf": 0.9581,
+   "intent_conf": 0.9916,
+   "gating_conf": 0.9581,
+   "correct": true
+  },
+  {
+   "text": "Someone stole my phone.",
+   "label": "lost_or_stolen_phone",
+   "pred": "lost_or_stolen_phone",
+   "cluster": "lost_stolen_compromised",
+   "cluster_conf": 0.9506,
+   "intent_conf": 0.9885,
+   "gating_conf": 0.9506,
+   "correct": true
+  },
+  {
+   "text": "Why am I having trouble verifying my id?",
+   "label": "unable_to_verify_identity",
+   "pred": "unable_to_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9567,
+   "intent_conf": 0.9731,
+   "gating_conf": 0.9567,
+   "correct": true
+  },
+  {
+   "text": "I think my statement has a fraudulent charge",
+   "label": "card_payment_not_recognised",
+   "pred": "card_payment_not_recognised",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9466,
+   "intent_conf": 0.9583,
+   "gating_conf": 0.9466,
+   "correct": true
+  },
+  {
+   "text": "Says my transfer can't be completed?",
+   "label": "failed_transfer",
+   "pred": "declined_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9528,
+   "intent_conf": 0.5854,
+   "gating_conf": 0.5854,
+   "correct": false
+  },
+  {
+   "text": "Need to deposit a cheque into my account",
+   "label": "top_up_by_cash_or_cheque",
+   "pred": "top_up_by_cash_or_cheque",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9453,
+   "intent_conf": 0.957,
+   "gating_conf": 0.9453,
+   "correct": true
+  },
+  {
+   "text": "How can I start using my card?",
+   "label": "activate_my_card",
+   "pred": "activate_my_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9388,
+   "intent_conf": 0.9709,
+   "gating_conf": 0.9388,
+   "correct": true
+  },
+  {
+   "text": "can I choose a date for delivery?",
+   "label": "card_delivery_estimate",
+   "pred": "card_delivery_estimate",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9526,
+   "intent_conf": 0.9764,
+   "gating_conf": 0.9526,
+   "correct": true
+  },
+  {
+   "text": "HOw do I get my card back after the ATM has pulled it in?",
+   "label": "card_swallowed",
+   "pred": "card_swallowed",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9449,
+   "intent_conf": 0.974,
+   "gating_conf": 0.9449,
+   "correct": true
+  },
+  {
+   "text": "I want to choose a different PIN.",
+   "label": "change_pin",
+   "pred": "change_pin",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9509,
+   "intent_conf": 0.9802,
+   "gating_conf": 0.9509,
+   "correct": true
+  },
+  {
+   "text": "I am seeing a weird payment showing up that I know I did not make, how can I get it cancelled?",
+   "label": "direct_debit_payment_not_recognised",
+   "pred": "card_payment_not_recognised",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9535,
+   "intent_conf": 0.9599,
+   "gating_conf": 0.9535,
+   "correct": false
+  },
+  {
+   "text": "The exchange rate given to me wasn't correct, after i purchased an item",
+   "label": "card_payment_wrong_exchange_rate",
+   "pred": "card_payment_wrong_exchange_rate",
+   "cluster": "exchange_rates",
+   "cluster_conf": 0.9472,
+   "intent_conf": 0.9854,
+   "gating_conf": 0.9472,
+   "correct": true
+  },
+  {
+   "text": "I ordered my card 2 weeks ago and it still isn't here? What do I do?",
+   "label": "card_arrival",
+   "pred": "card_arrival",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9422,
+   "intent_conf": 0.9758,
+   "gating_conf": 0.9422,
+   "correct": true
+  },
+  {
+   "text": "Is it possible to have both a Visa and a Mastercard from you?",
+   "label": "visa_or_mastercard",
+   "pred": "visa_or_mastercard",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9491,
+   "intent_conf": 0.9658,
+   "gating_conf": 0.9491,
+   "correct": true
+  },
+  {
+   "text": "How many card payments can I use on a disposable card?",
+   "label": "disposable_card_limits",
+   "pred": "disposable_card_limits",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9439,
+   "intent_conf": 0.9665,
+   "gating_conf": 0.9439,
+   "correct": true
+  },
+  {
+   "text": "When topping up by transfer, will I be charged?",
+   "label": "top_up_by_bank_transfer_charge",
+   "pred": "top_up_by_bank_transfer_charge",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9473,
+   "intent_conf": 0.9621,
+   "gating_conf": 0.9473,
+   "correct": true
+  },
+  {
+   "text": "I transferred my funds, why did it not go through?",
+   "label": "failed_transfer",
+   "pred": "failed_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9519,
+   "intent_conf": 0.6458,
+   "gating_conf": 0.6458,
+   "correct": true
+  },
+  {
+   "text": "A transfer to an account was not allowed",
+   "label": "beneficiary_not_allowed",
+   "pred": "beneficiary_not_allowed",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9495,
+   "intent_conf": 0.9628,
+   "gating_conf": 0.9495,
+   "correct": true
+  },
+  {
+   "text": "My transaction to pay for an item was returned to my account.",
+   "label": "reverted_card_payment?",
+   "pred": "reverted_card_payment?",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9256,
+   "intent_conf": 0.9757,
+   "gating_conf": 0.9256,
+   "correct": true
+  },
+  {
+   "text": "I can't pull my card out of the ATM. Help me.",
+   "label": "card_swallowed",
+   "pred": "card_swallowed",
+   "cluster": "card_and_pin_malfunctions",
+   "cluster_conf": 0.9464,
+   "intent_conf": 0.9745,
+   "gating_conf": 0.9464,
+   "correct": true
+  },
+  {
+   "text": "Can I use any currency to add money?",
+   "label": "supported_cards_and_currencies",
+   "pred": "top_up_by_cash_or_cheque",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.7272,
+   "intent_conf": 0.9525,
+   "gating_conf": 0.7272,
+   "correct": false
+  },
+  {
+   "text": "There is an unauthorized cash withdrawal from my account for 500\u00a3.  I definitely didn't make this withdrawal.  I need your help.",
+   "label": "cash_withdrawal_not_recognised",
+   "pred": "cash_withdrawal_not_recognised",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9561,
+   "intent_conf": 0.9749,
+   "gating_conf": 0.9561,
+   "correct": true
+  },
+  {
+   "text": "The transfer I did hasn't arrived",
+   "label": "transfer_not_received_by_recipient",
+   "pred": "transfer_not_received_by_recipient",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.94,
+   "intent_conf": 0.9471,
+   "gating_conf": 0.94,
+   "correct": true
+  },
+  {
+   "text": "Why isn't my ID being verified?",
+   "label": "unable_to_verify_identity",
+   "pred": "unable_to_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9536,
+   "intent_conf": 0.9731,
+   "gating_conf": 0.9536,
+   "correct": true
+  },
+  {
+   "text": "You did not apply the correct exchange rate for an item that I bought.",
+   "label": "card_payment_wrong_exchange_rate",
+   "pred": "card_payment_wrong_exchange_rate",
+   "cluster": "exchange_rates",
+   "cluster_conf": 0.941,
+   "intent_conf": 0.9858,
+   "gating_conf": 0.941,
+   "correct": true
+  },
+  {
+   "text": "What should I do if the passcode doesn't work for me?",
+   "label": "passcode_forgotten",
+   "pred": "passcode_forgotten",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9531,
+   "intent_conf": 0.9752,
+   "gating_conf": 0.9531,
+   "correct": true
+  },
+  {
+   "text": "Will my transfer immediately show up in my account?",
+   "label": "transfer_timing",
+   "pred": "transfer_timing",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.489,
+   "intent_conf": 0.9537,
+   "gating_conf": 0.489,
+   "correct": true
+  },
+  {
+   "text": "My card's expiring, what happens now?",
+   "label": "card_about_to_expire",
+   "pred": "card_about_to_expire",
+   "cluster": "card_types_and_linking",
+   "cluster_conf": 0.9489,
+   "intent_conf": 0.9686,
+   "gating_conf": 0.9489,
+   "correct": true
+  },
+  {
+   "text": "there's a delay in my top-up",
+   "label": "pending_top_up",
+   "pred": "pending_top_up",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9585,
+   "intent_conf": 0.9521,
+   "gating_conf": 0.9521,
+   "correct": true
+  },
+  {
+   "text": "do the details of my profile have to match my documents",
+   "label": "verify_my_identity",
+   "pred": "why_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9537,
+   "intent_conf": 0.2179,
+   "gating_conf": 0.2179,
+   "correct": false
+  },
+  {
+   "text": "Should i reinstall the payment app?",
+   "label": "contactless_not_working",
+   "pred": "reverted_card_payment?",
+   "cluster": "card_payment_problems",
+   "cluster_conf": 0.9195,
+   "intent_conf": 0.9629,
+   "gating_conf": 0.9195,
+   "correct": false
+  },
+  {
+   "text": "IM still waiting for my account to update from a cash deposit?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9544,
+   "intent_conf": 0.9595,
+   "gating_conf": 0.9544,
+   "correct": true
+  },
+  {
+   "text": "Why was the transfer declined?",
+   "label": "declined_transfer",
+   "pred": "declined_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9523,
+   "intent_conf": 0.9634,
+   "gating_conf": 0.9523,
+   "correct": true
+  },
+  {
+   "text": "I need support options, I want to top my card",
+   "label": "supported_cards_and_currencies",
+   "pred": "topping_up_by_card",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.947,
+   "intent_conf": 0.9411,
+   "gating_conf": 0.9411,
+   "correct": false
+  },
+  {
+   "text": "I Submitted a cheque couple days ago, nothing happened to my account yet.Would you please check What could be the possible issue?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "pred": "balance_not_updated_after_cheque_or_cash_deposit",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9508,
+   "intent_conf": 0.9539,
+   "gating_conf": 0.9508,
+   "correct": true
+  },
+  {
+   "text": "I could not do a transfer because it was declined",
+   "label": "declined_transfer",
+   "pred": "declined_transfer",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9532,
+   "intent_conf": 0.9602,
+   "gating_conf": 0.9532,
+   "correct": true
+  },
+  {
+   "text": "How would I go about getting a second card?",
+   "label": "getting_spare_card",
+   "pred": "getting_spare_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9457,
+   "intent_conf": 0.9762,
+   "gating_conf": 0.9457,
+   "correct": true
+  },
+  {
+   "text": "From where can I withdraw?",
+   "label": "atm_support",
+   "pred": "atm_support",
+   "cluster": "cash_and_atm",
+   "cluster_conf": 0.9543,
+   "intent_conf": 0.9732,
+   "gating_conf": 0.9543,
+   "correct": true
+  },
+  {
+   "text": "My top-up was cancelled; will I receive a refund?",
+   "label": "top_up_reverted",
+   "pred": "top_up_reverted",
+   "cluster": "top_ups_and_balance_updates",
+   "cluster_conf": 0.9519,
+   "intent_conf": 0.9609,
+   "gating_conf": 0.9519,
+   "correct": true
+  },
+  {
+   "text": "Can i have a second physical card for this account?",
+   "label": "getting_spare_card",
+   "pred": "getting_spare_card",
+   "cluster": "card_ordering_and_delivery",
+   "cluster_conf": 0.9487,
+   "intent_conf": 0.9693,
+   "gating_conf": 0.9487,
+   "correct": true
+  },
+  {
+   "text": "How come you need to know my identity?",
+   "label": "why_verify_identity",
+   "pred": "why_verify_identity",
+   "cluster": "identity_and_account_admin",
+   "cluster_conf": 0.9564,
+   "intent_conf": 0.9722,
+   "gating_conf": 0.9564,
+   "correct": true
+  },
+  {
+   "text": "I can't transfer money from my account.",
+   "label": "declined_transfer",
+   "pred": "beneficiary_not_allowed",
+   "cluster": "transfers_and_beneficiaries",
+   "cluster_conf": 0.9465,
+   "intent_conf": 0.9626,
+   "gating_conf": 0.9465,
+   "correct": false
+  },
+  {
+   "text": "Why was I charged a fee when I paid with card?",
+   "label": "card_payment_fee_charged",
+   "pred": "card_payment_fee_charged",
+   "cluster": "fees_charges_and_refunds",
+   "cluster_conf": 0.9483,
+   "intent_conf": 0.967,
+   "gating_conf": 0.9483,
+   "correct": true
+  }
+ ]
+}
