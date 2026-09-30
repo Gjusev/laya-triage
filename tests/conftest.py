@@ -52,6 +52,10 @@ class FakeAgent:
         self.calls.append(("predict_long", state, dict(questions)))
         return self._payload(state, questions)
 
+    def predict_batch(self, states, questions, batch_size=None, lang=None, **kwargs):
+        self.calls.append(("predict_batch", [dict(s) for s in states], dict(questions)))
+        return [self._payload(s, questions) for s in states]
+
 
 def make_router(agent: FakeAgent, **router_kwargs) -> Router:
     """A real Router with the fake attached to every checkpoint laya can route to.

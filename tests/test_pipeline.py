@@ -158,3 +158,70 @@ def test_lang_hint_overrides_detection():
         "I was charged twice", lang="es"
     )
     assert result.model == "multilingual"
+
+
+# --- triage_batch ---------------------------------------------------------------
+
+
+def test_triage_batch_matches_single_triage_results():
+    agent = scripted_agent()
+    pipeline = TriagePipeline(make_router(agent), min_confidence=0.6)
+    texts = ["ticket one", "ticket two", "ticket three"]
+
+    batched = pipeline.triage_batch(texts)
+    assert len(batched) == 3
+    for text, result in zip(texts, batched):
+        single = pipeline.triage(text)
+        assert result == single  # batched path must not change the answer
+
+
+def test_triage_batch_preserves_order_across_clusters():
+    agent = scripted_agent(
+        cluster={"type": "choice", "choice": "lost_stolen_compromised", "answer_confidence": 0.99},
+        intent={"type": "choice", "choice": "compromised_card", "answer_confidence": 0.9},
+    )
+    # default fake picks the first criterion for unscripted questions, so an
+    # unscripted agent answers every ticket the same; use a fake that varies by
+    # text to force different clusters per position
+    from conftest import FakeAgent, make_router
+
+    class VaryingAgent(FakeAgent):
+        def _answer(self, qid, qdef):
+            if qid == "cluster":
+                label = "lost_stolen_compromised" if "stolen" in self.current_text else "fees_charges_and_refunds"
+                return {"type": "choice", "choice": label, "answer_confidence": 0.9}
+            return super()._answer(qid, qdef)
+
+        def predict(self, state, questions, lang=None, **kw):
+            self.current_text = state["message"]
+            return super().predict(state, questions, lang=lang, **kw)
+
+        def predict_batch(self, states, questions, batch_size=None, lang=None, **kw):
+            out = []
+            for s in states:
+                self.current_text = s["message"]
+                out.append(super().predict(s, questions, lang=lang, **kw))
+            return out
+
+    agent = VaryingAgent(scripted={
+        "intent": {"type": "choice", "choice": "request_refund", "answer_confidence": 0.9},
+    })
+    pipeline = TriagePipeline(make_router(agent), min_confidence=0.6)
+    results = pipeline.triage_batch(["a", "card stolen", "b", "c"])
+    assert [r.cluster for r in results] == [
+        "fees_charges_and_refunds",
+        "lost_stolen_compromised",
+        "fees_charges_and_refunds",
+        "fees_charges_and_refunds",
+    ]
+
+
+def test_triage_batch_uses_batched_calls_not_per_ticket_predicts():
+    agent = scripted_agent()
+    # FakeAgent records ("predict_batch", ...) only from predict_batch; the
+    # batched pipeline must never call per-ticket predict.
+    pipeline = TriagePipeline(make_router(agent), min_confidence=0.6)
+    pipeline.triage_batch(["x", "y"])
+    methods = {c[0] for c in agent.calls}
+    assert "predict" not in methods
+    assert "predict_long" not in methods

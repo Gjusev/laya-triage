@@ -69,8 +69,38 @@ class TriagePipeline:
         stage1 = self._predict(state, schema.coarse_questions(), lang=lang, long=long)
         cluster = stage1["answers"]["cluster"]["choice"]
         stage2 = self._predict(state, schema.fine_questions(cluster), lang=lang, long=long)
+        return self._assemble(text, stage1, stage2)
 
+    def triage_batch(self, texts, *, lang: str | None = None, batch_size=None) -> list[TriageResult]:
+        """Triage many tickets with shared forward passes.
+
+        Answers are identical to triage(); only throughput differs (laya's
+        predict_batch groups requests by checkpoint and question schema).
+        Long-input scanning (triage's ``long=True``) is not available batched.
+        """
+        if not texts:
+            return []
+        stage1 = self.router.predict_batch(
+            [{"state": {"message": t}, "questions": schema.coarse_questions(), **({"lang": lang} if lang else {})}
+             for t in texts],
+            batch_size=batch_size,
+        )
+        by_cluster = {}
+        for i, out in enumerate(stage1):
+            by_cluster.setdefault(out["answers"]["cluster"]["choice"], []).append(i)
+        stage2_by_index = {}
+        for cluster, idxs in by_cluster.items():
+            requests = [
+                {"state": {"message": texts[i]}, "questions": schema.fine_questions(cluster), **({"lang": lang} if lang else {})}
+                for i in idxs
+            ]
+            for i, out in zip(idxs, self.router.predict_batch(requests, batch_size=batch_size)):
+                stage2_by_index[i] = out
+        return [self._assemble(texts[i], stage1[i], stage2_by_index[i]) for i in range(len(texts))]
+
+    def _assemble(self, text: str, stage1: dict, stage2: dict) -> TriageResult:
         answers = {**stage1["answers"], **stage2["answers"]}
+        cluster = answers["cluster"]["choice"]
         confidences = {
             qid: answers[qid]["answer_confidence"] for qid in ("cluster", "intent", "urgency", "frustration", "churn_risk", "refund_requested")
         }
