@@ -1,0 +1,3 @@
+Introducing laya-triage: multilingual ticket triage on a local decision model: department, urgency and churn risk in one forward pass, with a measured escalation threshold.
+At 0.84 confidence it auto-handles 60% of tickets at 75.8% accuracy; everything else goes to a human with the reason attached.
+Hierarchical routing beats a flat 77-way choice by 14.5 points on BANKING77. Apache 2.0.

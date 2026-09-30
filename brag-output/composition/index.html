@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>laya-triage — brag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  :root {
+    --paper: #F7F6F3;
+    --ink: #111111;
+    --muted: #686764;
+    --hairline: #E3E1DC;
+    --green-bg: #EDF3EC; --green-ink: #346538;
+    --red-bg: #FDEBEC;   --red-ink: #9F2F2D;
+    --blue-bg: #E1F3FE;  --blue-ink: #1F6C9F;
+    --yellow-bg: #FBF3DB; --yellow-ink: #956400;
+    --serif: 'Newsreader', Georgia, serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+    --sans: 'Helvetica Neue', 'Segoe UI', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+  #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); }
+  .clip { position: absolute; inset: 0; }
+
+  /* ambient background layer */
+  .glow-a { position: absolute; right: -260px; top: -300px; width: 1100px; height: 900px;
+    background: radial-gradient(closest-side, rgba(200,150,90,0.16), transparent 70%); }
+  .glow-b { position: absolute; left: -220px; bottom: -320px; width: 900px; height: 800px;
+    background: radial-gradient(closest-side, rgba(70,120,170,0.10), transparent 70%); }
+  .ghost { position: absolute; right: 60px; top: 300px; font-family: var(--serif); font-style: italic;
+    font-size: 560px; line-height: 1; color: var(--ink); opacity: 0.055; letter-spacing: -0.04em; }
+  .meta { position: absolute; left: 120px; bottom: 56px; right: 120px; display: flex;
+    justify-content: space-between; border-top: 2px solid var(--hairline); padding-top: 22px;
+    font-family: var(--mono); font-size: 20px; color: var(--muted); letter-spacing: 0.04em; }
+
+  .kicker { font-family: var(--mono); font-size: 22px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); }
+
+  /* cards + pills */
+  .card { background: #FFFFFF; border: 3px solid var(--hairline); border-radius: 18px;
+    box-shadow: 0 24px 48px -24px rgba(17,17,17,0.10); }
+  .pill { display: inline-block; font-family: var(--mono); font-size: 21px; letter-spacing: 0.05em;
+    text-transform: uppercase; border-radius: 9999px; padding: 9px 22px; font-weight: 500; }
+  .pill.blue { background: var(--blue-bg); color: var(--blue-ink); }
+  .pill.green { background: var(--green-bg); color: var(--green-ink); }
+  .pill.red { background: var(--red-bg); color: var(--red-ink); }
+  .pill.yellow { background: var(--yellow-bg); color: var(--yellow-ink); }
+  .chip { display: inline-block; font-family: var(--mono); font-size: 21px; color: var(--ink);
+    border: 2px solid var(--hairline); border-radius: 10px; padding: 8px 16px; background: #FAFAF8; }
+
+  /* scene 1 */
+  #s1 { display: flex; align-items: center; }
+  .s1-inner { padding-left: 120px; max-width: 1250px; }
+  .ticket-card { margin-top: 36px; padding: 56px 64px; width: 1080px; }
+  .ticket-text { font-family: var(--serif); font-size: 52px; line-height: 1.35; letter-spacing: -0.01em; }
+  .ticket-text .ch { display: inline-block; }
+  .ticket-caption { margin-top: 40px; font-family: var(--mono); font-size: 24px; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* scene 2 */
+  #s2 { display: flex; align-items: center; }
+  .s2-inner { padding-left: 120px; width: 1180px; }
+  .triage-card { padding: 56px 64px; }
+  .row { display: flex; align-items: center; gap: 22px; margin-top: 30px; }
+  .row .label { font-family: var(--mono); font-size: 24px; color: var(--muted); width: 330px; }
+  .row .value { font-family: var(--mono); font-size: 26px; color: var(--ink); font-weight: 500; }
+  .bar { height: 10px; border-radius: 5px; background: #EBE9E4; flex: 1; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: var(--ink); }
+  .confpair { margin-top: 44px; border-top: 2px solid var(--hairline); padding-top: 30px;
+    font-family: var(--mono); font-size: 23px; color: var(--muted); display: flex; gap: 60px; }
+  .confpair b { color: var(--ink); font-weight: 500; }
+
+  /* scene 3 */
+  #s3 { display: flex; align-items: center; gap: 90px; padding: 0 120px; }
+  .s3-left { width: 720px; }
+  .compare { display: flex; align-items: baseline; gap: 48px; margin-top: 34px; }
+  .compare .flat { font-family: var(--serif); font-size: 96px; color: var(--muted); }
+  .compare .hier { font-family: var(--serif); font-size: 150px; letter-spacing: -0.03em; }
+  .compare .pct { font-size: 56px; }
+  .delta { font-family: var(--serif); font-style: italic; font-size: 44px; margin-top: 18px; }
+  .s3-note { font-family: var(--mono); font-size: 21px; color: var(--muted); margin-top: 26px; letter-spacing: 0.03em; }
+  .curve-card { width: 730px; padding: 52px 56px; }
+  .curve-title { font-family: var(--mono); font-size: 21px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em; }
+  .curve-pills { margin-top: 30px; display: flex; gap: 16px; align-items: center;
+    font-family: var(--mono); font-size: 20px; color: var(--muted); flex-wrap: wrap; }
+
+  /* scene 4 */
+  #s4 { display: flex; align-items: center; }
+  .s4-inner { padding-left: 120px; max-width: 1400px; }
+  .q { font-family: var(--serif); font-size: 88px; line-height: 1.15; letter-spacing: -0.02em; max-width: 20ch; }
+  .a { font-family: var(--serif); font-style: italic; font-size: 170px; letter-spacing: -0.03em; margin-top: 44px; }
+  .wordmark { margin-top: 60px; font-family: var(--mono); font-size: 26px; letter-spacing: 0.08em; color: var(--ink); }
+  .wordmark span { color: var(--muted); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="brag-laya-triage" data-width="1920" data-height="1080" data-duration="20">
+
+  <!-- ambient layer (whole video) -->
+  <section id="bg" class="clip" data-start="0" data-duration="20">
+    <div class="glow-a" id="glow-a"></div>
+    <div class="glow-b" id="glow-b"></div>
+    <div class="ghost" id="ghost" data-layout-allow-overlap data-layout-allow-occlusion>.84</div>
+    <div class="meta" id="meta-bar">
+      <span>laya-triage · system one decision engine</span>
+      <span>measured on BANKING77 test · seed 13 · n=200</span>
+    </div>
+  </section>
+
+  <!-- scene 1: the ticket types itself (0 - 3.5s) -->
+  <section id="s1" class="clip" data-start="0" data-duration="3.6">
+    <div class="s1-inner" id="s1-inner">
+      <div class="kicker" id="s1-kicker">incoming ticket · any language</div>
+      <div class="ticket-card card" id="ticket-card">
+        <div class="ticket-text" id="ticket-text" lang="es">me cobraron dos veces, reembolsen o cancelo</div>
+        <div class="ticket-caption" id="ticket-caption">one forward pass · any language · no API calls</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- scene 2: the triage assembles (3.5 - 9.5s) -->
+  <section id="s2" class="clip" data-start="3.5" data-duration="6.2">
+    <div class="s2-inner" id="s2-inner">
+      <div class="kicker" id="s2-kicker">triaged locally · two passes</div>
+      <div class="triage-card card" id="triage-card">
+        <div class="row" style="margin-top: 0;">
+          <span class="pill blue" id="pill-dept">payments_cash</span>
+          <span class="chip" id="chip-cluster">card payment problems</span>
+          <span class="value" id="value-intent" style="font-size: 28px;">transaction_charged_twice</span>
+        </div>
+        <div class="row" id="row-urgency"><span class="label">urgency · 0–3</span><span class="bar"><i></i></span><span class="value">1.8</span></div>
+        <div class="row" id="row-frustration"><span class="label">frustration · 0–3</span><span class="bar"><i></i></span><span class="value">1.9</span></div>
+        <div class="row" id="row-churn"><span class="label">churn risk · P</span><span class="bar"><i></i></span><span class="value">0.87</span></div>
+        <div class="row" id="row-refund"><span class="label">refund asked · P</span><span class="bar"><i></i></span><span class="value">0.91</span></div>
+        <div class="confpair" id="confpair">cluster conf <b>0.82</b> intent conf <b>0.71</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- scene 3: the receipts (9.5 - 15.5s) -->
+  <section id="s3" class="clip" data-start="9.6" data-duration="6.0">
+    <div class="s3-left">
+      <div class="kicker" id="s3-kicker">the receipts</div>
+      <div class="compare" id="compare">
+        <span class="flat"><span class="pct">36.5</span>%</span>
+        <span class="hier"><span class="pct">51.0</span>%</span>
+      </div>
+      <div class="delta">+<span id="delta-num">14.5</span> points from structure alone</div>
+      <div class="s3-note" id="s3-note">same model · same tickets · flat 77-way vs coarse→fine</div>
+    </div>
+    <div class="curve-card card" id="curve-card">
+      <div class="curve-title">escalation curve · coverage vs accuracy</div>
+      <svg id="curve-svg" width="620" height="330" viewBox="0 0 620 330" fill="none">
+        <!-- axes -->
+        <line x1="50" y1="290" x2="590" y2="290" stroke="#D9D6D0" stroke-width="2"/>
+        <line x1="50" y1="10" x2="50" y2="290" stroke="#D9D6D0" stroke-width="2"/>
+        <!-- threshold at 0.84 (60% coverage) -->
+        <line id="threshold-line" x1="266" y1="16" x2="266" y2="290" stroke="#9F2F2D" stroke-width="3" stroke-dasharray="7 7"/>
+        <!-- curve: coverage 100..40 → accuracy 51.0,54.4,60.0,67.1,75.8,78.0,81.2 -->
+        <path id="curve-path" d="M 50 139 L 112 128 L 174 111 L 236 92 L 298 56 L 360 50 L 422 40"
+          stroke="#111111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle id="op-point" cx="298" cy="56" r="10" fill="#346538"/>
+        <text x="66" y="318" font-family="JetBrains Mono" font-size="19" fill="#686764">auto-handle 100%</text>
+        <text x="440" y="318" font-family="JetBrains Mono" font-size="19" fill="#686764">40%</text>
+        <text id="thr-label" x="280" y="36" font-family="JetBrains Mono" font-size="20" fill="#9F2F2D">0.84</text>
+      </svg>
+      <div class="curve-pills">
+        <span class="pill green" id="pill-auto">auto-handle 60%</span>
+        <span class="pill red" id="pill-esc">escalate 40%</span>
+        <span id="curve-note">75.8% accurate · reason attached</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- scene 4: the answer (15.5 - 20s) -->
+  <section id="s4" class="clip" data-start="15.6" data-duration="4.4">
+    <div class="s4-inner">
+      <div class="q" id="s4-q">At what confidence do you let a model close a ticket?</div>
+      <div class="a" id="s4-a">0.84. Measured.</div>
+      <div class="wordmark" id="s4-wordmark">laya-triage <span>· Apache 2.0 · github.com/Gjusev/laya-triage</span></div>
+    </div>
+  </section>
+
+  <!-- audio: music bed + sparse sfx (polished) -->
+  <audio id="bg-music" data-start="0" data-duration="20" data-track-index="10" data-volume="0.28"
+    src="assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3"></audio>
+  <audio id="sfx-key-1" data-start="0.25" data-duration="0.4" data-track-index="11" data-volume="0.42" src="assets/sfx/keyboard/keypress-004.wav"></audio>
+  <audio id="sfx-key-2" data-start="0.85" data-duration="0.4" data-track-index="12" data-volume="0.38" src="assets/sfx/keyboard/keypress-011.wav"></audio>
+  <audio id="sfx-key-3" data-start="1.45" data-duration="0.4" data-track-index="13" data-volume="0.42" src="assets/sfx/keyboard/keypress-019.wav"></audio>
+  <audio id="sfx-key-4" data-start="2.05" data-duration="0.4" data-track-index="11" data-volume="0.38" src="assets/sfx/keyboard/keypress-027.wav"></audio>
+  <audio id="sfx-card-1" data-start="4.91" data-duration="0.6" data-track-index="14" data-volume="0.5" src="assets/sfx/interface/drop_001.ogg"></audio>
+  <audio id="sfx-card-2" data-start="6.00" data-duration="0.6" data-track-index="15" data-volume="0.45" src="assets/sfx/interface/drop_002.ogg"></audio>
+  <audio id="sfx-card-3" data-start="7.09" data-duration="0.6" data-track-index="14" data-volume="0.45" src="assets/sfx/interface/drop_001.ogg"></audio>
+  <audio id="sfx-card-4" data-start="8.19" data-duration="0.6" data-track-index="15" data-volume="0.45" src="assets/sfx/interface/drop_002.ogg"></audio>
+  <audio id="sfx-threshold" data-start="13.11" data-duration="0.5" data-track-index="16" data-volume="0.55" src="assets/sfx/interface/select_008.ogg"></audio>
+  <audio id="sfx-final" data-start="18.56" data-duration="0.2" data-track-index="16" data-volume="0.5" src="assets/sfx/impact/impactSoft_medium_000.ogg"></audio>
+</div>
+
+<script>
+  const compositionId = document.getElementById("root").dataset.compositionId;
+  const tl = gsap.timeline({ paused: true });
+
+  // ---------- ambient layer (finite breathing, deterministic) ----------
+  tl.fromTo("#glow-a", { scale: 1 }, { scale: 1.06, duration: 2.5, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0);
+  tl.fromTo("#glow-b", { scale: 1.05 }, { scale: 1, duration: 2.5, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0);
+  tl.fromTo("#ghost", { y: 0, autoAlpha: 0 }, { autoAlpha: 1, duration: 1.2, ease: "power2.out" }, 0.3);
+  tl.to("#ghost", { y: -26, duration: 4, yoyo: true, repeat: 4, ease: "sine.inOut" }, 1);
+  tl.fromTo("#meta-bar", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0.2);
+
+  // ---------- scene 1: the ticket types itself (0 - 3.5s) ----------
+  // pre-split the ticket text into per-character spans, then stagger them in
+  const ticketEl = document.getElementById("ticket-text");
+  const ticketText = ticketEl.textContent;
+  ticketEl.textContent = "";
+  const CH_GAP = 0.052; // 46 chars ≈ 2.4s of typing
+  for (const ch of ticketText) {
+    const span = document.createElement("span");
+    span.className = "ch";
+    span.textContent = ch;
+    ticketEl.appendChild(span);
+  }
+  tl.fromTo("#s1-kicker", { autoAlpha: 0, x: -28 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+  tl.fromTo("#ticket-card", { autoAlpha: 0, y: 44 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+  tl.fromTo("#ticket-text .ch", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.04, stagger: CH_GAP, ease: "none" }, 0.35);
+  tl.fromTo("#ticket-caption", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 2.85);
+
+  // scene 1 -> 2: card shrinks up and hands off
+  tl.to("#s1-inner", { autoAlpha: 0, y: -46, duration: 0.45, ease: "power2.in" }, 3.15);
+
+  // ---------- scene 2: the triage assembles (3.5 - 9.5s) ----------
+  tl.fromTo("#s2-kicker", { autoAlpha: 0, x: -28 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" }, 3.55);
+  tl.fromTo("#triage-card", { autoAlpha: 0, y: 54 }, { autoAlpha: 1, y: 0, duration: 0.65, ease: "power3.out" }, 3.7);
+  tl.fromTo("#pill-dept", { autoAlpha: 0, scale: 0.86 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 4.1);
+  tl.fromTo("#chip-cluster", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.3);
+  tl.fromTo("#value-intent", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 4.5);
+
+  // signal rows snap to every other beat of the 109.96 BPM grid
+  // beat-grid: urgency 4.91s, frustration 6.00s, churn 7.09s, refund 8.19s
+  tl.fromTo("#row-urgency", { autoAlpha: 0, x: -34 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power2.out" }, 4.91);
+  tl.fromTo("#row-urgency .bar > i", { scaleX: 0 }, { scaleX: 0.60, duration: 0.7, ease: "power3.out", transformOrigin: "left center" }, 4.95);
+  tl.fromTo("#row-frustration", { autoAlpha: 0, x: -34 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power2.out" }, 6.00);
+  tl.fromTo("#row-frustration .bar > i", { scaleX: 0 }, { scaleX: 0.63, duration: 0.7, ease: "power3.out", transformOrigin: "left center" }, 6.04);
+  tl.fromTo("#row-churn", { autoAlpha: 0, x: -34 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power2.out" }, 7.09);
+  tl.fromTo("#row-churn .bar > i", { scaleX: 0 }, { scaleX: 0.87, duration: 0.7, ease: "power3.out", transformOrigin: "left center" }, 7.13);
+  tl.fromTo("#row-refund", { autoAlpha: 0, x: -34 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power2.out" }, 8.19);
+  tl.fromTo("#row-refund .bar > i", { scaleX: 0 }, { scaleX: 0.91, duration: 0.7, ease: "power3.out", transformOrigin: "left center" }, 8.23);
+  tl.fromTo("#confpair", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 8.6);
+
+  tl.to("#s2-inner", { autoAlpha: 0, y: -40, duration: 0.45, ease: "power2.in" }, 9.3);
+
+  // ---------- scene 3: the receipts (9.6 - 15.6s) ----------
+  tl.fromTo("#s3-kicker", { autoAlpha: 0, x: -28 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out" }, 9.7);
+  tl.fromTo("#compare", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.85);
+  // +14.5 counts up
+  const delta = { v: 0 };
+  const deltaNum = document.getElementById("delta-num");
+  tl.fromTo("#s3 .delta", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 10.2);
+  tl.to(delta, { v: 14.5, duration: 1.1, ease: "power2.out", onUpdate: () => { deltaNum.textContent = delta.v.toFixed(1); } }, 10.25);
+  tl.fromTo("#s3-note", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45, ease: "power1.out" }, 11.2);
+
+  tl.fromTo("#curve-card", { autoAlpha: 0, y: 44 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 10.5);
+  // curve draws itself (stroke-dash)
+  const path = document.getElementById("curve-path");
+  const pathLen = path.getTotalLength();
+  path.style.strokeDasharray = pathLen;
+  path.style.strokeDashoffset = pathLen;
+  tl.to(path, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 11.1);
+  // beat-locked: 13.11s (strong cue, vol-12 preset) — the threshold lands
+  tl.fromTo("#threshold-line", { attr: { y1: 290 } }, { attr: { y1: 16 }, duration: 0.4, ease: "power2.out" }, 13.11);
+  tl.fromTo("#thr-label", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 13.35);
+  tl.fromTo("#op-point", { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 13.5);
+  tl.fromTo("#pill-auto", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 14.0);
+  tl.fromTo("#pill-esc", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 14.15);
+  tl.fromTo("#curve-note", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 14.3);
+
+  tl.to("#s3 > *", { autoAlpha: 0, y: -36, duration: 0.45, ease: "power2.in", stagger: 0.04 }, 15.3);
+
+  // ---------- scene 4: the answer (15.6 - 20s) ----------
+  tl.fromTo("#s4-q", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 15.9);
+  tl.fromTo("#s4-a", { autoAlpha: 0, y: 54 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, 16.9);
+  // beat-locked: 18.56s (strong cue, vol-12 preset) — the wordmark lands with the final hit
+  tl.fromTo("#s4-wordmark", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }, 18.56);
+
+  window.__timelines[compositionId] = tl;
+</script>
+</body>
+</html>

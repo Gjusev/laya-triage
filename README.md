@@ -113,6 +113,11 @@ Full tables and reproducible artifacts: [docs/results/phase2.md](docs/results/ph
 
 ## App, fine-tune, deploy (Phase 3)
 
+**Visual explainer**: [docs/assets/how-it-works.html](docs/assets/how-it-works.html)
+animates the whole pipeline (ticket, router, both passes, escalation verdict)
+with the measured numbers. **Launch video**: `brag-output/brag.mp4` (20s,
+poster `brag-output/brag.jpg`, caption `brag-output/share-copy.txt`).
+
 **App** (`streamlit run app.py`, or `uv pip install -e ".[app]"`): three
 views — a single ticket in any language, a CSV batch with batched inference
 and downloadable results, and the published metrics with the escalation

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>laya-triage — how it works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #F7F6F3;
+    --surface: #FFFFFF;
+    --ink: #111111;
+    --muted: #787774;
+    --hairline: #EAEAEA;
+    --green-bg: #EDF3EC; --green-ink: #346538;
+    --red-bg: #FDEBEC;   --red-ink: #9F2F2D;
+    --blue-bg: #E1F3FE;  --blue-ink: #1F6C9F;
+    --yellow-bg: #FBF3DB; --yellow-ink: #956400;
+    --sans: 'Helvetica Neue', 'Switzer', 'Segoe UI', sans-serif;
+    --serif: 'Newsreader', 'Lyon Text', Georgia, serif;
+    --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ambient light spot — fixed, pointer-events none, ultra low opacity */
+  .ambient {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(600px 400px at 70% 10%, rgba(217,120,60,0.05), transparent 70%),
+                radial-gradient(500px 500px at 15% 60%, rgba(60,120,180,0.04), transparent 70%);
+  }
+  main { position: relative; z-index: 1; }
+
+  /* scroll entry */
+  .reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .stagger > * { opacity: 0; transform: translateY(12px); transition: opacity 600ms cubic-bezier(0.16,1,0.3,1), transform 600ms cubic-bezier(0.16,1,0.3,1); transition-delay: calc(var(--index) * 80ms); }
+  .stagger.in > * { opacity: 1; transform: none; }
+
+  header { padding: 96px 0 64px; }
+  .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(36px, 6vw, 56px); line-height: 1.08; letter-spacing: -0.02em; max-width: 16ch; }
+  h1 em { font-style: italic; }
+  .sub { color: var(--muted); max-width: 52ch; margin-top: 20px; font-size: 17px; }
+
+  .tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 9999px; padding: 3px 10px; }
+  .tag.green { background: var(--green-bg); color: var(--green-ink); }
+  .tag.red   { background: var(--red-bg);   color: var(--red-ink); }
+  .tag.blue  { background: var(--blue-bg);  color: var(--blue-ink); }
+  .tag.yellow{ background: var(--yellow-bg);color: var(--yellow-ink); }
+
+  section { padding: 72px 0; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
+  .lede { color: var(--muted); max-width: 58ch; margin-bottom: 36px; }
+  .num { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 12px; }
+
+  .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 28px; }
+
+  /* --- the looping pipeline animation ------------------------------------- */
+  .pipeline { position: relative; height: 452px; margin-top: 12px; }
+  .stage {
+    position: absolute; background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 12px; padding: 18px 20px; width: 230px;
+  }
+  .stage h3 { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .stage .body { font-size: 13.5px; line-height: 1.5; }
+
+  .s-ticket  { left: 0;    top: 40px; width: 195px; }
+  .s-router  { left: 205px; top: 40px; width: 150px; }
+  .s-coarse  { left: 370px; top: 0; width: 235px; }
+  .s-fine    { left: 370px; top: 262px; width: 235px; }
+  .s-out     { left: 620px; top: 40px; width: 185px; }
+
+  .track { position: absolute; height: 1px; background: #C9C7C1; }
+  .t1 { left: 196px; top: 90px; width: 8px; }
+  .t2 { left: 356px; top: 90px; width: 13px; }
+  .t3 { left: 487px; top: 128px; width: 0; border-left: 1px solid #C9C7C1; height: 134px; background: none; }
+  .t4 { left: 606px; top: 336px; width: 13px; transform: rotate(-55deg); transform-origin: left top; }
+
+  /* the traveling token: a small dot with the ticket's confidence */
+  .token {
+    position: absolute; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--ink); top: 86px; left: 198px; opacity: 0;
+  }
+  .token { left: 198px; }
+  .token.run1 { animation: hop1 2.2s cubic-bezier(0.45,0,0.25,1) 0.4s infinite; }
+  .token.run2 { animation: hop2 2.2s cubic-bezier(0.45,0,0.25,1) 2.6s infinite; }
+  .token.run3 { animation: hop3 2.2s cubic-bezier(0.45,0,0.25,1) 4.8s infinite; }
+  @keyframes hop1 { 0% {opacity:0; transform:none;} 15% {opacity:1;} 55% {transform: translateX(158px); opacity:1;} 70% {transform: translateX(158px); opacity:0;} 100% {opacity:0;} }
+  @keyframes hop2 { 0% {opacity:0; transform:none;} 15% {opacity:1;} 55% {transform: translateX(160px); opacity:1;} 70% {opacity:0; transform:translateX(160px);} 100% {opacity:0;} }
+  @keyframes hop3 { 0% {opacity:0; transform:translate(289px, 0px);} 15% {opacity:1;} 60% {transform:translate(289px,168px) scale(1.4); opacity:1;} 80% {transform:translate(289px,168px) scale(0.4); opacity:0;} 100% {opacity:0;} }
+
+  /* highlight pulse on the active stage */
+  .pulse { animation: pulse 2.2s ease-out infinite; animation-delay: var(--d, 0s); }
+  @keyframes pulse { 0%,100% { border-color: var(--hairline); } 20% { border-color: #C9C7C1; } }
+
+  /* confidence meter inside output card */
+  .meter { height: 4px; background: var(--hairline); border-radius: 2px; overflow: hidden; margin: 6px 0 2px; }
+  .meter > i { display: block; height: 100%; background: var(--ink); width: 0; }
+  .fill { animation: fill 2.2s cubic-bezier(0.16,1,0.3,1) 5.4s infinite; }
+  @keyframes fill { 0% {width:0;} 60% {width: var(--w);} 100% {width: var(--w);} }
+
+  .signal { display: flex; align-items: center; justify-content: space-between; padding: 4px 0; font-family: var(--mono); font-size: 12px; }
+  .signal b { font-weight: 500; }
+  .bar { flex: 1; margin: 0 10px; }
+
+  /* escalation verdict card flips between auto/escalate each loop */
+  .verdict { position: relative; min-height: 120px; }
+  .verdict > span { position: absolute; inset: 0; opacity: 0; }
+  .v-auto { animation: showAuto 12s ease-in-out infinite; }
+  .v-esc  { animation: showEsc  12s ease-in-out infinite; }
+  @keyframes showAuto { 0%,4% {opacity:0;} 8%,54% {opacity:1;} 58%,100% {opacity:0;} }
+  @keyframes showEsc  { 0%,54% {opacity:0;} 58%,96% {opacity:1;} 100% {opacity:0;} }
+
+  /* --- numbers strip -------------------------------------------------------- */
+  .numbers { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }
+  .numbers .cell { background: var(--surface); padding: 24px; }
+  .cell .v { font-family: var(--serif); font-size: 40px; line-height: 1; letter-spacing: -0.02em; }
+  .cell .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 8px; }
+
+  /* curve table */
+  table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 13px; }
+  th { text-align: left; font-weight: 500; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 12px; border-bottom: 1px solid var(--hairline); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--hairline); }
+  tr:last-child td { border-bottom: none; }
+  .chosen { background: var(--green-bg); }
+  .chosen td { color: var(--green-ink); }
+
+  footer { padding: 64px 0 96px; color: var(--muted); font-size: 14px; }
+  footer a { color: var(--ink); }
+
+  @media (max-width: 960px) {
+    .pipeline { display: none; } /* the loop needs width; mobile gets the static stages below */
+    .numbers { grid-template-columns: 1fr; }
+  }
+  .pipeline-fallback { display: none; }
+  @media (max-width: 960px) { .pipeline-fallback { display: block; } }
+  @media print {
+    .reveal, .stagger > * { opacity: 1 !important; transform: none !important; }
+    .ambient { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<main>
+<div class="wrap">
+
+  <header class="reveal">
+    <div class="kicker">laya-triage · system one decision engine</div>
+    <h1>One ticket in. Department, urgency and churn risk out. <em>In one forward pass.</em></h1>
+    <p class="sub">Multilingual support ticket triage on a local laya model. Every answer carries a
+    calibrated confidence, and any ticket the model is unsure about goes to a human, with the
+    reason attached.</p>
+    <div style="margin-top:24px; display:flex; gap:8px; flex-wrap:wrap;">
+      <span class="tag green">measured, not guessed</span>
+      <span class="tag blue">45 languages routed</span>
+      <span class="tag yellow">CPU inference</span>
+    </div>
+  </header>
+
+  <!-- ===================== pipeline animation ===================== -->
+  <section class="reveal">
+    <span class="num">01 — the pipeline</span>
+    <h2>Coarse to fine, signals riding along</h2>
+    <p class="lede">A flat choice over 77 intents collapses (36.5% measured). So the model first picks
+    one of 12 areas, then the exact intent inside that area. Urgency, frustration, churn and refund
+    signals are answered in the same pass as the coarse choice.</p>
+
+    <div class="card">
+      <div class="pipeline" aria-label="animated pipeline: ticket, router, coarse pass, fine pass, verdict">
+        <div class="stage s-ticket pulse" style="--d:0.2s">
+          <h3>ticket</h3>
+          <div class="body" lang="es">“me cobraron dos veces, reembolsen o cancelo”</div>
+        </div>
+        <div class="stage s-router pulse" style="--d:1.4s">
+          <h3>router</h3>
+          <div class="body">Detects Latin script, undecided language → <b>multilingual</b> checkpoint. Confident English stays on the English one.</div>
+        </div>
+        <div class="stage s-coarse pulse" style="--d:2.6s">
+          <h3>pass one — coarse + signals</h3>
+          <div class="body">
+            <b>cluster:</b> card payment problems<br>
+            <div class="signal"><span>urgency&nbsp;·&nbsp;0–3</span><span class="bar meter"><i style="width:59%"></i></span><b>1.8</b></div>
+            <div class="signal"><span>frustration&nbsp;·&nbsp;0–3</span><span class="bar meter"><i style="width:63%"></i></span><b>1.9</b></div>
+            <div class="signal"><span>churn&nbsp;·&nbsp;P</span><span class="bar meter"><i style="width:87%"></i></span><b>0.87</b></div>
+            <div class="signal"><span>refund&nbsp;·&nbsp;P</span><span class="bar meter"><i style="width:91%"></i></span><b>0.91</b></div>
+          </div>
+        </div>
+        <div class="stage s-fine pulse" style="--d:4.8s">
+          <h3>pass two — fine</h3>
+          <div class="body">Only the 6 intents of the chosen area are offered.<br><br><b>intent:</b> transaction_charged_twice</div>
+        </div>
+        <div class="stage s-out pulse" style="--d:6.4s">
+          <h3>verdict</h3>
+          <div class="body">
+            <span class="verdict v-auto"><span class="tag green">auto-handle</span><br><br>cluster conf <span class="meter"><i class="fill" style="--w:82%"></i></span>0.82 ≥ 0.84?</span>
+            <span class="verdict v-esc"><span class="tag red">escalate</span><br><br>reason: intent conf below threshold</span>
+          </div>
+        </div>
+        <div class="token run1"></div>
+        <div class="token run2"></div>
+        <div class="token run3"></div>
+        <div class="track t1"></div><div class="track t2"></div><div class="track t3"></div><div class="track t4"></div>
+      </div>
+
+      <div class="pipeline-fallback stagger">
+        <div class="card" style="margin-bottom:12px" >1 · Router sends the ticket to the right language checkpoint.</div>
+        <div class="card" style="margin-bottom:12px">2 · Pass one: coarse area + urgency, frustration, churn, refund in a single pass.</div>
+        <div class="card" style="margin-bottom:12px">3 · Pass two: the exact intent, chosen among at most 10 options.</div>
+        <div class="card">4 · Any routing confidence below 0.84 escalates to a human, with the reason.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== the numbers ===================== -->
+  <section class="reveal">
+    <span class="num">02 — why hierarchy</span>
+    <h2>Structure is worth +14.5 points</h2>
+    <p class="lede">Same model, same 200-ticket BANKING77 test sample, seed 13. The only difference
+    is how the question is asked.</p>
+    <div class="numbers stagger">
+      <div class="cell"><div class="v">36.5%</div><div class="k">flat 77-way accuracy</div></div>
+      <div class="cell"><div class="v">51.0%</div><div class="k">hierarchical accuracy</div></div>
+      <div class="cell"><div class="v">0.443</div><div class="k">hierarchical macro-F1</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== escalation ===================== -->
+  <section class="reveal">
+    <span class="num">03 — the escalation policy</span>
+    <h2>Auto-handle what you can prove. Escalate the rest.</h2>
+    <p class="lede">The threshold is chosen from a measured coverage/accuracy curve, not a guess:
+    at 0.84, the model keeps 60.5% of tickets and answers 75.2% of those correctly. Every
+    escalated ticket carries its reason.</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>auto-handle</th><th>accuracy among kept</th><th>threshold</th></tr></thead>
+        <tbody>
+          <tr><td>100%</td><td>51.0%</td><td>0.00</td></tr>
+          <tr><td>90%</td><td>54.4%</td><td>0.44</td></tr>
+          <tr><td>80%</td><td>60.0%</td><td>0.60</td></tr>
+          <tr><td>70%</td><td>67.1%</td><td>0.76</td></tr>
+          <tr class="chosen"><td>60%</td><td>75.8%</td><td>0.85 — the operating point</td></tr>
+          <tr><td>50%</td><td>78.0%</td><td>0.92</td></tr>
+          <tr><td>40%</td><td>81.2%</td><td>0.97</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== multilingual honesty ===================== -->
+  <section class="reveal">
+    <span class="num">04 — multilingual, honestly</span>
+    <h2>What degrades, by how much</h2>
+    <p class="lede">Coarse accuracy on 200 hand-labeled tickets: strong in English, weaker
+    elsewhere. This is the argument for the fine-tune, published as-is. Out of domain, every
+    language escalates 69–79% of the time: no language quietly gets nonsense.</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>language</th><th>coarse accuracy</th><th>urgency MAE</th></tr></thead>
+        <tbody>
+          <tr><td>en</td><td>71.7%</td><td>0.73</td></tr>
+          <tr><td>es</td><td>55.0%</td><td>0.88</td></tr>
+          <tr><td>hi</td><td>53.3%</td><td>0.87</td></tr>
+          <tr><td>fr</td><td>52.0%</td><td>0.82</td></tr>
+          <tr><td>de</td><td>36.0%</td><td>0.80</td></tr>
+          <tr><td>ar</td><td>20.0%</td><td>0.81</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <p>All numbers are measurements from <a href="https://github.com/Gjusev/laya-triage">Gjusev/laya-triage</a>
+    (evals/results/, reproduce with <span style="font-family:var(--mono)">python -m evals.run_all --limit 200</span>).
+    Apache 2.0.</p>
+  </footer>
+
+</div>
+</main>
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .stagger').forEach((el, i) => { io.observe(el); });
+</script>
+</body>
+</html>
