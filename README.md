@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="docs/assets/laya-triage-logo.png" alt="laya-triage logo: a support ticket branching into routed destinations and a human handoff" width="156">
+</p>
+
+<p align="center">
   <img src="docs/assets/social-preview.png" alt="laya-triage — multilingual ticket triage from 77 intents to 12 clusters and 8 departments, with confidence-based human review" width="100%">
 </p>
 
@@ -26,7 +30,7 @@
 </p>
 
 > [!NOTE]
-> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, and the fine-tuning run are available; the fine-tuned checkpoint's Hugging Face release and the hosted Space are still pending.
+> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, the fine-tuning run and its [published checkpoint](https://huggingface.co/Gjusev/laya-triage-banking77) are available; the hosted Hugging Face Space is still pending.
 
 ## What it does
 
@@ -68,8 +72,8 @@ flowchart LR
     C --> F["Fine pass<br/>3–10 candidate intents"]
     C --> S["Urgency · frustration<br/>churn · refund"]
     F --> D["8 departments"]
-    C -. confidence below 0.84 .-> H["Human review"]
-    F -. confidence below 0.84 .-> H
+    C -.->|confidence below 0.84| H["Human review"]
+    F -.->|confidence below 0.84| H
 ```
 
 1. **Coarse pass** — selects one of 12 clusters and scores urgency, frustration, churn risk, and refund intent in the same forward pass.
@@ -168,7 +172,8 @@ Kaggle settings:
 - Optional publishing secret: `HF_TOKEN`
 - Output: `/kaggle/working/laya_triage_banking77`
 
-You can also [inspect or download the notebook directly](finetune/laya_triage_banking77.ipynb). The committed run trained on 2×T4 and measured **90.5%** hierarchical intent accuracy on the seed-13 test sample (vs 51.0% zero-shot), with the signal heads untouched (urgency MAE 0.70 on the English hand-labeled subset, vs 0.81 zero-shot) and a hold-out-fitted choice temperature of 3.825. The full artifact is [`evals/results/banking77_finetuned.json`](evals/results/banking77_finetuned.json).
+You can also [inspect or download the notebook directly](finetune/laya_triage_banking77.ipynb). The committed run trained on 2×T4 and measured **90.5%** hierarchical intent accuracy on the seed-13 test sample (vs 51.0% zero-shot), with the signal heads untouched (urgency MAE 0.70 on the English hand-labeled subset, vs 0.81 zero-shot) and a hold-out-fitted choice temperature of 3.825. The checkpoint is published as
+[Gjusev/laya-triage-banking77](https://huggingface.co/Gjusev/laya-triage-banking77); the full artifact is [`evals/results/banking77_finetuned.json`](evals/results/banking77_finetuned.json).
 
 ## Intent map
 
@@ -235,7 +240,7 @@ pytest -m slow
 - [x] Multilingual and hand-labeled evaluations
 - [x] Streamlit app and Kaggle-ready fine-tuning notebook
 - [x] Run the fine-tune on Kaggle 2×T4 and publish the measured artifact
-- [ ] Publish the fine-tuned checkpoint on Hugging Face
+- [x] Publish the fine-tuned checkpoint on Hugging Face ([Gjusev/laya-triage-banking77](https://huggingface.co/Gjusev/laya-triage-banking77))
 - [ ] Deploy and link the Hugging Face Space
 - [ ] Publish deployment-target latency and cost benchmarks
 - [ ] Run the GPT-4o-mini comparison
