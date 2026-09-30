@@ -4,7 +4,7 @@
 > `evals/results/` in the [laya-triage](https://github.com/Gjusev/laya-triage)
 > repo; reproduce them with `python -m evals.run_all --limit 200`. The
 > fine-tuned numbers are from the published run; only the GPT-4o-mini
-> baseline is still pending. TODO(publish): fill in the Space link.
+> baseline is still pending.
 
 Most triage demos show you a classifier. Almost none show you the two things
 that decide whether it can run a support queue: what happens when the model
@@ -59,7 +59,7 @@ answers.
 ## Try it
 
 - Repo with all evals and artifacts: [laya-triage](https://github.com/Gjusev/laya-triage)
-- App (single ticket / CSV batch / metrics): TODO(publish): Space link
+- App (single ticket / CSV batch / metrics): [laya-triage on Streamlit](https://laya-triage-8spuhg8fa5qjy8hiteomux.streamlit.app/)
 - Fine-tuned BANKING77 checkpoint: [Gjusev/laya-triage-banking77](https://huggingface.co/Gjusev/laya-triage-banking77)
 
 The whole stack (model, evals, escalation curve, hand-labeled dataset,

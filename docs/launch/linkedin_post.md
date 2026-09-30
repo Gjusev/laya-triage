@@ -2,8 +2,8 @@
 
 > Attach: screenshot of the app's metrics view (escalation curve) or the
 > batch view with escalated tickets highlighted. English per repo rules.
-> TODO(publish): add the Space link after deployment. Checkpoint is live at
-> https://huggingface.co/Gjusev/laya-triage-banking77.
+> Checkpoint: https://huggingface.co/Gjusev/laya-triage-banking77
+> App: https://laya-triage-8spuhg8fa5qjy8hiteomux.streamlit.app/
 
 At what confidence do I let a model close a support ticket without a human?
 

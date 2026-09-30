@@ -30,7 +30,7 @@
 </p>
 
 > [!NOTE]
-> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, the fine-tuning run and its [published checkpoint](https://huggingface.co/Gjusev/laya-triage-banking77) are available; the hosted Hugging Face Space is still pending.
+> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, the fine-tuning run, its [published checkpoint](https://huggingface.co/Gjusev/laya-triage-banking77), and the [hosted app](https://laya-triage-8spuhg8fa5qjy8hiteomux.streamlit.app/) are available.
 
 ## What it does
 
@@ -153,7 +153,8 @@ The app includes:
 - **CSV batch** — upload a file with a `text` column, run batched inference, and download the enriched results.
 - **Metrics** — inspect the committed BANKING77, MASSIVE, and hand-labeled evaluation artifacts.
 
-Hugging Face Space scaffolding and deployment notes live in [`space/`](space). The public Space URL will be added after deployment.
+The app is hosted on [Streamlit Community Cloud](https://laya-triage-8spuhg8fa5qjy8hiteomux.streamlit.app/); alternative hosting
+paths (including a Docker Space) are documented in [`space/`](space).
 
 ## Fine-tune on Kaggle
 
