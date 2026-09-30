@@ -50,7 +50,10 @@ It is built on [laya](https://github.com/NandhaKishorM/laya), the Apache-2.0 Sys
 
 The 20-second launch film shows the multilingual route, auxiliary signals, and confidence-based handoff:
 
-https://github.com/Gjusev/laya-triage/raw/main/brag-output/brag.mp4
+<video width="100%" controls autoplay muted loop playsinline preload="metadata" poster="brag-output/brag.jpg" aria-label="laya-triage launch video">
+  <source src="https://raw.githubusercontent.com/Gjusev/laya-triage/main/brag-output/brag.mp4" type="video/mp4">
+  Your browser cannot play this video. <a href="brag-output/brag.mp4">Open the MP4 directly</a>.
+</video>
 
 <p align="center">
   <a href="brag-output/brag.mp4"><strong>▶ Open the MP4 directly</strong></a>
