@@ -169,4 +169,66 @@ def test_render_builds_report_from_artifacts(tmp_path, monkeypatch):
     assert "TODO(run): `python -m evals.massive_multilingual`" in report
     assert "TODO(run): `python -m evals.hand_labeled`" in report
     assert "TODO(run): `python -m evals.gpt_baseline`" in report
+    assert "### Fine-tuned checkpoint" not in report
     assert report_path.exists()
+
+
+def test_render_fills_fine_tuned_column_from_artifact(tmp_path, monkeypatch):
+    import evals.analyze as analyze
+
+    results = tmp_path / "results"
+    results.mkdir()
+    (results / "banking77.json").write_text(
+        json.dumps(
+            {
+                "config": {"n": 2, "seed": 13, "source": "test"},
+                "summary": {
+                    "direct_accuracy": 0.5, "direct_macro_f1": 0.4,
+                    "hierarchical_accuracy": 0.75, "hierarchical_macro_f1": 0.7,
+                    "coarse_accuracy": 0.9, "direct_seconds": 1.0, "hierarchical_seconds": 2.0,
+                },
+                "escalation": {
+                    "target_accuracy": 0.75,
+                    "chosen_threshold": 0.5, "chosen_coverage": 0.5, "chosen_accuracy": 0.8,
+                    "provisional_0.6": {"coverage": 0.4, "accuracy": 0.8, "n_escalated": 1, "n_total": 2},
+                    "curve": [
+                        {"threshold": 0.0, "coverage": 1.0, "accuracy": 0.5, "n_handled": 2},
+                        {"threshold": 0.5, "coverage": 0.5, "accuracy": 0.8, "n_handled": 1},
+                    ],
+                },
+                "records": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (results / "banking77_finetuned.json").write_text(
+        json.dumps(
+            {
+                "config": {"n": 2, "seed": 13, "source": "test", "fitted_temperatures": [3.8, 1.2, 1.2]},
+                "summary": {
+                    "fine_tuned_accuracy": 0.9, "fine_tuned_macro_f1": 0.85,
+                    "coarse_accuracy": 0.95, "fine_tuned_seconds": 42.0,
+                    "signals_en": {"n": 60, "urgency_mae": 0.7, "frustration_mae": 0.69},
+                },
+                "escalation": {
+                    "target_accuracy": 0.75,
+                    "chosen_threshold": 0.0, "chosen_coverage": 1.0, "chosen_accuracy": 0.9,
+                    "curve": [{"threshold": 0.0, "coverage": 1.0, "accuracy": 0.9, "n_handled": 2}],
+                },
+                "records": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+    report_path = tmp_path / "phase2.md"
+    monkeypatch.setattr(analyze, "RESULTS_DIR", results)
+    monkeypatch.setattr(analyze, "REPORT_PATH", report_path)
+
+    report = analyze.render()
+
+    assert "| Intent accuracy | 50.0% | 75.0% | 90.0% |" in report
+    assert "| Macro-F1 | 0.400 | 0.700 | 0.850 |" in report
+    assert "| Seconds (sample) | 1.0 | 2.0 | 42.0 |" in report
+    assert "TODO(Phase 3)" not in report
+    assert "### Fine-tuned checkpoint (Phase 3)" in report
+    assert "[3.8, 1.2, 1.2]" in report

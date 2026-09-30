@@ -41,8 +41,21 @@ def coverage_table(curve: list[dict], deciles=(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4
     return lines
 
 
+def _ft_cells(ft: dict | None) -> tuple[str, str, str]:
+    """The fine-tuned column: measured values, or a TODO when no artifact exists."""
+    if not ft:
+        return "TODO(Phase 3)", "TODO(Phase 3)", "TODO(Phase 3)"
+    s = ft["summary"]
+    return (
+        _pct(s["fine_tuned_accuracy"]),
+        _num(s["fine_tuned_macro_f1"]),
+        str(s["fine_tuned_seconds"]),
+    )
+
+
 def render() -> str:
     b77 = _load("banking77.json")
+    ft = _load("banking77_finetuned.json")
     massive = _load("massive.json")
     hand = _load("hand_labeled.json")
     gpt = _load("gpt_baseline.json")
@@ -50,8 +63,8 @@ def render() -> str:
     lines = ["# Phase 2 results", ""]
     lines += [
         "All numbers are measurements from the artifacts in `evals/results/`",
-        "(reproduce with `python -m evals.run_all`). Fine-tuned and GPT-4o-mini",
-        "columns stay TODO until their runs happen.",
+        "(reproduce with `python -m evals.run_all`). The GPT-4o-mini column",
+        "stays TODO until that run happens.",
         "",
     ]
 
@@ -60,14 +73,15 @@ def render() -> str:
     if b77:
         s = b77["summary"]
         cfg = b77["config"]
+        acc_c, f1_c, sec_c = _ft_cells(ft)
         lines += [
             f"Sample: {cfg['n']} tickets, seed {cfg['seed']} ({cfg['source']}).",
             "",
             "| Metric | direct 77-way | hierarchical | fine-tuned |",
             "|---|---|---|---|",
-            f"| Intent accuracy | {_pct(s['direct_accuracy'])} | {_pct(s['hierarchical_accuracy'])} | TODO(Phase 3) |",
-            f"| Macro-F1 | {_num(s['direct_macro_f1'])} | {_num(s['hierarchical_macro_f1'])} | TODO(Phase 3) |",
-            f"| Seconds (sample) | {s['direct_seconds']} | {s['hierarchical_seconds']} | TODO(Phase 3) |",
+            f"| Intent accuracy | {_pct(s['direct_accuracy'])} | {_pct(s['hierarchical_accuracy'])} | {acc_c} |",
+            f"| Macro-F1 | {_num(s['direct_macro_f1'])} | {_num(s['hierarchical_macro_f1'])} | {f1_c} |",
+            f"| Seconds (sample) | {s['direct_seconds']} | {s['hierarchical_seconds']} | {sec_c} |",
             "",
             f"Coarse (cluster) accuracy: {_pct(s['coarse_accuracy'])}.",
             "",
@@ -102,6 +116,37 @@ def render() -> str:
             ]
     else:
         lines += ["TODO(run): `python -m evals.banking77`", ""]
+
+    if ft:
+        fs = ft["summary"]
+        fesc = ft["escalation"]
+        sig_base = (
+            f" (zero-shot all-language baseline: {_num(hand['signals']['urgency_mae'])} / "
+            f"{_num(hand['signals']['frustration_mae'])})"
+            if hand
+            else ""
+        )
+        lines += [
+            "### Fine-tuned checkpoint (Phase 3)",
+            "",
+            f"Trained by `finetune/laya_triage_banking77.ipynb` on the BANKING77 train split "
+            f"(both routing decisions; the signal heads keep their base weights).",
+            "",
+            f"- Coarse accuracy {_pct(fs['coarse_accuracy'])}; fitted temperatures (choice, score, noul): "
+            f"{ft['config'].get('fitted_temperatures')}.",
+            f"- Signal regression check (English hand-labeled subset, n={fs['signals_en']['n']}): "
+            f"urgency MAE {_num(fs['signals_en']['urgency_mae'])}, "
+            f"frustration MAE {_num(fs['signals_en']['frustration_mae'])}{sig_base}.",
+            "- Escalation: "
+            + (
+                f"the {fesc['target_accuracy']:.0%} accuracy target is met at threshold "
+                f"**{fesc['chosen_threshold']:.2f}** with {_pct(fesc['chosen_coverage'])} coverage "
+                f"({_pct(fesc['chosen_accuracy'])} accuracy among auto-handled)."
+                if fesc.get("chosen_threshold") is not None
+                else "the accuracy target is not reachable at any threshold on this sample."
+            ),
+            "",
+        ]
 
     # --- MASSIVE ---------------------------------------------------------------
     lines += ["## Multilingual robustness (MASSIVE, cluster-only pass)", ""]

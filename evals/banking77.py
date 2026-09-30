@@ -121,7 +121,7 @@ def run(limit: int = DEFAULT_LIMIT, seed: int = DEFAULT_SEED) -> dict:
             "hierarchical_accuracy": hier_acc,
             "hierarchical_macro_f1": macro_f1(records, "hier_intent"),
             "coarse_accuracy": coarse_acc,
-            "fine_tuned_accuracy": None,  # TODO(Phase 3): checkpoint not trained yet
+            "fine_tuned_accuracy": None,  # measured by evals.banking77_finetuned (separate artifact)
             "direct_seconds": round(direct_seconds, 1),
             "hierarchical_seconds": round(hier_seconds, 1),
         },
