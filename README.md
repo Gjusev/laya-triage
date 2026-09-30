@@ -56,8 +56,8 @@ off English. Callers who know the language can pass `lang=` to skip detection.
 (cluster or intent) falls strictly below `min_confidence` (default 0.84), the
 ticket is flagged for a human with one reason per low-confidence decision.
 The policy deliberately covers routing only: auxiliary signals are score-type
-questions whose confidence structurally tops out lower (measured median 0.54
-for urgency), so gating on them would escalate almost every ticket. The 0.84
+questions whose confidence structurally tops out lower (median ~0.54 for urgency on
+the Phase 1 smoke run), so gating on them would escalate almost every ticket. The 0.84
 default is the measured operational threshold — the coverage/accuracy curve on
 the BANKING77 eval reaches 75.2% accuracy at 60.5% coverage there (full curve
 in [docs/results/phase2.md](docs/results/phase2.md)).
@@ -111,13 +111,39 @@ Full tables and reproducible artifacts: [docs/results/phase2.md](docs/results/ph
   language is silently auto-handled.
 - GPT-4o-mini baseline and fine-tuned comparison: TODO(run) / TODO(Phase 3).
 
+## App, fine-tune, deploy (Phase 3)
+
+**App** (`streamlit run app.py`, or `uv pip install -e ".[app]"`): three
+views — a single ticket in any language, a CSV batch with batched inference
+and downloadable results, and the published metrics with the escalation
+curve. `space/` holds the HuggingFace Space card and requirements; the
+deploy steps are in `space/README.md` (TODO(deploy): publish and link).
+
+**Fine-tune** (`finetune/laya_triage_banking77.ipynb`): adapted from laya's
+official 2xT4 Kaggle notebook. Trains the two routing decisions jointly on
+BANKING77 (10,003 tickets x 2 sequences), leaves the signal heads untouched
+(BANKING77 has no signal labels — the notebook re-checks signal MAE
+afterwards), evaluates against the published zero-shot numbers on the same
+sample, and generates an honest model card from the run's own numbers,
+including the top confusion pairs. TODO(run): execute on Kaggle and publish
+the checkpoint.
+
+**Cost and latency** (honest):
+
+| Quantity | Value | Source |
+|---|---|---|
+| Zero-shot eval wall-clock (200 tickets) | 182.7s direct / 577.4s hierarchical | measured on the dev CPU, `evals/results/banking77.json` |
+| p50/p95 latency per decision | TODO(measure) | benchmark on the deployment target |
+| laya $ per 1,000 tickets | TODO(measure) | CPU-hour price x measured throughput |
+| GPT-4o-mini accuracy + $ per 1,000 | TODO(run) | `python -m evals.gpt_baseline` (needs OPENAI_API_KEY) |
+
 ## Roadmap
 
 - [x] Hierarchical intent routing: coarse clusters to fine intents (BANKING77 mapping)
 - [x] Auxiliary signals in the same pass: urgency, frustration, churn risk, refund requested
 - [x] Escalation policy: coverage/accuracy curve over answer confidence, threshold documented
 - [x] Multilingual eval (MASSIVE: es, fr, de, hi, ar) plus a hand-labeled set of 200 tickets published
-- [ ] Fine-tuned checkpoint (BANKING77) released on HuggingFace; Streamlit app on HF Spaces
+- [ ] Fine-tuned checkpoint (BANKING77) released on HuggingFace; Streamlit app on HF Spaces (notebook, app and Space files ready; training run and deploy pending)
 
 ## Development setup
 
@@ -130,9 +156,11 @@ pytest                # deterministic unit tests, no checkpoint downloads
 pytest -m slow        # opt-in smoke on a real laya checkpoint (downloads on first run)
 ```
 
-Unit tests mock the laya Agent (`Router.attach` is the seam laya ships for
-this) and never download checkpoints; the slow smoke runs 20 Spanish/English
-tickets through the real model.
+Optional extras: `.[app]` (Streamlit + pandas for the app), `.[gpt]` (the
+GPT-4o-mini baseline), `datasets` (the evals). Unit tests mock the laya
+Agent (`Router.attach` is the seam laya ships for this) and never download
+checkpoints; the slow smoke runs 20 Spanish/English tickets plus 8
+out-of-domain IT tickets through the real model.
 
 ## License
 

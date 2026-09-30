@@ -13,8 +13,9 @@ keywords = ["ticket-triage", "customer-support", "multilingual", "laya", "system
 dependencies = ["laya>=0.3"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "streamlit>=1.40", "pandas>=2"]
 gpt = ["openai>=1"]
+app = ["streamlit>=1.40", "pandas>=2"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/laya_triage"]

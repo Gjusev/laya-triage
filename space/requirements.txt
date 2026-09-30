@@ -1,0 +1,5 @@
+laya>=0.3
+streamlit>=1.40
+pandas>=2
+# requires the repo pushed to origin/main (TODO(push))
+laya-triage @ git+https://github.com/Gjusev/laya-triage.git
