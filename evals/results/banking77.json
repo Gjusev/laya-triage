@@ -1,0 +1,3609 @@
+{
+ "config": {
+  "limit": 200,
+  "seed": 13,
+  "split": "test",
+  "source": "PolyAI-LDN/task-specific-datasets banking_data",
+  "n": 200
+ },
+ "summary": {
+  "direct_accuracy": 0.365,
+  "direct_macro_f1": 0.28364528689204016,
+  "hierarchical_accuracy": 0.51,
+  "hierarchical_macro_f1": 0.44338554663229984,
+  "coarse_accuracy": 0.68,
+  "fine_tuned_accuracy": null,
+  "direct_seconds": 182.7,
+  "hierarchical_seconds": 577.4
+ },
+ "escalation": {
+  "target_accuracy": 0.75,
+  "chosen_threshold": 0.8415,
+  "chosen_coverage": 0.605,
+  "chosen_accuracy": 0.7520661157024794,
+  "provisional_0.6": {
+   "threshold": 0.6,
+   "n_total": 200,
+   "n_handled": 159,
+   "n_escalated": 41,
+   "coverage": 0.795,
+   "accuracy": 0.6037735849056604
+  },
+  "curve": [
+   {
+    "threshold": 0.0,
+    "coverage": 1.0,
+    "accuracy": 0.51,
+    "n_handled": 200
+   },
+   {
+    "threshold": 0.2107,
+    "coverage": 1.0,
+    "accuracy": 0.51,
+    "n_handled": 200
+   },
+   {
+    "threshold": 0.2215,
+    "coverage": 0.995,
+    "accuracy": 0.5125628140703518,
+    "n_handled": 199
+   },
+   {
+    "threshold": 0.2498,
+    "coverage": 0.99,
+    "accuracy": 0.5151515151515151,
+    "n_handled": 198
+   },
+   {
+    "threshold": 0.2629,
+    "coverage": 0.985,
+    "accuracy": 0.5177664974619289,
+    "n_handled": 197
+   },
+   {
+    "threshold": 0.2975,
+    "coverage": 0.98,
+    "accuracy": 0.5204081632653061,
+    "n_handled": 196
+   },
+   {
+    "threshold": 0.3408,
+    "coverage": 0.975,
+    "accuracy": 0.517948717948718,
+    "n_handled": 195
+   },
+   {
+    "threshold": 0.3459,
+    "coverage": 0.97,
+    "accuracy": 0.520618556701031,
+    "n_handled": 194
+   },
+   {
+    "threshold": 0.3534,
+    "coverage": 0.965,
+    "accuracy": 0.5233160621761658,
+    "n_handled": 193
+   },
+   {
+    "threshold": 0.3585,
+    "coverage": 0.96,
+    "accuracy": 0.5260416666666666,
+    "n_handled": 192
+   },
+   {
+    "threshold": 0.3603,
+    "coverage": 0.955,
+    "accuracy": 0.5235602094240838,
+    "n_handled": 191
+   },
+   {
+    "threshold": 0.3641,
+    "coverage": 0.95,
+    "accuracy": 0.5210526315789473,
+    "n_handled": 190
+   },
+   {
+    "threshold": 0.385,
+    "coverage": 0.945,
+    "accuracy": 0.5238095238095238,
+    "n_handled": 189
+   },
+   {
+    "threshold": 0.3984,
+    "coverage": 0.94,
+    "accuracy": 0.526595744680851,
+    "n_handled": 188
+   },
+   {
+    "threshold": 0.4017,
+    "coverage": 0.935,
+    "accuracy": 0.5294117647058824,
+    "n_handled": 187
+   },
+   {
+    "threshold": 0.4047,
+    "coverage": 0.93,
+    "accuracy": 0.532258064516129,
+    "n_handled": 186
+   },
+   {
+    "threshold": 0.4057,
+    "coverage": 0.925,
+    "accuracy": 0.5351351351351351,
+    "n_handled": 185
+   },
+   {
+    "threshold": 0.4128,
+    "coverage": 0.92,
+    "accuracy": 0.532608695652174,
+    "n_handled": 184
+   },
+   {
+    "threshold": 0.413,
+    "coverage": 0.915,
+    "accuracy": 0.5355191256830601,
+    "n_handled": 183
+   },
+   {
+    "threshold": 0.4231,
+    "coverage": 0.91,
+    "accuracy": 0.5384615384615384,
+    "n_handled": 182
+   },
+   {
+    "threshold": 0.4323,
+    "coverage": 0.905,
+    "accuracy": 0.5414364640883977,
+    "n_handled": 181
+   },
+   {
+    "threshold": 0.4411,
+    "coverage": 0.9,
+    "accuracy": 0.5444444444444444,
+    "n_handled": 180
+   },
+   {
+    "threshold": 0.4471,
+    "coverage": 0.895,
+    "accuracy": 0.547486033519553,
+    "n_handled": 179
+   },
+   {
+    "threshold": 0.4734,
+    "coverage": 0.89,
+    "accuracy": 0.550561797752809,
+    "n_handled": 178
+   },
+   {
+    "threshold": 0.4809,
+    "coverage": 0.885,
+    "accuracy": 0.5536723163841808,
+    "n_handled": 177
+   },
+   {
+    "threshold": 0.4995,
+    "coverage": 0.88,
+    "accuracy": 0.5568181818181818,
+    "n_handled": 176
+   },
+   {
+    "threshold": 0.5031,
+    "coverage": 0.875,
+    "accuracy": 0.56,
+    "n_handled": 175
+   },
+   {
+    "threshold": 0.5129,
+    "coverage": 0.87,
+    "accuracy": 0.5574712643678161,
+    "n_handled": 174
+   },
+   {
+    "threshold": 0.5147,
+    "coverage": 0.865,
+    "accuracy": 0.5606936416184971,
+    "n_handled": 173
+   },
+   {
+    "threshold": 0.5154,
+    "coverage": 0.86,
+    "accuracy": 0.563953488372093,
+    "n_handled": 172
+   },
+   {
+    "threshold": 0.5178,
+    "coverage": 0.855,
+    "accuracy": 0.5672514619883041,
+    "n_handled": 171
+   },
+   {
+    "threshold": 0.5228,
+    "coverage": 0.85,
+    "accuracy": 0.5705882352941176,
+    "n_handled": 170
+   },
+   {
+    "threshold": 0.5289,
+    "coverage": 0.845,
+    "accuracy": 0.5739644970414202,
+    "n_handled": 169
+   },
+   {
+    "threshold": 0.5414,
+    "coverage": 0.84,
+    "accuracy": 0.5773809523809523,
+    "n_handled": 168
+   },
+   {
+    "threshold": 0.546,
+    "coverage": 0.835,
+    "accuracy": 0.5808383233532934,
+    "n_handled": 167
+   },
+   {
+    "threshold": 0.5506,
+    "coverage": 0.83,
+    "accuracy": 0.5843373493975904,
+    "n_handled": 166
+   },
+   {
+    "threshold": 0.554,
+    "coverage": 0.825,
+    "accuracy": 0.5878787878787879,
+    "n_handled": 165
+   },
+   {
+    "threshold": 0.5583,
+    "coverage": 0.82,
+    "accuracy": 0.5914634146341463,
+    "n_handled": 164
+   },
+   {
+    "threshold": 0.5624,
+    "coverage": 0.815,
+    "accuracy": 0.588957055214724,
+    "n_handled": 163
+   },
+   {
+    "threshold": 0.5655,
+    "coverage": 0.81,
+    "accuracy": 0.5925925925925926,
+    "n_handled": 162
+   },
+   {
+    "threshold": 0.5672,
+    "coverage": 0.805,
+    "accuracy": 0.5962732919254659,
+    "n_handled": 161
+   },
+   {
+    "threshold": 0.5967,
+    "coverage": 0.8,
+    "accuracy": 0.6,
+    "n_handled": 160
+   },
+   {
+    "threshold": 0.6076,
+    "coverage": 0.795,
+    "accuracy": 0.6037735849056604,
+    "n_handled": 159
+   },
+   {
+    "threshold": 0.6125,
+    "coverage": 0.79,
+    "accuracy": 0.6075949367088608,
+    "n_handled": 158
+   },
+   {
+    "threshold": 0.6251,
+    "coverage": 0.785,
+    "accuracy": 0.6114649681528662,
+    "n_handled": 157
+   },
+   {
+    "threshold": 0.6339,
+    "coverage": 0.78,
+    "accuracy": 0.6153846153846154,
+    "n_handled": 156
+   },
+   {
+    "threshold": 0.6434,
+    "coverage": 0.775,
+    "accuracy": 0.6193548387096774,
+    "n_handled": 155
+   },
+   {
+    "threshold": 0.6441,
+    "coverage": 0.77,
+    "accuracy": 0.6233766233766234,
+    "n_handled": 154
+   },
+   {
+    "threshold": 0.6452,
+    "coverage": 0.765,
+    "accuracy": 0.6274509803921569,
+    "n_handled": 153
+   },
+   {
+    "threshold": 0.6782,
+    "coverage": 0.76,
+    "accuracy": 0.631578947368421,
+    "n_handled": 152
+   },
+   {
+    "threshold": 0.6794,
+    "coverage": 0.755,
+    "accuracy": 0.6357615894039735,
+    "n_handled": 151
+   },
+   {
+    "threshold": 0.6795,
+    "coverage": 0.75,
+    "accuracy": 0.64,
+    "n_handled": 150
+   },
+   {
+    "threshold": 0.6863,
+    "coverage": 0.745,
+    "accuracy": 0.6442953020134228,
+    "n_handled": 149
+   },
+   {
+    "threshold": 0.6887,
+    "coverage": 0.74,
+    "accuracy": 0.6486486486486487,
+    "n_handled": 148
+   },
+   {
+    "threshold": 0.7188,
+    "coverage": 0.735,
+    "accuracy": 0.6530612244897959,
+    "n_handled": 147
+   },
+   {
+    "threshold": 0.7192,
+    "coverage": 0.73,
+    "accuracy": 0.6506849315068494,
+    "n_handled": 146
+   },
+   {
+    "threshold": 0.72,
+    "coverage": 0.725,
+    "accuracy": 0.6551724137931034,
+    "n_handled": 145
+   },
+   {
+    "threshold": 0.7227,
+    "coverage": 0.72,
+    "accuracy": 0.6597222222222222,
+    "n_handled": 144
+   },
+   {
+    "threshold": 0.7324,
+    "coverage": 0.715,
+    "accuracy": 0.6643356643356644,
+    "n_handled": 143
+   },
+   {
+    "threshold": 0.7499,
+    "coverage": 0.71,
+    "accuracy": 0.6690140845070423,
+    "n_handled": 142
+   },
+   {
+    "threshold": 0.7567,
+    "coverage": 0.705,
+    "accuracy": 0.6666666666666666,
+    "n_handled": 141
+   },
+   {
+    "threshold": 0.7611,
+    "coverage": 0.7,
+    "accuracy": 0.6714285714285714,
+    "n_handled": 140
+   },
+   {
+    "threshold": 0.7615,
+    "coverage": 0.695,
+    "accuracy": 0.6762589928057554,
+    "n_handled": 139
+   },
+   {
+    "threshold": 0.7622,
+    "coverage": 0.69,
+    "accuracy": 0.6811594202898551,
+    "n_handled": 138
+   },
+   {
+    "threshold": 0.7637,
+    "coverage": 0.685,
+    "accuracy": 0.6861313868613139,
+    "n_handled": 137
+   },
+   {
+    "threshold": 0.7686,
+    "coverage": 0.68,
+    "accuracy": 0.6911764705882353,
+    "n_handled": 136
+   },
+   {
+    "threshold": 0.7746,
+    "coverage": 0.675,
+    "accuracy": 0.6962962962962963,
+    "n_handled": 135
+   },
+   {
+    "threshold": 0.7764,
+    "coverage": 0.67,
+    "accuracy": 0.7014925373134329,
+    "n_handled": 134
+   },
+   {
+    "threshold": 0.7821,
+    "coverage": 0.665,
+    "accuracy": 0.706766917293233,
+    "n_handled": 133
+   },
+   {
+    "threshold": 0.792,
+    "coverage": 0.66,
+    "accuracy": 0.7121212121212122,
+    "n_handled": 132
+   },
+   {
+    "threshold": 0.793,
+    "coverage": 0.655,
+    "accuracy": 0.7175572519083969,
+    "n_handled": 131
+   },
+   {
+    "threshold": 0.7958,
+    "coverage": 0.65,
+    "accuracy": 0.7230769230769231,
+    "n_handled": 130
+   },
+   {
+    "threshold": 0.7976,
+    "coverage": 0.645,
+    "accuracy": 0.7286821705426356,
+    "n_handled": 129
+   },
+   {
+    "threshold": 0.7999,
+    "coverage": 0.64,
+    "accuracy": 0.734375,
+    "n_handled": 128
+   },
+   {
+    "threshold": 0.8042,
+    "coverage": 0.635,
+    "accuracy": 0.7322834645669292,
+    "n_handled": 127
+   },
+   {
+    "threshold": 0.8142,
+    "coverage": 0.63,
+    "accuracy": 0.7380952380952381,
+    "n_handled": 126
+   },
+   {
+    "threshold": 0.8219,
+    "coverage": 0.625,
+    "accuracy": 0.744,
+    "n_handled": 125
+   },
+   {
+    "threshold": 0.8303,
+    "coverage": 0.62,
+    "accuracy": 0.7419354838709677,
+    "n_handled": 124
+   },
+   {
+    "threshold": 0.8342,
+    "coverage": 0.615,
+    "accuracy": 0.7479674796747967,
+    "n_handled": 123
+   },
+   {
+    "threshold": 0.835,
+    "coverage": 0.61,
+    "accuracy": 0.7459016393442623,
+    "n_handled": 122
+   },
+   {
+    "threshold": 0.8415,
+    "coverage": 0.605,
+    "accuracy": 0.7520661157024794,
+    "n_handled": 121
+   },
+   {
+    "threshold": 0.851,
+    "coverage": 0.6,
+    "accuracy": 0.7583333333333333,
+    "n_handled": 120
+   },
+   {
+    "threshold": 0.8548,
+    "coverage": 0.595,
+    "accuracy": 0.7647058823529411,
+    "n_handled": 119
+   },
+   {
+    "threshold": 0.8565,
+    "coverage": 0.59,
+    "accuracy": 0.7627118644067796,
+    "n_handled": 118
+   },
+   {
+    "threshold": 0.8581,
+    "coverage": 0.585,
+    "accuracy": 0.7606837606837606,
+    "n_handled": 117
+   },
+   {
+    "threshold": 0.8639,
+    "coverage": 0.58,
+    "accuracy": 0.7672413793103449,
+    "n_handled": 116
+   },
+   {
+    "threshold": 0.8645,
+    "coverage": 0.575,
+    "accuracy": 0.7652173913043478,
+    "n_handled": 115
+   },
+   {
+    "threshold": 0.8649,
+    "coverage": 0.57,
+    "accuracy": 0.7719298245614035,
+    "n_handled": 114
+   },
+   {
+    "threshold": 0.8672,
+    "coverage": 0.565,
+    "accuracy": 0.7787610619469026,
+    "n_handled": 113
+   },
+   {
+    "threshold": 0.8696,
+    "coverage": 0.56,
+    "accuracy": 0.7767857142857143,
+    "n_handled": 112
+   },
+   {
+    "threshold": 0.8738,
+    "coverage": 0.555,
+    "accuracy": 0.7747747747747747,
+    "n_handled": 111
+   },
+   {
+    "threshold": 0.8856,
+    "coverage": 0.55,
+    "accuracy": 0.7727272727272727,
+    "n_handled": 110
+   },
+   {
+    "threshold": 0.8859,
+    "coverage": 0.545,
+    "accuracy": 0.7798165137614679,
+    "n_handled": 109
+   },
+   {
+    "threshold": 0.901,
+    "coverage": 0.54,
+    "accuracy": 0.7777777777777778,
+    "n_handled": 108
+   },
+   {
+    "threshold": 0.9011,
+    "coverage": 0.535,
+    "accuracy": 0.7850467289719626,
+    "n_handled": 107
+   },
+   {
+    "threshold": 0.9033,
+    "coverage": 0.53,
+    "accuracy": 0.7830188679245284,
+    "n_handled": 106
+   },
+   {
+    "threshold": 0.9035,
+    "coverage": 0.525,
+    "accuracy": 0.780952380952381,
+    "n_handled": 105
+   },
+   {
+    "threshold": 0.9086,
+    "coverage": 0.52,
+    "accuracy": 0.7788461538461539,
+    "n_handled": 104
+   },
+   {
+    "threshold": 0.9105,
+    "coverage": 0.515,
+    "accuracy": 0.7864077669902912,
+    "n_handled": 103
+   },
+   {
+    "threshold": 0.9106,
+    "coverage": 0.51,
+    "accuracy": 0.7843137254901961,
+    "n_handled": 102
+   },
+   {
+    "threshold": 0.9108,
+    "coverage": 0.505,
+    "accuracy": 0.7821782178217822,
+    "n_handled": 101
+   },
+   {
+    "threshold": 0.9153,
+    "coverage": 0.5,
+    "accuracy": 0.78,
+    "n_handled": 100
+   },
+   {
+    "threshold": 0.9177,
+    "coverage": 0.495,
+    "accuracy": 0.7878787878787878,
+    "n_handled": 99
+   },
+   {
+    "threshold": 0.9193,
+    "coverage": 0.49,
+    "accuracy": 0.7959183673469388,
+    "n_handled": 98
+   },
+   {
+    "threshold": 0.9214,
+    "coverage": 0.485,
+    "accuracy": 0.8041237113402062,
+    "n_handled": 97
+   },
+   {
+    "threshold": 0.9232,
+    "coverage": 0.48,
+    "accuracy": 0.8125,
+    "n_handled": 96
+   },
+   {
+    "threshold": 0.9291,
+    "coverage": 0.475,
+    "accuracy": 0.8105263157894737,
+    "n_handled": 95
+   },
+   {
+    "threshold": 0.9319,
+    "coverage": 0.47,
+    "accuracy": 0.8085106382978723,
+    "n_handled": 94
+   },
+   {
+    "threshold": 0.9376,
+    "coverage": 0.465,
+    "accuracy": 0.8064516129032258,
+    "n_handled": 93
+   },
+   {
+    "threshold": 0.9514,
+    "coverage": 0.46,
+    "accuracy": 0.8043478260869565,
+    "n_handled": 92
+   },
+   {
+    "threshold": 0.9542,
+    "coverage": 0.455,
+    "accuracy": 0.8021978021978022,
+    "n_handled": 91
+   },
+   {
+    "threshold": 0.9564,
+    "coverage": 0.45,
+    "accuracy": 0.8111111111111111,
+    "n_handled": 90
+   },
+   {
+    "threshold": 0.9574,
+    "coverage": 0.445,
+    "accuracy": 0.8202247191011236,
+    "n_handled": 89
+   },
+   {
+    "threshold": 0.9622,
+    "coverage": 0.44,
+    "accuracy": 0.8181818181818182,
+    "n_handled": 88
+   },
+   {
+    "threshold": 0.9633,
+    "coverage": 0.43,
+    "accuracy": 0.813953488372093,
+    "n_handled": 86
+   },
+   {
+    "threshold": 0.9651,
+    "coverage": 0.425,
+    "accuracy": 0.8117647058823529,
+    "n_handled": 85
+   },
+   {
+    "threshold": 0.9657,
+    "coverage": 0.42,
+    "accuracy": 0.8095238095238095,
+    "n_handled": 84
+   },
+   {
+    "threshold": 0.9663,
+    "coverage": 0.415,
+    "accuracy": 0.8072289156626506,
+    "n_handled": 83
+   },
+   {
+    "threshold": 0.9677,
+    "coverage": 0.41,
+    "accuracy": 0.8048780487804879,
+    "n_handled": 82
+   },
+   {
+    "threshold": 0.9699,
+    "coverage": 0.405,
+    "accuracy": 0.8024691358024691,
+    "n_handled": 81
+   },
+   {
+    "threshold": 0.9718,
+    "coverage": 0.4,
+    "accuracy": 0.8125,
+    "n_handled": 80
+   },
+   {
+    "threshold": 0.9777,
+    "coverage": 0.395,
+    "accuracy": 0.8227848101265823,
+    "n_handled": 79
+   },
+   {
+    "threshold": 0.9827,
+    "coverage": 0.39,
+    "accuracy": 0.8333333333333334,
+    "n_handled": 78
+   },
+   {
+    "threshold": 0.9851,
+    "coverage": 0.385,
+    "accuracy": 0.8311688311688312,
+    "n_handled": 77
+   },
+   {
+    "threshold": 0.986,
+    "coverage": 0.38,
+    "accuracy": 0.8289473684210527,
+    "n_handled": 76
+   },
+   {
+    "threshold": 0.9876,
+    "coverage": 0.375,
+    "accuracy": 0.8266666666666667,
+    "n_handled": 75
+   },
+   {
+    "threshold": 0.9888,
+    "coverage": 0.37,
+    "accuracy": 0.8243243243243243,
+    "n_handled": 74
+   },
+   {
+    "threshold": 0.9899,
+    "coverage": 0.365,
+    "accuracy": 0.821917808219178,
+    "n_handled": 73
+   },
+   {
+    "threshold": 0.9907,
+    "coverage": 0.36,
+    "accuracy": 0.8333333333333334,
+    "n_handled": 72
+   },
+   {
+    "threshold": 0.9913,
+    "coverage": 0.355,
+    "accuracy": 0.8309859154929577,
+    "n_handled": 71
+   },
+   {
+    "threshold": 0.9917,
+    "coverage": 0.35,
+    "accuracy": 0.8428571428571429,
+    "n_handled": 70
+   },
+   {
+    "threshold": 0.9936,
+    "coverage": 0.345,
+    "accuracy": 0.8405797101449275,
+    "n_handled": 69
+   },
+   {
+    "threshold": 0.994,
+    "coverage": 0.34,
+    "accuracy": 0.8382352941176471,
+    "n_handled": 68
+   },
+   {
+    "threshold": 0.9948,
+    "coverage": 0.335,
+    "accuracy": 0.8507462686567164,
+    "n_handled": 67
+   },
+   {
+    "threshold": 0.9953,
+    "coverage": 0.33,
+    "accuracy": 0.8484848484848485,
+    "n_handled": 66
+   },
+   {
+    "threshold": 0.9955,
+    "coverage": 0.325,
+    "accuracy": 0.8461538461538461,
+    "n_handled": 65
+   },
+   {
+    "threshold": 0.9958,
+    "coverage": 0.32,
+    "accuracy": 0.84375,
+    "n_handled": 64
+   },
+   {
+    "threshold": 0.9959,
+    "coverage": 0.315,
+    "accuracy": 0.8412698412698413,
+    "n_handled": 63
+   },
+   {
+    "threshold": 0.996,
+    "coverage": 0.31,
+    "accuracy": 0.8548387096774194,
+    "n_handled": 62
+   },
+   {
+    "threshold": 0.9961,
+    "coverage": 0.305,
+    "accuracy": 0.8524590163934426,
+    "n_handled": 61
+   },
+   {
+    "threshold": 0.9963,
+    "coverage": 0.3,
+    "accuracy": 0.85,
+    "n_handled": 60
+   },
+   {
+    "threshold": 0.9965,
+    "coverage": 0.295,
+    "accuracy": 0.847457627118644,
+    "n_handled": 59
+   },
+   {
+    "threshold": 0.9968,
+    "coverage": 0.29,
+    "accuracy": 0.8448275862068966,
+    "n_handled": 58
+   },
+   {
+    "threshold": 0.9973,
+    "coverage": 0.285,
+    "accuracy": 0.8421052631578947,
+    "n_handled": 57
+   },
+   {
+    "threshold": 0.9974,
+    "coverage": 0.28,
+    "accuracy": 0.8392857142857143,
+    "n_handled": 56
+   },
+   {
+    "threshold": 0.9975,
+    "coverage": 0.27,
+    "accuracy": 0.8333333333333334,
+    "n_handled": 54
+   },
+   {
+    "threshold": 0.9977,
+    "coverage": 0.265,
+    "accuracy": 0.8301886792452831,
+    "n_handled": 53
+   },
+   {
+    "threshold": 0.9979,
+    "coverage": 0.25,
+    "accuracy": 0.86,
+    "n_handled": 50
+   },
+   {
+    "threshold": 0.998,
+    "coverage": 0.24,
+    "accuracy": 0.8958333333333334,
+    "n_handled": 48
+   },
+   {
+    "threshold": 0.9981,
+    "coverage": 0.23,
+    "accuracy": 0.8913043478260869,
+    "n_handled": 46
+   },
+   {
+    "threshold": 0.9984,
+    "coverage": 0.225,
+    "accuracy": 0.8888888888888888,
+    "n_handled": 45
+   },
+   {
+    "threshold": 0.9987,
+    "coverage": 0.22,
+    "accuracy": 0.8863636363636364,
+    "n_handled": 44
+   },
+   {
+    "threshold": 0.999,
+    "coverage": 0.205,
+    "accuracy": 0.9024390243902439,
+    "n_handled": 41
+   },
+   {
+    "threshold": 0.9991,
+    "coverage": 0.2,
+    "accuracy": 0.9,
+    "n_handled": 40
+   },
+   {
+    "threshold": 0.9992,
+    "coverage": 0.19,
+    "accuracy": 0.9210526315789473,
+    "n_handled": 38
+   },
+   {
+    "threshold": 0.9993,
+    "coverage": 0.185,
+    "accuracy": 0.918918918918919,
+    "n_handled": 37
+   },
+   {
+    "threshold": 0.9994,
+    "coverage": 0.175,
+    "accuracy": 0.9142857142857143,
+    "n_handled": 35
+   },
+   {
+    "threshold": 0.9996,
+    "coverage": 0.17,
+    "accuracy": 0.9117647058823529,
+    "n_handled": 34
+   },
+   {
+    "threshold": 0.9997,
+    "coverage": 0.16,
+    "accuracy": 0.90625,
+    "n_handled": 32
+   },
+   {
+    "threshold": 0.9998,
+    "coverage": 0.15,
+    "accuracy": 0.9,
+    "n_handled": 30
+   },
+   {
+    "threshold": 0.9999,
+    "coverage": 0.13,
+    "accuracy": 0.9230769230769231,
+    "n_handled": 26
+   },
+   {
+    "threshold": 1.0,
+    "coverage": 0.1,
+    "accuracy": 1.0,
+    "n_handled": 20
+   }
+  ]
+ },
+ "records": [
+  {
+   "text": "Where is my deposit?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "lost_or_stolen_phone",
+   "direct_confidence": 0.3867,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_card",
+   "hier_cluster_confidence": 0.9284,
+   "hier_intent_confidence": 0.7764,
+   "hier_gating_confidence": 0.7764,
+   "hier_correct": false
+  },
+  {
+   "text": "Why do I have to verify my identity?",
+   "label": "why_verify_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "why_verify_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9917,
+   "hier_gating_confidence": 0.9917,
+   "hier_correct": true
+  },
+  {
+   "text": "Are there fees for top ups?",
+   "label": "top_up_by_card_charge",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.7746,
+   "direct_correct": true,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "top_up_by_card_charge",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9633,
+   "hier_gating_confidence": 0.9633,
+   "hier_correct": true
+  },
+  {
+   "text": "Are there any fees for adding money with an international card?",
+   "label": "top_up_by_card_charge",
+   "direct_intent": "transfer_fee_charged",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "top_up_by_card_charge",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.7188,
+   "hier_gating_confidence": 0.7188,
+   "hier_correct": true
+  },
+  {
+   "text": "I don't know if this is an issue with the ATM or my account, but I just tried withdrawing 30 pounds from the ATM I'm at now and it only gave me 10. Is this a glitch or what exactly is going on?",
+   "label": "wrong_amount_of_cash_received",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9948,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "declined_cash_withdrawal",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9899,
+   "hier_gating_confidence": 0.9899,
+   "hier_correct": false
+  },
+  {
+   "text": "The app won't let me top up my account",
+   "label": "top_up_failed",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.9235,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "balance_not_updated_after_cheque_or_cash_deposit",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.2215,
+   "hier_gating_confidence": 0.2215,
+   "hier_correct": false
+  },
+  {
+   "text": "Can you help me sign up for a virtual card?",
+   "label": "getting_virtual_card",
+   "direct_intent": "getting_virtual_card",
+   "direct_confidence": 0.8563,
+   "direct_correct": true,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "getting_virtual_card",
+   "hier_cluster_confidence": 0.8565,
+   "hier_intent_confidence": 0.9988,
+   "hier_gating_confidence": 0.8565,
+   "hier_correct": true
+  },
+  {
+   "text": "The app said I withdrew cash at an ATM and I didn't",
+   "label": "cash_withdrawal_not_recognised",
+   "direct_intent": "cash_withdrawal_charge",
+   "direct_confidence": 0.9013,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "declined_cash_withdrawal",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9086,
+   "hier_gating_confidence": 0.9086,
+   "hier_correct": false
+  },
+  {
+   "text": "I need to make a transfer, what will the fee be?",
+   "label": "top_up_by_bank_transfer_charge",
+   "direct_intent": "transfer_fee_charged",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "transfer_fee_charged",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9999,
+   "hier_correct": false
+  },
+  {
+   "text": "Where can I find a virtual card?",
+   "label": "getting_virtual_card",
+   "direct_intent": "virtual_card_not_working",
+   "direct_confidence": 0.8656,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "getting_virtual_card",
+   "hier_cluster_confidence": 0.9998,
+   "hier_intent_confidence": 0.9961,
+   "hier_gating_confidence": 0.9961,
+   "hier_correct": true
+  },
+  {
+   "text": "When can I order a disposable virtual card?",
+   "label": "get_disposable_virtual_card",
+   "direct_intent": "disposable_card_limits",
+   "direct_confidence": 0.9991,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.9989,
+   "hier_intent_confidence": 0.7622,
+   "hier_gating_confidence": 0.7622,
+   "hier_correct": false
+  },
+  {
+   "text": "How do you verify an identity?",
+   "label": "verify_my_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9992,
+   "hier_gating_confidence": 0.9992,
+   "hier_correct": true
+  },
+  {
+   "text": "The ATM gave me the wrong amount of cash today when I went to withdraw. The app says it was more.",
+   "label": "wrong_amount_of_cash_received",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9962,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "wrong_amount_of_cash_received",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9987,
+   "hier_gating_confidence": 0.9987,
+   "hier_correct": true
+  },
+  {
+   "text": "How can I unblock a blocked pin number for my account?",
+   "label": "pin_blocked",
+   "direct_intent": "pin_blocked",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "pin_blocked",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Does delivery to the US take long?",
+   "label": "card_delivery_estimate",
+   "direct_intent": "country_support",
+   "direct_confidence": 0.9998,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "card_delivery_estimate",
+   "hier_cluster_confidence": 0.9827,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9827,
+   "hier_correct": true
+  },
+  {
+   "text": "I have tried transferring money numerous times.  All I keep getting is an error message.  Can you tell me what is going on and how this van be fixed?",
+   "label": "beneficiary_not_allowed",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 0.9167,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "failed_transfer",
+   "hier_cluster_confidence": 0.9918,
+   "hier_intent_confidence": 0.7976,
+   "hier_gating_confidence": 0.7976,
+   "hier_correct": false
+  },
+  {
+   "text": "How long until my friend receives my transaction?",
+   "label": "transfer_not_received_by_recipient",
+   "direct_intent": "card_arrival",
+   "direct_confidence": 0.5109,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_not_received_by_recipient",
+   "hier_cluster_confidence": 0.3585,
+   "hier_intent_confidence": 0.9694,
+   "hier_gating_confidence": 0.3585,
+   "hier_correct": true
+  },
+  {
+   "text": "Can I get a card despite the fact I'm not in the UK?",
+   "label": "country_support",
+   "direct_intent": "country_support",
+   "direct_confidence": 0.9999,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "order_physical_card",
+   "hier_cluster_confidence": 0.9974,
+   "hier_intent_confidence": 0.4734,
+   "hier_gating_confidence": 0.4734,
+   "hier_correct": false
+  },
+  {
+   "text": "The app doesn't know it's me.",
+   "label": "unable_to_verify_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "unable_to_verify_identity",
+   "hier_cluster_confidence": 0.9953,
+   "hier_intent_confidence": 0.9971,
+   "hier_gating_confidence": 0.9953,
+   "hier_correct": true
+  },
+  {
+   "text": "the card payment exchange rate is wrong",
+   "label": "card_payment_wrong_exchange_rate",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "card_payment_wrong_exchange_rate",
+   "hier_cluster_confidence": 0.9973,
+   "hier_intent_confidence": 0.9973,
+   "hier_gating_confidence": 0.9973,
+   "hier_correct": true
+  },
+  {
+   "text": "How long does it take for a refund?",
+   "label": "Refund_not_showing_up",
+   "direct_intent": "Refund_not_showing_up",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "request_refund",
+   "hier_cluster_confidence": 0.9997,
+   "hier_intent_confidence": 0.9193,
+   "hier_gating_confidence": 0.9193,
+   "hier_correct": false
+  },
+  {
+   "text": "How young can someone be in order to open an account?",
+   "label": "age_limit",
+   "direct_intent": "age_limit",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "eligibility_and_coverage",
+   "hier_intent": "age_limit",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9876,
+   "hier_gating_confidence": 0.9876,
+   "hier_correct": true
+  },
+  {
+   "text": "i was charged when i used a us issued card. why and what cards are free to use to add money",
+   "label": "top_up_by_card_charge",
+   "direct_intent": "transaction_charged_twice",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "card_payment_fee_charged",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.6452,
+   "hier_gating_confidence": 0.6452,
+   "hier_correct": false
+  },
+  {
+   "text": "For physical cards, do you charge?",
+   "label": "order_physical_card",
+   "direct_intent": "get_physical_card",
+   "direct_confidence": 0.998,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "card_acceptance",
+   "hier_cluster_confidence": 0.9842,
+   "hier_intent_confidence": 0.4471,
+   "hier_gating_confidence": 0.4471,
+   "hier_correct": false
+  },
+  {
+   "text": "I found my card, can I add it to the app?",
+   "label": "card_linking",
+   "direct_intent": "lost_or_stolen_card",
+   "direct_confidence": 0.9538,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_card",
+   "hier_cluster_confidence": 0.7615,
+   "hier_intent_confidence": 0.9449,
+   "hier_gating_confidence": 0.7615,
+   "hier_correct": false
+  },
+  {
+   "text": "I need to edit the personal details section of my account",
+   "label": "edit_personal_details",
+   "direct_intent": "edit_personal_details",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "edit_personal_details",
+   "hier_cluster_confidence": 0.9991,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9991,
+   "hier_correct": true
+  },
+  {
+   "text": "how much do you charge to accept transfers",
+   "label": "top_up_by_bank_transfer_charge",
+   "direct_intent": "transfer_fee_charged",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "receiving_money",
+   "hier_cluster_confidence": 0.9917,
+   "hier_intent_confidence": 0.5672,
+   "hier_gating_confidence": 0.5672,
+   "hier_correct": false
+  },
+  {
+   "text": "Can I have it add money automatically in certain intervals?",
+   "label": "automatic_top_up",
+   "direct_intent": "automatic_top_up",
+   "direct_confidence": 0.9994,
+   "direct_correct": true,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "automatic_top_up",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9993,
+   "hier_gating_confidence": 0.9993,
+   "hier_correct": true
+  },
+  {
+   "text": "How long does it take to process cheque deposits?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "fiat_currency_support",
+   "direct_confidence": 0.9819,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "card_payment_wrong_exchange_rate",
+   "hier_cluster_confidence": 0.8458,
+   "hier_intent_confidence": 0.5655,
+   "hier_gating_confidence": 0.5655,
+   "hier_correct": false
+  },
+  {
+   "text": "So the transfer finally worked but now it's been pending for quite a long time. How long do you expect me to wait for it? It's quite urgent",
+   "label": "pending_transfer",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 0.4046,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "pending_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.8639,
+   "hier_gating_confidence": 0.8639,
+   "hier_correct": true
+  },
+  {
+   "text": "I am not seeing a refund in my statement.",
+   "label": "Refund_not_showing_up",
+   "direct_intent": "Refund_not_showing_up",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "Refund_not_showing_up",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9999,
+   "hier_correct": true
+  },
+  {
+   "text": "I couldn't use my contactless this morning, it wasn't accepted.",
+   "label": "contactless_not_working",
+   "direct_intent": "contactless_not_working",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 0.5506,
+   "hier_intent_confidence": 0.9964,
+   "hier_gating_confidence": 0.5506,
+   "hier_correct": false
+  },
+  {
+   "text": "When I deposit cheques and cash, my balance does not update.",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_confidence": 0.7944,
+   "direct_correct": true,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "balance_not_updated_after_cheque_or_cash_deposit",
+   "hier_cluster_confidence": 0.8696,
+   "hier_intent_confidence": 0.9991,
+   "hier_gating_confidence": 0.8696,
+   "hier_correct": true
+  },
+  {
+   "text": "Which ATM's will accept my card?",
+   "label": "atm_support",
+   "direct_intent": "atm_support",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9011,
+   "hier_gating_confidence": 0.9011,
+   "hier_correct": true
+  },
+  {
+   "text": "Is there a way to obtain a virtual card?",
+   "label": "getting_virtual_card",
+   "direct_intent": "getting_virtual_card",
+   "direct_confidence": 0.8065,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "get_physical_card",
+   "hier_cluster_confidence": 0.6403,
+   "hier_intent_confidence": 0.5178,
+   "hier_gating_confidence": 0.5178,
+   "hier_correct": false
+  },
+  {
+   "text": "Looks like my card payment was duplicated. I went to pay at the store earlier, got declined once,second time it works. App still stays pending for one of the payments. Can you please remove one of them as it's wrong and clearly was declined?",
+   "label": "transaction_charged_twice",
+   "direct_intent": "card_payment_fee_charged",
+   "direct_confidence": 0.9843,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.7686,
+   "hier_gating_confidence": 0.7686,
+   "hier_correct": false
+  },
+  {
+   "text": "How do people send me money?",
+   "label": "receiving_money",
+   "direct_intent": "receiving_money",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_not_received_by_recipient",
+   "hier_cluster_confidence": 0.6794,
+   "hier_intent_confidence": 0.9408,
+   "hier_gating_confidence": 0.6794,
+   "hier_correct": false
+  },
+  {
+   "text": "I am trying to make a transfer and am unsuccessful, can you please tell me why?",
+   "label": "failed_transfer",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 0.6863,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "failed_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9105,
+   "hier_gating_confidence": 0.9105,
+   "hier_correct": true
+  },
+  {
+   "text": "I think my transfer was declined, but why?",
+   "label": "declined_transfer",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "declined_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "There is an error, the app says I made an ATM withdrawal and I didn't.",
+   "label": "cash_withdrawal_not_recognised",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9993,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "declined_cash_withdrawal",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.6887,
+   "hier_gating_confidence": 0.6887,
+   "hier_correct": false
+  },
+  {
+   "text": "Weird charges are appearing in my debit account.",
+   "label": "direct_debit_payment_not_recognised",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 0.6873,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "extra_charge_on_statement",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9977,
+   "hier_gating_confidence": 0.9977,
+   "hier_correct": false
+  },
+  {
+   "text": "The refund isn't showing up on my account.",
+   "label": "Refund_not_showing_up",
+   "direct_intent": "Refund_not_showing_up",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "Refund_not_showing_up",
+   "hier_cluster_confidence": 0.998,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.998,
+   "hier_correct": true
+  },
+  {
+   "text": "I want to get a disposable virtual card.",
+   "label": "get_disposable_virtual_card",
+   "direct_intent": "getting_virtual_card",
+   "direct_confidence": 0.9667,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.983,
+   "hier_intent_confidence": 0.8856,
+   "hier_gating_confidence": 0.8856,
+   "hier_correct": false
+  },
+  {
+   "text": "Do you guys accept mastercard or visa?",
+   "label": "visa_or_mastercard",
+   "direct_intent": "supported_cards_and_currencies",
+   "direct_confidence": 0.9997,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "visa_or_mastercard",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9996,
+   "hier_gating_confidence": 0.9996,
+   "hier_correct": true
+  },
+  {
+   "text": "Why didn't my balance change after I transferred some money?",
+   "label": "balance_not_updated_after_bank_transfer",
+   "direct_intent": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_confidence": 0.9987,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_into_account",
+   "hier_cluster_confidence": 0.6183,
+   "hier_intent_confidence": 0.5154,
+   "hier_gating_confidence": 0.5154,
+   "hier_correct": false
+  },
+  {
+   "text": "how old do i need to be to get an account for myself",
+   "label": "age_limit",
+   "direct_intent": "age_limit",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "eligibility_and_coverage",
+   "hier_intent": "age_limit",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9958,
+   "hier_gating_confidence": 0.9958,
+   "hier_correct": true
+  },
+  {
+   "text": "My card is being used online to make a bunch of purchases! Someone else is using it fraudulently. Can you help me freeze it?",
+   "label": "compromised_card",
+   "direct_intent": "compromised_card",
+   "direct_confidence": 0.9991,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "card_not_working",
+   "hier_cluster_confidence": 0.3408,
+   "hier_intent_confidence": 0.9527,
+   "hier_gating_confidence": 0.3408,
+   "hier_correct": false
+  },
+  {
+   "text": "When trying to get more than one card is there a extra amount that needs to be paid?",
+   "label": "getting_spare_card",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "getting_virtual_card",
+   "hier_cluster_confidence": 0.9941,
+   "hier_intent_confidence": 0.9214,
+   "hier_gating_confidence": 0.9214,
+   "hier_correct": false
+  },
+  {
+   "text": "I used an ATM in a foreign currency but the rate applied is wrong!",
+   "label": "wrong_exchange_rate_for_cash_withdrawal",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 0.9679,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "card_payment_wrong_exchange_rate",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.6782,
+   "hier_gating_confidence": 0.6782,
+   "hier_correct": false
+  },
+  {
+   "text": "I deposited cash this morning and I am still waiting",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "pending_cash_withdrawal",
+   "direct_confidence": 0.993,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "pending_cash_withdrawal",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9977,
+   "hier_gating_confidence": 0.9977,
+   "hier_correct": false
+  },
+  {
+   "text": "Any fee for topping up?",
+   "label": "top_up_by_card_charge",
+   "direct_intent": "topping_up_by_card",
+   "direct_confidence": 0.6497,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "top_up_by_card_charge",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9657,
+   "hier_gating_confidence": 0.9657,
+   "hier_correct": true
+  },
+  {
+   "text": "Card payment declined?",
+   "label": "declined_card_payment",
+   "direct_intent": "card_payment_wrong_exchange_rate",
+   "direct_confidence": 0.8093,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9999,
+   "hier_correct": true
+  },
+  {
+   "text": "What if I need my salary in a different currency?",
+   "label": "receiving_money",
+   "direct_intent": "fiat_currency_support",
+   "direct_confidence": 0.9288,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_rate",
+   "hier_cluster_confidence": 0.9979,
+   "hier_intent_confidence": 0.4323,
+   "hier_gating_confidence": 0.4323,
+   "hier_correct": false
+  },
+  {
+   "text": "can I have a non virtual card?",
+   "label": "order_physical_card",
+   "direct_intent": "getting_virtual_card",
+   "direct_confidence": 0.9384,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "get_disposable_virtual_card",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.5147,
+   "hier_gating_confidence": 0.5147,
+   "hier_correct": false
+  },
+  {
+   "text": "Can you tell me what countries you operate in?",
+   "label": "country_support",
+   "direct_intent": "country_support",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_via_app",
+   "hier_cluster_confidence": 0.7115,
+   "hier_intent_confidence": 0.3641,
+   "hier_gating_confidence": 0.3641,
+   "hier_correct": false
+  },
+  {
+   "text": "How do I reset my PIN?",
+   "label": "pin_blocked",
+   "direct_intent": "change_pin",
+   "direct_confidence": 0.9554,
+   "direct_correct": false,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "change_pin",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9987,
+   "hier_gating_confidence": 0.9987,
+   "hier_correct": false
+  },
+  {
+   "text": "I was trying to purchase something at the store today and my card has been declined.  Why has this happened?",
+   "label": "declined_card_payment",
+   "direct_intent": "declined_card_payment",
+   "direct_confidence": 0.4238,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Do I have to pay for exchanging currencies?",
+   "label": "exchange_charge",
+   "direct_intent": "exchange_charge",
+   "direct_confidence": 0.8998,
+   "direct_correct": true,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_charge",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.8738,
+   "hier_gating_confidence": 0.8738,
+   "hier_correct": true
+  },
+  {
+   "text": "How can I top up with Google Pay?",
+   "label": "apple_pay_or_google_pay",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.8788,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_by_cash_or_cheque",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.8042,
+   "hier_gating_confidence": 0.8042,
+   "hier_correct": false
+  },
+  {
+   "text": "I have a card payment that was declined, but why?",
+   "label": "declined_card_payment",
+   "direct_intent": "card_payment_wrong_exchange_rate",
+   "direct_confidence": 0.9937,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Can you help with a transfer to an account",
+   "label": "beneficiary_not_allowed",
+   "direct_intent": "transfer_into_account",
+   "direct_confidence": 0.9927,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_into_account",
+   "hier_cluster_confidence": 0.9177,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9177,
+   "hier_correct": false
+  },
+  {
+   "text": "What is the limit to top up?",
+   "label": "top_up_limits",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.8518,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_limits",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "I do not have what is required to prove my identity",
+   "label": "unable_to_verify_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 0.9973,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "unable_to_verify_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9984,
+   "hier_gating_confidence": 0.9984,
+   "hier_correct": true
+  },
+  {
+   "text": "Someone needs to make me aware when there are extra charges for payments. I happened to be looking at the app earlier and noticed a charge associated to a payment that was extra that no one made me aware of before at all.",
+   "label": "card_payment_fee_charged",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "extra_charge_on_statement",
+   "hier_cluster_confidence": 0.9972,
+   "hier_intent_confidence": 0.9959,
+   "hier_gating_confidence": 0.9959,
+   "hier_correct": false
+  },
+  {
+   "text": "I want to know if there is a maximum I can top up.",
+   "label": "top_up_limits",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.9999,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_limits",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Am I able to change my PIN at any cash machines?",
+   "label": "change_pin",
+   "direct_intent": "change_pin",
+   "direct_confidence": 0.5196,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "change_pin",
+   "hier_cluster_confidence": 0.9997,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9997,
+   "hier_correct": true
+  },
+  {
+   "text": "Can I use my card at any ATMs?",
+   "label": "atm_support",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9999,
+   "direct_correct": true,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.986,
+   "hier_gating_confidence": 0.986,
+   "hier_correct": true
+  },
+  {
+   "text": "My top-up has been cancelled.",
+   "label": "top_up_reverted",
+   "direct_intent": "cancel_transfer",
+   "direct_confidence": 0.8771,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_failed",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.851,
+   "hier_gating_confidence": 0.851,
+   "hier_correct": false
+  },
+  {
+   "text": "What do I do if I forget my passcode?  Because I did.",
+   "label": "passcode_forgotten",
+   "direct_intent": "passcode_forgotten",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "change_pin",
+   "hier_cluster_confidence": 0.9982,
+   "hier_intent_confidence": 0.8581,
+   "hier_gating_confidence": 0.8581,
+   "hier_correct": false
+  },
+  {
+   "text": "i want to close an account but im not sure about setting up a new one in the future, what do you recommend",
+   "label": "terminate_account",
+   "direct_intent": "terminate_account",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "terminate_account",
+   "hier_cluster_confidence": 0.3603,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.3603,
+   "hier_correct": true
+  },
+  {
+   "text": "I sent a cheque  a few days ago and nothing has happened to my account yet. Can you please check on this for me?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "fiat_currency_support",
+   "direct_confidence": 0.8281,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "pending_card_payment",
+   "hier_cluster_confidence": 0.4047,
+   "hier_intent_confidence": 0.5375,
+   "hier_gating_confidence": 0.4047,
+   "hier_correct": false
+  },
+  {
+   "text": "How do I receive my physical card",
+   "label": "order_physical_card",
+   "direct_intent": "order_physical_card",
+   "direct_confidence": 0.9988,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "get_physical_card",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.7637,
+   "hier_gating_confidence": 0.7637,
+   "hier_correct": false
+  },
+  {
+   "text": "how do i change name?",
+   "label": "edit_personal_details",
+   "direct_intent": "edit_personal_details",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "edit_personal_details",
+   "hier_cluster_confidence": 0.9998,
+   "hier_intent_confidence": 0.9677,
+   "hier_gating_confidence": 0.9677,
+   "hier_correct": true
+  },
+  {
+   "text": "I made a purchase and it says it's pending. What does that mean?",
+   "label": "pending_card_payment",
+   "direct_intent": "pending_top_up",
+   "direct_confidence": 0.9579,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "pending_card_payment",
+   "hier_cluster_confidence": 0.9033,
+   "hier_intent_confidence": 0.9995,
+   "hier_gating_confidence": 0.9033,
+   "hier_correct": true
+  },
+  {
+   "text": "Can you unlock my pin? I think I entered the wrong pin too many times.",
+   "label": "pin_blocked",
+   "direct_intent": "change_pin",
+   "direct_confidence": 0.5778,
+   "direct_correct": false,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "pin_blocked",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9651,
+   "hier_gating_confidence": 0.9651,
+   "hier_correct": true
+  },
+  {
+   "text": "Can you give me information about verification code?",
+   "label": "verify_top_up",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 0.9996,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.994,
+   "hier_gating_confidence": 0.994,
+   "hier_correct": false
+  },
+  {
+   "text": "How can I tell where my funds came from?",
+   "label": "verify_source_of_funds",
+   "direct_intent": "verify_source_of_funds",
+   "direct_confidence": 0.9991,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "transaction_charged_twice",
+   "hier_cluster_confidence": 0.7324,
+   "hier_intent_confidence": 0.7985,
+   "hier_gating_confidence": 0.7324,
+   "hier_correct": false
+  },
+  {
+   "text": "Is GBP a supported currency?",
+   "label": "receiving_money",
+   "direct_intent": "country_support",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "supported_cards_and_currencies",
+   "hier_cluster_confidence": 0.5289,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.5289,
+   "hier_correct": false
+  },
+  {
+   "text": "Where can the card be used?",
+   "label": "card_acceptance",
+   "direct_intent": "country_support",
+   "direct_confidence": 0.9934,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "card_acceptance",
+   "hier_cluster_confidence": 0.2975,
+   "hier_intent_confidence": 0.5952,
+   "hier_gating_confidence": 0.2975,
+   "hier_correct": true
+  },
+  {
+   "text": "can you tell me why my transfer failed?",
+   "label": "failed_transfer",
+   "direct_intent": "failed_transfer",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "failed_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9981,
+   "hier_gating_confidence": 0.9981,
+   "hier_correct": true
+  },
+  {
+   "text": "Can my card be used everywhere?",
+   "label": "card_acceptance",
+   "direct_intent": "country_support",
+   "direct_confidence": 0.9699,
+   "direct_correct": false,
+   "hier_cluster": "eligibility_and_coverage",
+   "hier_intent": "country_support",
+   "hier_cluster_confidence": 0.413,
+   "hier_intent_confidence": 0.9169,
+   "hier_gating_confidence": 0.413,
+   "hier_correct": false
+  },
+  {
+   "text": "Why did I get less money than I asked for?",
+   "label": "wrong_amount_of_cash_received",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 0.644,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 0.7567,
+   "hier_intent_confidence": 0.9821,
+   "hier_gating_confidence": 0.7567,
+   "hier_correct": false
+  },
+  {
+   "text": "I got my new card but I am not sure if it need s activated and how?",
+   "label": "activate_my_card",
+   "direct_intent": "activate_my_card",
+   "direct_confidence": 0.7922,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "activate_my_card",
+   "hier_cluster_confidence": 0.9987,
+   "hier_intent_confidence": 0.9989,
+   "hier_gating_confidence": 0.9987,
+   "hier_correct": true
+  },
+  {
+   "text": "I found a charge for a direct debit that was not made by me.",
+   "label": "direct_debit_payment_not_recognised",
+   "direct_intent": "transaction_charged_twice",
+   "direct_confidence": 0.9881,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "card_payment_fee_charged",
+   "hier_cluster_confidence": 0.9987,
+   "hier_intent_confidence": 0.3984,
+   "hier_gating_confidence": 0.3984,
+   "hier_correct": false
+  },
+  {
+   "text": "How do I deal with a blocked PIN?",
+   "label": "pin_blocked",
+   "direct_intent": "passcode_forgotten",
+   "direct_confidence": 0.8356,
+   "direct_correct": false,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "pin_blocked",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "How fast can you deliver?",
+   "label": "card_delivery_estimate",
+   "direct_intent": "receiving_money",
+   "direct_confidence": 0.9989,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "card_delivery_estimate",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 0.9994,
+   "hier_gating_confidence": 0.9994,
+   "hier_correct": true
+  },
+  {
+   "text": "I requested a refund, and never received it. What can I do?",
+   "label": "Refund_not_showing_up",
+   "direct_intent": "request_refund",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "request_refund",
+   "hier_cluster_confidence": 0.9991,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9991,
+   "hier_correct": false
+  },
+  {
+   "text": "I tried to top up. Why was it denied?",
+   "label": "top_up_failed",
+   "direct_intent": "top_up_by_bank_transfer_charge",
+   "direct_confidence": 0.8707,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_failed",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.998,
+   "hier_gating_confidence": 0.998,
+   "hier_correct": true
+  },
+  {
+   "text": "It seems I was overcharged when I used an ATM while on vacation. If I knew about your fees in advance I sure would have gone somewhere else.",
+   "label": "wrong_exchange_rate_for_cash_withdrawal",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 0.9979,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "request_refund",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.3459,
+   "hier_gating_confidence": 0.3459,
+   "hier_correct": false
+  },
+  {
+   "text": "How do I get rid of my account ASAP?",
+   "label": "terminate_account",
+   "direct_intent": "terminate_account",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "terminate_account",
+   "hier_cluster_confidence": 0.9291,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9291,
+   "hier_correct": true
+  },
+  {
+   "text": "My cash withdrawl was declined why?",
+   "label": "declined_cash_withdrawal",
+   "direct_intent": "declined_cash_withdrawal",
+   "direct_confidence": 0.8434,
+   "direct_correct": true,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "declined_cash_withdrawal",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "still waiting on that card",
+   "label": "card_arrival",
+   "direct_intent": "lost_or_stolen_card",
+   "direct_confidence": 0.4916,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "card_arrival",
+   "hier_cluster_confidence": 0.9996,
+   "hier_intent_confidence": 0.8342,
+   "hier_gating_confidence": 0.8342,
+   "hier_correct": true
+  },
+  {
+   "text": "Since my card is about to expire, I need a new one.",
+   "label": "card_about_to_expire",
+   "direct_intent": "disposable_card_limits",
+   "direct_confidence": 0.997,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "order_physical_card",
+   "hier_cluster_confidence": 0.8974,
+   "hier_intent_confidence": 0.4128,
+   "hier_gating_confidence": 0.4128,
+   "hier_correct": false
+  },
+  {
+   "text": "Trouble transferring transaction contact for help",
+   "label": "declined_transfer",
+   "direct_intent": "exchange_via_app",
+   "direct_confidence": 0.9991,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 0.8061,
+   "hier_intent_confidence": 0.2498,
+   "hier_gating_confidence": 0.2498,
+   "hier_correct": false
+  },
+  {
+   "text": "I need information about an extra \u20ac1 fee in my statement.",
+   "label": "extra_charge_on_statement",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "extra_charge_on_statement",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "How do you get a virtual card?",
+   "label": "getting_virtual_card",
+   "direct_intent": "getting_virtual_card",
+   "direct_confidence": 0.9999,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.9892,
+   "hier_intent_confidence": 0.5129,
+   "hier_gating_confidence": 0.5129,
+   "hier_correct": false
+  },
+  {
+   "text": "For some reason my contactless won't work for me.",
+   "label": "contactless_not_working",
+   "direct_intent": "contactless_not_working",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 0.6434,
+   "hier_intent_confidence": 0.8785,
+   "hier_gating_confidence": 0.6434,
+   "hier_correct": false
+  },
+  {
+   "text": "What do I need to do to verify the source of my funds?",
+   "label": "verify_source_of_funds",
+   "direct_intent": "verify_source_of_funds",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_source_of_funds",
+   "hier_cluster_confidence": 0.7999,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.7999,
+   "hier_correct": true
+  },
+  {
+   "text": "I just got my card and want to use it, how do I activate my card?",
+   "label": "activate_my_card",
+   "direct_intent": "activate_my_card",
+   "direct_confidence": 0.9999,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "activate_my_card",
+   "hier_cluster_confidence": 0.9974,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9974,
+   "hier_correct": true
+  },
+  {
+   "text": "My card was not accepted.",
+   "label": "declined_card_payment",
+   "direct_intent": "unable_to_verify_identity",
+   "direct_confidence": 0.993,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 0.9944,
+   "hier_intent_confidence": 0.8859,
+   "hier_gating_confidence": 0.8859,
+   "hier_correct": true
+  },
+  {
+   "text": "how do i get a virtual card for one time use",
+   "label": "get_disposable_virtual_card",
+   "direct_intent": "getting_virtual_card",
+   "direct_confidence": 0.9131,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.9817,
+   "hier_intent_confidence": 0.7821,
+   "hier_gating_confidence": 0.7821,
+   "hier_correct": false
+  },
+  {
+   "text": "I'd like to know why my top-up was canceled please.",
+   "label": "top_up_reverted",
+   "direct_intent": "cancel_transfer",
+   "direct_confidence": 0.9992,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_failed",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9979,
+   "hier_gating_confidence": 0.9979,
+   "hier_correct": false
+  },
+  {
+   "text": "Can you please make my top up go through as soon as possible. I really need the money and it has been pending for an hour already.",
+   "label": "pending_top_up",
+   "direct_intent": "top_up_by_bank_transfer_charge",
+   "direct_confidence": 0.8585,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "pending_top_up",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9574,
+   "hier_gating_confidence": 0.9574,
+   "hier_correct": true
+  },
+  {
+   "text": "I need to verify my identity, but how do I do that?",
+   "label": "verify_my_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9997,
+   "hier_gating_confidence": 0.9997,
+   "hier_correct": true
+  },
+  {
+   "text": "How do I apply for a refund?",
+   "label": "request_refund",
+   "direct_intent": "Refund_not_showing_up",
+   "direct_confidence": 0.9997,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "request_refund",
+   "hier_cluster_confidence": 0.9975,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9975,
+   "hier_correct": true
+  },
+  {
+   "text": "I would like to know how I can verify my Identity.",
+   "label": "verify_my_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "I see my top-up was canceled, but why?",
+   "label": "top_up_reverted",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.9417,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_failed",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9979,
+   "hier_gating_confidence": 0.9979,
+   "hier_correct": false
+  },
+  {
+   "text": "I think someone copied the numbers on my card and is using them.",
+   "label": "compromised_card",
+   "direct_intent": "compromised_card",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "compromised_card",
+   "hier_cluster_confidence": 0.9998,
+   "hier_intent_confidence": 0.9663,
+   "hier_gating_confidence": 0.9663,
+   "hier_correct": true
+  },
+  {
+   "text": "Why was I charged an extra fee when using a card?",
+   "label": "card_payment_fee_charged",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "card_payment_fee_charged",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9996,
+   "hier_gating_confidence": 0.9996,
+   "hier_correct": true
+  },
+  {
+   "text": "Why was I charged a fee for withdrawing cash?",
+   "label": "cash_withdrawal_charge",
+   "direct_intent": "transfer_fee_charged",
+   "direct_confidence": 0.9997,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "cash_withdrawal_charge",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9998,
+   "hier_gating_confidence": 0.9998,
+   "hier_correct": true
+  },
+  {
+   "text": "There was an error in exchange rate for my cash withdrawal",
+   "label": "wrong_exchange_rate_for_cash_withdrawal",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_rate",
+   "hier_cluster_confidence": 0.9974,
+   "hier_intent_confidence": 0.835,
+   "hier_gating_confidence": 0.835,
+   "hier_correct": false
+  },
+  {
+   "text": "Can I resent my passcode?",
+   "label": "passcode_forgotten",
+   "direct_intent": "passcode_forgotten",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "pin_blocked",
+   "hier_cluster_confidence": 0.9601,
+   "hier_intent_confidence": 0.6441,
+   "hier_gating_confidence": 0.6441,
+   "hier_correct": false
+  },
+  {
+   "text": "Is there a location near me that i can change my PIN?",
+   "label": "change_pin",
+   "direct_intent": "change_pin",
+   "direct_confidence": 0.8492,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "change_pin",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Once my card expires, what should I do?",
+   "label": "card_about_to_expire",
+   "direct_intent": "age_limit",
+   "direct_confidence": 0.9995,
+   "direct_correct": false,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "card_not_working",
+   "hier_cluster_confidence": 0.9142,
+   "hier_intent_confidence": 0.7611,
+   "hier_gating_confidence": 0.7611,
+   "hier_correct": false
+  },
+  {
+   "text": "I transferred some money but I think it has gotten lost somewhere.",
+   "label": "balance_not_updated_after_bank_transfer",
+   "direct_intent": "lost_or_stolen_card",
+   "direct_confidence": 0.6045,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_card",
+   "hier_cluster_confidence": 0.983,
+   "hier_intent_confidence": 0.8303,
+   "hier_gating_confidence": 0.8303,
+   "hier_correct": false
+  },
+  {
+   "text": "My contanctless has stopped working",
+   "label": "contactless_not_working",
+   "direct_intent": "contactless_not_working",
+   "direct_confidence": 0.7412,
+   "direct_correct": true,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "compromised_card",
+   "hier_cluster_confidence": 0.9899,
+   "hier_intent_confidence": 0.546,
+   "hier_gating_confidence": 0.546,
+   "hier_correct": false
+  },
+  {
+   "text": "What is this charge on my account for a cash withdrawl?",
+   "label": "cash_withdrawal_charge",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 0.9952,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "wrong_exchange_rate_for_cash_withdrawal",
+   "hier_cluster_confidence": 0.9997,
+   "hier_intent_confidence": 0.4809,
+   "hier_gating_confidence": 0.4809,
+   "hier_correct": false
+  },
+  {
+   "text": "Why can't I top up with a cheque?",
+   "label": "top_up_by_cash_or_cheque",
+   "direct_intent": "unable_to_verify_identity",
+   "direct_confidence": 0.9691,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_by_cash_or_cheque",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9965,
+   "hier_gating_confidence": 0.9965,
+   "hier_correct": true
+  },
+  {
+   "text": "Is my card accepted everywhere?",
+   "label": "card_acceptance",
+   "direct_intent": "card_acceptance",
+   "direct_confidence": 0.9354,
+   "direct_correct": true,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "card_acceptance",
+   "hier_cluster_confidence": 0.9232,
+   "hier_intent_confidence": 0.9997,
+   "hier_gating_confidence": 0.9232,
+   "hier_correct": true
+  },
+  {
+   "text": "Is the top up feature available on the Apple Watch?",
+   "label": "apple_pay_or_google_pay",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.9999,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_by_cash_or_cheque",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.4017,
+   "hier_gating_confidence": 0.4017,
+   "hier_correct": false
+  },
+  {
+   "text": "what is source of my funds, need to verify",
+   "label": "verify_source_of_funds",
+   "direct_intent": "verify_source_of_funds",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "card_payment_not_recognised",
+   "hier_cluster_confidence": 0.2107,
+   "hier_intent_confidence": 0.3655,
+   "hier_gating_confidence": 0.2107,
+   "hier_correct": false
+  },
+  {
+   "text": "I made a transaction and it is taking a very long time to go through.",
+   "label": "transfer_not_received_by_recipient",
+   "direct_intent": "failed_transfer",
+   "direct_confidence": 0.2796,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "pending_card_payment",
+   "hier_cluster_confidence": 0.9153,
+   "hier_intent_confidence": 0.9298,
+   "hier_gating_confidence": 0.9153,
+   "hier_correct": false
+  },
+  {
+   "text": "I was at the store earlier and my virtual card didn't work. What's the solution for this problem?",
+   "label": "virtual_card_not_working",
+   "direct_intent": "virtual_card_not_working",
+   "direct_confidence": 0.9431,
+   "direct_correct": true,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "getting_virtual_card",
+   "hier_cluster_confidence": 0.9232,
+   "hier_intent_confidence": 0.6251,
+   "hier_gating_confidence": 0.6251,
+   "hier_correct": false
+  },
+  {
+   "text": "I noticed an extra $1 charge on my statement, can you tell me why that is?",
+   "label": "extra_charge_on_statement",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "extra_charge_on_statement",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "How do I find the verification code for my top-up card?",
+   "label": "verify_top_up",
+   "direct_intent": "verify_top_up",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "verify_top_up",
+   "hier_cluster_confidence": 0.9974,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9974,
+   "hier_correct": true
+  },
+  {
+   "text": "What are the steps to activating a new card?",
+   "label": "activate_my_card",
+   "direct_intent": "activate_my_card",
+   "direct_confidence": 0.9996,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "activate_my_card",
+   "hier_cluster_confidence": 0.8548,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.8548,
+   "hier_correct": true
+  },
+  {
+   "text": "Can I order extra cards?",
+   "label": "getting_spare_card",
+   "direct_intent": "order_physical_card",
+   "direct_confidence": 0.9707,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9108,
+   "hier_gating_confidence": 0.9108,
+   "hier_correct": true
+  },
+  {
+   "text": "The wrong rate was applied to an item I bought in a currency different from mine. Can this be changed?",
+   "label": "card_payment_wrong_exchange_rate",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 0.9719,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_rate",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.793,
+   "hier_gating_confidence": 0.793,
+   "hier_correct": false
+  },
+  {
+   "text": "What are the ATMs that will accept this card?",
+   "label": "atm_support",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9992,
+   "direct_correct": true,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9376,
+   "hier_gating_confidence": 0.9376,
+   "hier_correct": true
+  },
+  {
+   "text": "What is the importance of verifying the top-up?",
+   "label": "verify_top_up",
+   "direct_intent": "verify_top_up",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "verify_top_up",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Is Apple Pay a possible top up option?",
+   "label": "apple_pay_or_google_pay",
+   "direct_intent": "apple_pay_or_google_pay",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_by_cash_or_cheque",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.6125,
+   "hier_gating_confidence": 0.6125,
+   "hier_correct": false
+  },
+  {
+   "text": "What are the steps I follow to transfer money into my account?",
+   "label": "transfer_into_account",
+   "direct_intent": "transfer_into_account",
+   "direct_confidence": 0.9981,
+   "direct_correct": true,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_by_cash_or_cheque",
+   "hier_cluster_confidence": 0.7592,
+   "hier_intent_confidence": 0.2629,
+   "hier_gating_confidence": 0.2629,
+   "hier_correct": false
+  },
+  {
+   "text": "How many transactions can I do with one disposable card?",
+   "label": "disposable_card_limits",
+   "direct_intent": "disposable_card_limits",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "disposable_card_limits",
+   "hier_cluster_confidence": 0.9998,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9998,
+   "hier_correct": true
+  },
+  {
+   "text": "Do you have a top-up limit?",
+   "label": "top_up_limits",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.9983,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_limits",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Help my verify my id.",
+   "label": "unable_to_verify_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 0.9998,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9998,
+   "hier_correct": false
+  },
+  {
+   "text": "What do I do if the ATM didn't give me the correct amount I withdrew? I pulled out 30 pounds and the ATM gave me 10 pounds.",
+   "label": "wrong_amount_of_cash_received",
+   "direct_intent": "atm_support",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "wrong_amount_of_cash_received",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.4057,
+   "hier_gating_confidence": 0.4057,
+   "hier_correct": true
+  },
+  {
+   "text": "Where is the money I topped off with?",
+   "label": "pending_top_up",
+   "direct_intent": "topping_up_by_card",
+   "direct_confidence": 0.766,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_by_cash_or_cheque",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.385,
+   "hier_gating_confidence": 0.385,
+   "hier_correct": false
+  },
+  {
+   "text": "can I transfer my salary if it's in a different currency?",
+   "label": "receiving_money",
+   "direct_intent": "receiving_money",
+   "direct_confidence": 0.6432,
+   "direct_correct": true,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_charge",
+   "hier_cluster_confidence": 0.9298,
+   "hier_intent_confidence": 0.3534,
+   "hier_gating_confidence": 0.3534,
+   "hier_correct": false
+  },
+  {
+   "text": "I need help with a lost card",
+   "label": "lost_or_stolen_card",
+   "direct_intent": "lost_or_stolen_card",
+   "direct_confidence": 0.9488,
+   "direct_correct": true,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_card",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9888,
+   "hier_gating_confidence": 0.9888,
+   "hier_correct": true
+  },
+  {
+   "text": "Is there an option to have a virtual card?",
+   "label": "getting_virtual_card",
+   "direct_intent": "virtual_card_not_working",
+   "direct_confidence": 0.9056,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "getting_virtual_card",
+   "hier_cluster_confidence": 0.9965,
+   "hier_intent_confidence": 0.9907,
+   "hier_gating_confidence": 0.9907,
+   "hier_correct": true
+  },
+  {
+   "text": "I need you to cancel a transfer that I made.  It is the wrong account number and the app won't let me stop the transaction.  Please stop it!",
+   "label": "cancel_transfer",
+   "direct_intent": "cancel_transfer",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "cancel_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9993,
+   "hier_gating_confidence": 0.9993,
+   "hier_correct": true
+  },
+  {
+   "text": "How long will it take to get to me?",
+   "label": "card_delivery_estimate",
+   "direct_intent": "pending_cash_withdrawal",
+   "direct_confidence": 0.1611,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "card_delivery_estimate",
+   "hier_cluster_confidence": 0.7499,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.7499,
+   "hier_correct": true
+  },
+  {
+   "text": "Are there any restrictions causing my transfer to be declined?",
+   "label": "declined_transfer",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "declined_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "where do I request a disposable virtual card?",
+   "label": "get_disposable_virtual_card",
+   "direct_intent": "disposable_card_limits",
+   "direct_confidence": 0.8892,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.8646,
+   "hier_intent_confidence": 0.7192,
+   "hier_gating_confidence": 0.7192,
+   "hier_correct": false
+  },
+  {
+   "text": "My daughter needs a card. Can I give her one of mine that's linked to my account?",
+   "label": "getting_spare_card",
+   "direct_intent": "card_acceptance",
+   "direct_confidence": 0.2121,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.9892,
+   "hier_intent_confidence": 0.9106,
+   "hier_gating_confidence": 0.9106,
+   "hier_correct": true
+  },
+  {
+   "text": "Can I get paid in another currency?",
+   "label": "receiving_money",
+   "direct_intent": "exchange_via_app",
+   "direct_confidence": 0.9999,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_via_app",
+   "hier_cluster_confidence": 0.999,
+   "hier_intent_confidence": 0.5228,
+   "hier_gating_confidence": 0.5228,
+   "hier_correct": false
+  },
+  {
+   "text": "There was an extra charge when I made a transfer.",
+   "label": "transfer_fee_charged",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "transfer_fee_charged",
+   "hier_cluster_confidence": 0.999,
+   "hier_intent_confidence": 0.9993,
+   "hier_gating_confidence": 0.999,
+   "hier_correct": true
+  },
+  {
+   "text": "I received my new card, how is it activated?",
+   "label": "activate_my_card",
+   "direct_intent": "activate_my_card",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "activate_my_card",
+   "hier_cluster_confidence": 0.993,
+   "hier_intent_confidence": 0.9851,
+   "hier_gating_confidence": 0.9851,
+   "hier_correct": true
+  },
+  {
+   "text": "I go the wrong exchange rate applied to my purchase in a foreign country.",
+   "label": "card_payment_wrong_exchange_rate",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_rate",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.8142,
+   "hier_gating_confidence": 0.8142,
+   "hier_correct": false
+  },
+  {
+   "text": "My credit card was declined.",
+   "label": "declined_card_payment",
+   "direct_intent": "declined_card_payment",
+   "direct_confidence": 0.9971,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "declined_card_payment",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 0.9998,
+   "hier_gating_confidence": 0.9998,
+   "hier_correct": true
+  },
+  {
+   "text": "Freeze my account it's been hacked.",
+   "label": "compromised_card",
+   "direct_intent": "terminate_account",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "compromised_card",
+   "hier_cluster_confidence": 0.9978,
+   "hier_intent_confidence": 0.9035,
+   "hier_gating_confidence": 0.9035,
+   "hier_correct": true
+  },
+  {
+   "text": "I have a top up that didn't go through.  Why?",
+   "label": "top_up_failed",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.8862,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_failed",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "How can I resolve a problem where my card won't go through at all?",
+   "label": "card_not_working",
+   "direct_intent": "compromised_card",
+   "direct_confidence": 0.7961,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "card_payment_not_recognised",
+   "hier_cluster_confidence": 0.9995,
+   "hier_intent_confidence": 0.8645,
+   "hier_gating_confidence": 0.8645,
+   "hier_correct": false
+  },
+  {
+   "text": "Please tell me which cash machines will allow me to change my pin.",
+   "label": "change_pin",
+   "direct_intent": "change_pin",
+   "direct_confidence": 0.9986,
+   "direct_correct": true,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 0.6339,
+   "hier_intent_confidence": 0.6436,
+   "hier_gating_confidence": 0.6339,
+   "hier_correct": false
+  },
+  {
+   "text": "I still don't have my card after 2 weeks.  What should I do?",
+   "label": "card_arrival",
+   "direct_intent": "lost_or_stolen_phone",
+   "direct_confidence": 0.4888,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_card",
+   "hier_cluster_confidence": 0.9945,
+   "hier_intent_confidence": 0.9777,
+   "hier_gating_confidence": 0.9777,
+   "hier_correct": false
+  },
+  {
+   "text": "What is the youngest someone can be to open an account?",
+   "label": "age_limit",
+   "direct_intent": "age_limit",
+   "direct_confidence": 0.9999,
+   "direct_correct": true,
+   "hier_cluster": "eligibility_and_coverage",
+   "hier_intent": "age_limit",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9936,
+   "hier_gating_confidence": 0.9936,
+   "hier_correct": true
+  },
+  {
+   "text": "Help me find my card pin!",
+   "label": "get_physical_card",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 0.9885,
+   "direct_correct": false,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "pin_blocked",
+   "hier_cluster_confidence": 0.6795,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.6795,
+   "hier_correct": false
+  },
+  {
+   "text": "How old do I have to be to open an account?",
+   "label": "age_limit",
+   "direct_intent": "age_limit",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "eligibility_and_coverage",
+   "hier_intent": "age_limit",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9948,
+   "hier_gating_confidence": 0.9948,
+   "hier_correct": true
+  },
+  {
+   "text": "Someone stole my phone.",
+   "label": "lost_or_stolen_phone",
+   "direct_intent": "lost_or_stolen_card",
+   "direct_confidence": 0.9973,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_phone",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "Why am I having trouble verifying my id?",
+   "label": "unable_to_verify_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.5624,
+   "hier_gating_confidence": 0.5624,
+   "hier_correct": false
+  },
+  {
+   "text": "I think my statement has a fraudulent charge",
+   "label": "card_payment_not_recognised",
+   "direct_intent": "extra_charge_on_statement",
+   "direct_confidence": 0.8858,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "extra_charge_on_statement",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9999,
+   "hier_correct": false
+  },
+  {
+   "text": "Says my transfer can't be completed?",
+   "label": "failed_transfer",
+   "direct_intent": "unable_to_verify_identity",
+   "direct_confidence": 0.8397,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "declined_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.8649,
+   "hier_gating_confidence": 0.8649,
+   "hier_correct": false
+  },
+  {
+   "text": "Need to deposit a cheque into my account",
+   "label": "top_up_by_cash_or_cheque",
+   "direct_intent": "fiat_currency_support",
+   "direct_confidence": 0.9919,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "order_physical_card",
+   "hier_cluster_confidence": 0.6076,
+   "hier_intent_confidence": 0.6661,
+   "hier_gating_confidence": 0.6076,
+   "hier_correct": false
+  },
+  {
+   "text": "How can I start using my card?",
+   "label": "activate_my_card",
+   "direct_intent": "activate_my_card",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "activate_my_card",
+   "hier_cluster_confidence": 0.9319,
+   "hier_intent_confidence": 0.9999,
+   "hier_gating_confidence": 0.9319,
+   "hier_correct": true
+  },
+  {
+   "text": "can I choose a date for delivery?",
+   "label": "card_delivery_estimate",
+   "direct_intent": "receiving_money",
+   "direct_confidence": 0.1965,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "card_delivery_estimate",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9514,
+   "hier_gating_confidence": 0.9514,
+   "hier_correct": true
+  },
+  {
+   "text": "HOw do I get my card back after the ATM has pulled it in?",
+   "label": "card_swallowed",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9999,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 0.9699,
+   "hier_gating_confidence": 0.9699,
+   "hier_correct": false
+  },
+  {
+   "text": "I want to choose a different PIN.",
+   "label": "change_pin",
+   "direct_intent": "change_pin",
+   "direct_confidence": 0.8963,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "change_pin",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "I am seeing a weird payment showing up that I know I did not make, how can I get it cancelled?",
+   "label": "direct_debit_payment_not_recognised",
+   "direct_intent": "card_payment_fee_charged",
+   "direct_confidence": 0.9527,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "card_payment_not_recognised",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.72,
+   "hier_gating_confidence": 0.72,
+   "hier_correct": false
+  },
+  {
+   "text": "The exchange rate given to me wasn't correct, after i purchased an item",
+   "label": "card_payment_wrong_exchange_rate",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_rate",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.901,
+   "hier_gating_confidence": 0.901,
+   "hier_correct": false
+  },
+  {
+   "text": "I ordered my card 2 weeks ago and it still isn't here? What do I do?",
+   "label": "card_arrival",
+   "direct_intent": "lost_or_stolen_phone",
+   "direct_confidence": 0.934,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "order_physical_card",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.7227,
+   "hier_gating_confidence": 0.7227,
+   "hier_correct": false
+  },
+  {
+   "text": "Is it possible to have both a Visa and a Mastercard from you?",
+   "label": "visa_or_mastercard",
+   "direct_intent": "supported_cards_and_currencies",
+   "direct_confidence": 0.9946,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "visa_or_mastercard",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.996,
+   "hier_gating_confidence": 0.996,
+   "hier_correct": true
+  },
+  {
+   "text": "How many card payments can I use on a disposable card?",
+   "label": "disposable_card_limits",
+   "direct_intent": "supported_cards_and_currencies",
+   "direct_confidence": 0.9721,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "disposable_card_limits",
+   "hier_cluster_confidence": 0.9955,
+   "hier_intent_confidence": 0.9995,
+   "hier_gating_confidence": 0.9955,
+   "hier_correct": true
+  },
+  {
+   "text": "When topping up by transfer, will I be charged?",
+   "label": "top_up_by_bank_transfer_charge",
+   "direct_intent": "topping_up_by_card",
+   "direct_confidence": 0.5516,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "balance_not_updated_after_bank_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.554,
+   "hier_gating_confidence": 0.554,
+   "hier_correct": false
+  },
+  {
+   "text": "I transferred my funds, why did it not go through?",
+   "label": "failed_transfer",
+   "direct_intent": "failed_transfer",
+   "direct_confidence": 0.665,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "declined_transfer",
+   "hier_cluster_confidence": 0.7746,
+   "hier_intent_confidence": 0.9157,
+   "hier_gating_confidence": 0.7746,
+   "hier_correct": false
+  },
+  {
+   "text": "A transfer to an account was not allowed",
+   "label": "beneficiary_not_allowed",
+   "direct_intent": "unable_to_verify_identity",
+   "direct_confidence": 0.6888,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_into_account",
+   "hier_cluster_confidence": 0.9996,
+   "hier_intent_confidence": 0.8415,
+   "hier_gating_confidence": 0.8415,
+   "hier_correct": false
+  },
+  {
+   "text": "My transaction to pay for an item was returned to my account.",
+   "label": "reverted_card_payment?",
+   "direct_intent": "reverted_card_payment?",
+   "direct_confidence": 0.9935,
+   "direct_correct": true,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "reverted_card_payment?",
+   "hier_cluster_confidence": 0.5583,
+   "hier_intent_confidence": 0.8523,
+   "hier_gating_confidence": 0.5583,
+   "hier_correct": true
+  },
+  {
+   "text": "I can't pull my card out of the ATM. Help me.",
+   "label": "card_swallowed",
+   "direct_intent": "atm_support",
+   "direct_confidence": 0.9965,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9718,
+   "hier_gating_confidence": 0.9718,
+   "hier_correct": false
+  },
+  {
+   "text": "Can I use any currency to add money?",
+   "label": "supported_cards_and_currencies",
+   "direct_intent": "fiat_currency_support",
+   "direct_confidence": 0.999,
+   "direct_correct": false,
+   "hier_cluster": "card_types_and_linking",
+   "hier_intent": "supported_cards_and_currencies",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9999,
+   "hier_correct": true
+  },
+  {
+   "text": "There is an unauthorized cash withdrawal from my account for 500\u00a3.  I definitely didn't make this withdrawal.  I need your help.",
+   "label": "cash_withdrawal_not_recognised",
+   "direct_intent": "declined_cash_withdrawal",
+   "direct_confidence": 0.8822,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "cash_withdrawal_not_recognised",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9622,
+   "hier_gating_confidence": 0.9622,
+   "hier_correct": true
+  },
+  {
+   "text": "The transfer I did hasn't arrived",
+   "label": "transfer_not_received_by_recipient",
+   "direct_intent": "failed_transfer",
+   "direct_confidence": 0.9993,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "failed_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.5414,
+   "hier_gating_confidence": 0.5414,
+   "hier_correct": false
+  },
+  {
+   "text": "Why isn't my ID being verified?",
+   "label": "unable_to_verify_identity",
+   "direct_intent": "why_verify_identity",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "unable_to_verify_identity",
+   "hier_cluster_confidence": 0.9968,
+   "hier_intent_confidence": 0.9996,
+   "hier_gating_confidence": 0.9968,
+   "hier_correct": true
+  },
+  {
+   "text": "You did not apply the correct exchange rate for an item that I bought.",
+   "label": "card_payment_wrong_exchange_rate",
+   "direct_intent": "exchange_rate",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "exchange_rates",
+   "hier_intent": "exchange_rate",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.6863,
+   "hier_gating_confidence": 0.6863,
+   "hier_correct": false
+  },
+  {
+   "text": "What should I do if the passcode doesn't work for me?",
+   "label": "passcode_forgotten",
+   "direct_intent": "passcode_forgotten",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "card_and_pin_malfunctions",
+   "hier_intent": "pin_blocked",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 0.9542,
+   "hier_gating_confidence": 0.9542,
+   "hier_correct": false
+  },
+  {
+   "text": "Will my transfer immediately show up in my account?",
+   "label": "transfer_timing",
+   "direct_intent": "transfer_into_account",
+   "direct_confidence": 0.9932,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_into_account",
+   "hier_cluster_confidence": 0.4995,
+   "hier_intent_confidence": 0.9925,
+   "hier_gating_confidence": 0.4995,
+   "hier_correct": false
+  },
+  {
+   "text": "My card's expiring, what happens now?",
+   "label": "card_about_to_expire",
+   "direct_intent": "age_limit",
+   "direct_confidence": 0.9545,
+   "direct_correct": false,
+   "hier_cluster": "lost_stolen_compromised",
+   "hier_intent": "lost_or_stolen_card",
+   "hier_cluster_confidence": 0.4231,
+   "hier_intent_confidence": 0.4949,
+   "hier_gating_confidence": 0.4231,
+   "hier_correct": false
+  },
+  {
+   "text": "there's a delay in my top-up",
+   "label": "pending_top_up",
+   "direct_intent": "top_up_by_card_charge",
+   "direct_confidence": 0.9984,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "pending_top_up",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9622,
+   "hier_gating_confidence": 0.9622,
+   "hier_correct": true
+  },
+  {
+   "text": "do the details of my profile have to match my documents",
+   "label": "verify_my_identity",
+   "direct_intent": "verify_my_identity",
+   "direct_confidence": 0.6035,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "verify_my_identity",
+   "hier_cluster_confidence": 0.9769,
+   "hier_intent_confidence": 0.8219,
+   "hier_gating_confidence": 0.8219,
+   "hier_correct": true
+  },
+  {
+   "text": "Should i reinstall the payment app?",
+   "label": "contactless_not_working",
+   "direct_intent": "activate_my_card",
+   "direct_confidence": 0.9991,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "card_payment_not_recognised",
+   "hier_cluster_confidence": 0.9724,
+   "hier_intent_confidence": 0.5967,
+   "hier_gating_confidence": 0.5967,
+   "hier_correct": false
+  },
+  {
+   "text": "IM still waiting for my account to update from a cash deposit?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "pending_cash_withdrawal",
+   "direct_confidence": 0.5194,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "pending_cash_withdrawal",
+   "hier_cluster_confidence": 0.9997,
+   "hier_intent_confidence": 0.9913,
+   "hier_gating_confidence": 0.9913,
+   "hier_correct": false
+  },
+  {
+   "text": "Why was the transfer declined?",
+   "label": "declined_transfer",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 1.0,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "declined_transfer",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  },
+  {
+   "text": "I need support options, I want to top my card",
+   "label": "supported_cards_and_currencies",
+   "direct_intent": "topping_up_by_card",
+   "direct_confidence": 0.5775,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "topping_up_by_card",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9564,
+   "hier_gating_confidence": 0.9564,
+   "hier_correct": false
+  },
+  {
+   "text": "I Submitted a cheque couple days ago, nothing happened to my account yet.Would you please check What could be the possible issue?",
+   "label": "balance_not_updated_after_cheque_or_cash_deposit",
+   "direct_intent": "unable_to_verify_identity",
+   "direct_confidence": 0.6363,
+   "direct_correct": false,
+   "hier_cluster": "card_payment_problems",
+   "hier_intent": "pending_card_payment",
+   "hier_cluster_confidence": 0.7237,
+   "hier_intent_confidence": 0.4411,
+   "hier_gating_confidence": 0.4411,
+   "hier_correct": false
+  },
+  {
+   "text": "I could not do a transfer because it was declined",
+   "label": "declined_transfer",
+   "direct_intent": "declined_transfer",
+   "direct_confidence": 0.9971,
+   "direct_correct": true,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "declined_transfer",
+   "hier_cluster_confidence": 0.9999,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 0.9999,
+   "hier_correct": true
+  },
+  {
+   "text": "How would I go about getting a second card?",
+   "label": "getting_spare_card",
+   "direct_intent": "disposable_card_limits",
+   "direct_confidence": 0.6463,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "getting_spare_card",
+   "hier_cluster_confidence": 0.9988,
+   "hier_intent_confidence": 0.9963,
+   "hier_gating_confidence": 0.9963,
+   "hier_correct": true
+  },
+  {
+   "text": "From where can I withdraw?",
+   "label": "atm_support",
+   "direct_intent": "receiving_money",
+   "direct_confidence": 1.0,
+   "direct_correct": false,
+   "hier_cluster": "cash_and_atm",
+   "hier_intent": "atm_support",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.5031,
+   "hier_gating_confidence": 0.5031,
+   "hier_correct": true
+  },
+  {
+   "text": "My top-up was cancelled; will I receive a refund?",
+   "label": "top_up_reverted",
+   "direct_intent": "cancel_transfer",
+   "direct_confidence": 0.4917,
+   "direct_correct": false,
+   "hier_cluster": "top_ups_and_balance_updates",
+   "hier_intent": "top_up_reverted",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.8672,
+   "hier_gating_confidence": 0.8672,
+   "hier_correct": true
+  },
+  {
+   "text": "Can i have a second physical card for this account?",
+   "label": "getting_spare_card",
+   "direct_intent": "order_physical_card",
+   "direct_confidence": 0.9992,
+   "direct_correct": false,
+   "hier_cluster": "card_ordering_and_delivery",
+   "hier_intent": "order_physical_card",
+   "hier_cluster_confidence": 0.9963,
+   "hier_intent_confidence": 0.792,
+   "hier_gating_confidence": 0.792,
+   "hier_correct": false
+  },
+  {
+   "text": "How come you need to know my identity?",
+   "label": "why_verify_identity",
+   "direct_intent": "why_verify_identity",
+   "direct_confidence": 0.9999,
+   "direct_correct": true,
+   "hier_cluster": "identity_and_account_admin",
+   "hier_intent": "why_verify_identity",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 0.9977,
+   "hier_gating_confidence": 0.9977,
+   "hier_correct": true
+  },
+  {
+   "text": "I can't transfer money from my account.",
+   "label": "declined_transfer",
+   "direct_intent": "unable_to_verify_identity",
+   "direct_confidence": 0.9999,
+   "direct_correct": false,
+   "hier_cluster": "transfers_and_beneficiaries",
+   "hier_intent": "transfer_into_account",
+   "hier_cluster_confidence": 0.7958,
+   "hier_intent_confidence": 0.9977,
+   "hier_gating_confidence": 0.7958,
+   "hier_correct": false
+  },
+  {
+   "text": "Why was I charged a fee when I paid with card?",
+   "label": "card_payment_fee_charged",
+   "direct_intent": "transaction_charged_twice",
+   "direct_confidence": 0.9995,
+   "direct_correct": false,
+   "hier_cluster": "fees_charges_and_refunds",
+   "hier_intent": "card_payment_fee_charged",
+   "hier_cluster_confidence": 1.0,
+   "hier_intent_confidence": 1.0,
+   "hier_gating_confidence": 1.0,
+   "hier_correct": true
+  }
+ ]
+}

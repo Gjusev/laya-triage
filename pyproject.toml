@@ -14,12 +14,13 @@ dependencies = ["laya>=0.3"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+gpt = ["openai>=1"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/laya_triage"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 testpaths = ["tests"]
 markers = [
     "slow: loads a real laya checkpoint (downloads on first run); opt in with: pytest -m slow",
