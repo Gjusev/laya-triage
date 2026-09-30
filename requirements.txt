@@ -1,0 +1,6 @@
+# Deploy manifest for Streamlit Community Cloud (reads the repo root).
+# Mirrors the [app] extra in pyproject.toml.
+laya>=0.3
+streamlit>=1.40
+pandas>=2
+laya-triage @ git+https://github.com/Gjusev/laya-triage.git
