@@ -37,7 +37,7 @@ def coverage_table(curve: list[dict], deciles=(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4
     lines = ["| coverage | accuracy @ coverage | threshold |", "|---|---|---|"]
     for d in deciles:
         best = min(curve, key=lambda p: abs(p["coverage"] - d))
-        lines.append(f"| {best['coverage']:.1%} | {_pct(best['accuracy'])} | {best['threshold']:.2f} |")
+        lines.append(f"| {best['coverage']:.1%} | {_pct(best['accuracy'])} | {best['threshold']:.3f} |")
     return lines
 
 
@@ -90,6 +90,16 @@ def render() -> str:
             f"escalates {esc['provisional_0.6']['n_escalated']}/{esc['provisional_0.6']['n_total']}.",
             "",
         ]
+        if esc.get("chosen_threshold") is not None:
+            chosen_point = min(esc["curve"], key=lambda q: abs(q["threshold"] - esc["chosen_threshold"]))
+            k = round(chosen_point["accuracy"] * chosen_point["n_handled"])
+            acc_minus_one = (k - 1) / chosen_point["n_handled"]
+            lines += [
+                f"Margin note: this point auto-handles {chosen_point['n_handled']} tickets with {k} correct; "
+                f"one fewer correct ticket puts it at {acc_minus_one:.1%}, below the "
+                f"{esc['target_accuracy']:.0%} target. Treat the threshold as approximate at this sample size.",
+                "",
+            ]
     else:
         lines += ["TODO(run): `python -m evals.banking77`", ""]
 
@@ -102,12 +112,13 @@ def render() -> str:
             "mean coarse confidence and escalation rate per language, plus whether",
             "the same parallel utterance routes to the same cluster everywhere.",
             "",
-            "| Locale | mean cluster confidence | escalation @ provisional |",
-            "|---|---|---|",
+            "| Locale | mean cluster confidence | escalation @ 0.6 | escalation @ 0.84 |",
+            "|---|---|---|---|",
         ]
         for locale, stats in massive["per_locale"].items():
             lines.append(
-                f"| {locale} | {stats['mean_cluster_confidence']:.3f} | {_pct(stats['escalation_rate_at_provisional'])} |"
+                f"| {locale} | {stats['mean_cluster_confidence']:.3f} | "
+                f"{_pct(stats['escalation_rate_at_provisional'])} | {_pct(stats.get('escalation_rate_at_measured'))} |"
             )
         lines += [
             "",
@@ -123,9 +134,12 @@ def render() -> str:
     if hand:
         sig = hand["signals"]
         lines += [
-            "Two blind annotation passes per `data/annotation_guide.md`, disagreements adjudicated.",
+            "AI-authored, AI-annotated set: two blind annotation passes per",
+            "`data/annotation_guide.md`, disagreements adjudicated (see the guide's",
+            "provenance section). Inter-pass kappa is computed between the two blind",
+            "passes before adjudication.",
             "",
-            "| Signal | MAE | kappa (strict) | kappa (weighted) |",
+            "| Signal | MAE | inter-pass kappa (strict) | inter-pass kappa (weighted) |",
             "|---|---|---|---|",
             f"| urgency | {_num(sig['urgency_mae'])} | {_num(sig['inter_pass_kappa_urgency'])} | {_num(sig['inter_pass_kappa_urgency_weighted'])} |",
             f"| frustration | {_num(sig['frustration_mae'])} | {_num(sig['inter_pass_kappa_frustration'])} | {_num(sig['inter_pass_kappa_frustration_weighted'])} |",

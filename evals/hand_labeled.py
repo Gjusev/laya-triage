@@ -89,19 +89,43 @@ def run() -> dict:
         "signals": {
             "urgency_mae": mae([r.urgency for r in results], [row["urgency"] for row in rows]),
             "frustration_mae": mae([r.frustration for r in results], [row["frustration"] for row in rows]),
+            # the promised inter-pass metric: the two blind passes, before adjudication
             "inter_pass_kappa_urgency": cohen_kappa(
-                [row["urgency"] for row in rows], [row["pass2_urgency"] for row in rows]
+                [row["pass1_urgency"] for row in rows], [row["pass2_urgency"] for row in rows]
             ),
             "inter_pass_kappa_urgency_weighted": cohen_kappa(
-                [row["urgency"] for row in rows], [row["pass2_urgency"] for row in rows], weighted=True
+                [row["pass1_urgency"] for row in rows], [row["pass2_urgency"] for row in rows], weighted=True
             ),
             "inter_pass_kappa_frustration": cohen_kappa(
-                [row["frustration"] for row in rows], [row["pass2_frustration"] for row in rows]
+                [row["pass1_frustration"] for row in rows], [row["pass2_frustration"] for row in rows]
             ),
             "inter_pass_kappa_frustration_weighted": cohen_kappa(
-                [row["frustration"] for row in rows], [row["pass2_frustration"] for row in rows], weighted=True
+                [row["pass1_frustration"] for row in rows], [row["pass2_frustration"] for row in rows], weighted=True
+            ),
+            # agreement of the adjudicated final with pass 2 (structurally an
+            # upper bound on inter-pass agreement; reported for completeness)
+            "final_vs_pass2_kappa_urgency": cohen_kappa(
+                [row["urgency"] for row in rows], [row["pass2_urgency"] for row in rows]
+            ),
+            "final_vs_pass2_kappa_frustration": cohen_kappa(
+                [row["frustration"] for row in rows], [row["pass2_frustration"] for row in rows]
             ),
         },
+        "records": [
+            {
+                "id": row["id"],
+                "lang": row["lang"],
+                "label_cluster": row["cluster"],
+                "label_intent": row["intent"],
+                "label_urgency": row["urgency"],
+                "label_frustration": row["frustration"],
+                "predicted_cluster": result.cluster,
+                "predicted_intent": result.intent,
+                "predicted_urgency": result.urgency,
+                "predicted_frustration": result.frustration,
+            }
+            for row, result in zip(rows, results)
+        ],
         "per_language": {
             lang: {
                 "n": s["n"],

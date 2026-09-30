@@ -75,6 +75,10 @@ def load_massive(locale: str, limit: int) -> list[dict]:
     """
     from datasets import load_dataset
 
-    ds = load_dataset("parquet", data_files=MASSIVE_PARQUET.format(locale=locale), split="test")
+    ds = load_dataset(
+        "parquet",
+        data_files={"test": MASSIVE_PARQUET.format(locale=locale)},
+        split="test",
+    )
     rows = [{"id": r["id"], "utt": r["utt"]} for r in ds]
     return sample_rows(rows, limit, seed=13)

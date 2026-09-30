@@ -24,7 +24,8 @@ from evals import data
 
 RESULTS_PATH = Path(__file__).resolve().parent / "results" / "massive.json"
 DEFAULT_LIMIT = 200
-PROVISIONAL_THRESHOLD = 0.6  # TODO(measure): replace with the chosen operational threshold
+PROVISIONAL_THRESHOLD = 0.6
+MEASURED_THRESHOLD = 0.84  # chosen from the BANKING77 coverage/accuracy curve (evals/results/banking77.json)
 
 
 def parallel_consistency(predictions_by_locale: dict[str, dict[int, str]]) -> dict:
@@ -66,6 +67,7 @@ def run(limit: int = DEFAULT_LIMIT) -> dict:
 
     per_locale = {}
     predictions_by_locale = {}
+    per_ticket = {}
     for locale in data.MASSIVE_LOCALES:
         rows = data.load_massive(locale, limit=limit)
         outputs = router.predict_batch(
@@ -73,18 +75,29 @@ def run(limit: int = DEFAULT_LIMIT) -> dict:
         )
         confidences = []
         predictions = {}
+        tickets = []
         for row, out in zip(rows, outputs):
             answer = out["answers"]["cluster"]
             predictions[row["id"]] = answer["choice"]
             confidences.append(answer["answer_confidence"])
+            tickets.append(
+                {"id": row["id"], "utt": row["utt"], "cluster": answer["choice"], "confidence": answer["answer_confidence"]}
+            )
         predictions_by_locale[locale] = predictions
+        per_ticket[locale] = tickets
         per_locale[locale] = {
             "n": len(rows),
             "mean_cluster_confidence": sum(confidences) / len(confidences),
             "escalation_rate_at_provisional": sum(c < PROVISIONAL_THRESHOLD for c in confidences)
             / len(confidences),
+            "escalation_rate_at_measured": sum(c < MEASURED_THRESHOLD for c in confidences)
+            / len(confidences),
         }
-        print(f"  {locale}: mean confidence {per_locale[locale]['mean_cluster_confidence']:.3f}")
+        print(
+            f"  {locale}: mean conf {per_locale[locale]['mean_cluster_confidence']:.3f} | "
+            f"escal@0.6 {per_locale[locale]['escalation_rate_at_provisional']:.1%} | "
+            f"escal@0.84 {per_locale[locale]['escalation_rate_at_measured']:.1%}"
+        )
 
     consistency = parallel_consistency(predictions_by_locale)
 
@@ -94,9 +107,11 @@ def run(limit: int = DEFAULT_LIMIT) -> dict:
             "split": "test",
             "source": "qanastek/MASSIVE parquet conversion",
             "provisional_threshold": PROVISIONAL_THRESHOLD,
+            "measured_threshold": MEASURED_THRESHOLD,
         },
         "per_locale": per_locale,
         "consistency": consistency,
+        "records": per_ticket,
     }
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)

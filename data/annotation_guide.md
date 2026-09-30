@@ -47,8 +47,23 @@ esperando" is a 2 urgency; German "sofort" is a 3 marker).
 
 Tickets in this dataset were AI-authored to exercise the taxonomy above, then
 labeled in two independent passes by separate AI annotators following this
-guide (pass 2 was blind to pass 1). Inter-pass agreement is reported with the
-dataset (`evals/results/hand_labeled.json`); disagreements were adjudicated by
-a third pass against this guide. The labels are a training/eval aid for this
-project, not a human-gold benchmark — a human-annotated replacement would
-strengthen the signal. TODO(human): replace or extend with human annotation.
+guide (pass 2 was blind to pass 1). The dataset stores both passes
+(`pass1_urgency`/`pass1_frustration`, `pass2_urgency`/`pass2_frustration`)
+plus the final adjudicated label (`urgency`/`frustration`); the reported
+inter-pass kappa is computed between the two blind passes, before
+adjudication. Disagreements were settled by a third pass against this guide
+(`adjudicated: true` rows).
+
+Known structural properties, stated so nobody over-reads the numbers:
+
+- **Block structure**: the 60 es tickets intentionally mirror the 60 en
+  tickets cluster-for-cluster (same scenario walk), which enables direct
+  cross-language comparison of the model's signals. The two blocks are
+  paraphrases, not word-for-word translations. The other languages cover
+  rotating subsets of the clusters.
+- **Thin extreme cells**: levels 3 (and partly 2) are rare by design (the
+  target mix mirrors real support queues, where most tickets are calm).
+  Per-language MAE at the top of either scale rests on a handful of rows.
+- The labels are a training/eval aid for this project, not a human-gold
+  benchmark — a human-annotated replacement would strengthen the signal.
+  TODO(human): replace or extend with human annotation.
