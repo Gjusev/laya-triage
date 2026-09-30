@@ -1,172 +1,243 @@
-# laya-triage
+<p align="center">
+  <img src="docs/assets/social-preview.png" alt="laya-triage — multilingual ticket triage from 77 intents to 12 clusters and 8 departments, with confidence-based human review" width="100%">
+</p>
 
-> Multilingual support ticket triage: department, urgency, frustration and churn risk in one forward pass, with confidence-based escalation to humans.
+<h1 align="center">laya-triage</h1>
 
-Status: early development. Built on [laya](https://github.com/NandhaKishorM/laya),
-the open-source System 1 decision engine (Apache 2.0).
+<p align="center">
+  Multilingual support-ticket triage on a local System 1 model.<br>
+  Route intent, score customer signals, and escalate uncertainty to a human.
+</p>
 
-## Why
+<p align="center">
+  <a href="https://github.com/Gjusev/laya-triage/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Gjusev/laya-triage/ci.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white"></a>
+  <a href="https://www.python.org/"><img alt="Python 3.10+" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white"></a>
+  <a href="https://streamlit.io/"><img alt="Streamlit app" src="https://img.shields.io/badge/Streamlit-app-FF4B4B?style=flat-square&logo=streamlit&logoColor=white"></a>
+  <a href="https://www.kaggle.com/kernels/welcome?src=https://github.com/Gjusev/laya-triage/blob/main/finetune/laya_triage_banking77.ipynb"><img alt="Kaggle-ready notebook" src="https://img.shields.io/badge/Kaggle-notebook-20BEFF?style=flat-square&logo=kaggle&logoColor=white"></a>
+  <a href="LICENSE"><img alt="Apache 2.0 license" src="https://img.shields.io/github/license/Gjusev/laya-triage?style=flat-square"></a>
+</p>
 
-- Flat classification collapses at scale: a 12-way choice scored 0.40 on real data in the Jev ecosystem. Hierarchical coarse-to-fine routing is the documented fix (54.3% to 60.8% on BANKING77, laya issue #102).
-- laya's Router covers 45 of 51 languages automatically, and every answer carries calibrated confidence, so the escalation policy is measurable instead of guessed.
+<p align="center">
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="#demo">Video</a> ·
+  <a href="#measured-results">Results</a> ·
+  <a href="https://www.kaggle.com/kernels/welcome?src=https://github.com/Gjusev/laya-triage/blob/main/finetune/laya_triage_banking77.ipynb">Kaggle notebook</a> ·
+  <a href="docs/results/phase2.md">Full evaluation</a>
+</p>
 
-## Design: hierarchical routing (Phase 1)
+> [!NOTE]
+> This project is in early development. The zero-shot pipeline, app, tests, evaluation artifacts, and fine-tuning notebook are available; the fine-tuned checkpoint and hosted Hugging Face Space have not been published yet.
 
-A single `choice` over the 77 BANKING77 intents is exactly the shape that
-collapses (see above), so intent is decided in two stages:
+## What it does
 
-1. **Coarse pass** — one `choice` over 12 clusters **plus all auxiliary signals
-   in the same forward pass**: urgency (0–3 score), frustration (0–3 score),
-   churn risk (P), refund requested (P).
-2. **Fine pass** — one `choice` restricted to the intents of the winning
-   cluster (3–10 options, far from the collapse zone).
+`laya-triage` turns a ticket in any supported language into an operational routing decision:
 
-77 intents → 12 clusters → 8 departments:
+| Output | Meaning |
+|---|---|
+| `department`, `cluster`, `intent` | Hierarchical route across 77 BANKING77 intents, 12 clusters, and 8 departments |
+| `urgency`, `frustration` | Expected scores from 0 to 3 |
+| `churn_risk`, `refund_requested` | Probability-like yes/no outputs |
+| `confidences` | Calibrated answer confidence for every decision |
+| `escalate`, `escalation_reasons` | Explicit human handoff when routing confidence is below the threshold |
 
-| Cluster | Intents | Department |
-|---|---|---|
-| card_ordering_and_delivery | 6 | cards |
-| card_types_and_linking | 9 | cards |
-| card_and_pin_malfunctions | 6 | cards |
-| card_payment_problems | 6 | payments_cash |
-| cash_and_atm | 6 | payments_cash |
-| transfers_and_beneficiaries | 9 | transfers |
-| top_ups_and_balance_updates | 10 | topups_deposits |
-| fees_charges_and_refunds | 8 | billing_fees |
-| exchange_rates | 4 | billing_fees |
-| identity_and_account_admin | 7 | account_access |
-| lost_stolen_compromised | 3 | fraud_security |
-| eligibility_and_coverage | 3 | general_service |
+It is built on [laya](https://github.com/NandhaKishorM/laya), the Apache-2.0 System 1 decision engine. Inference runs locally after the checkpoints are downloaded on first use.
 
-BANKING77 is a neobank dataset: it has no loan/credit intents, so a
-loans department would be empty by construction and is not modeled.
-Intent labels are the exact HuggingFace `PolyAI/banking77` spellings,
-including the canonical quirks `Refund_not_showing_up` (label 51) and
-`reverted_card_payment?` (label 53).
+## Demo
 
-**Multilingual default.** laya's language detection leaves short unaccented
-Latin text (e.g. `me cobraron dos veces, reembolsen o cancelo`) undecided, and
-an undecided ticket falls to the Router default. `build_router()` defaults to
-the multilingual checkpoint: detection-confident English still routes to the
-English checkpoint, everything else gets the checkpoint that does not collapse
-off English. Callers who know the language can pass `lang=` to skip detection.
+The 20-second launch film shows the multilingual route, auxiliary signals, and confidence-based handoff:
 
-**Escalation policy.** Every answer carries a calibrated `answer_confidence`
-(the quantity laya's temperature scaling fits). If either routing decision
-(cluster or intent) falls strictly below `min_confidence` (default 0.84), the
-ticket is flagged for a human with one reason per low-confidence decision.
-The policy deliberately covers routing only: auxiliary signals are score-type
-questions whose confidence structurally tops out lower (median ~0.54 for urgency on
-the Phase 1 smoke run), so gating on them would escalate almost every ticket. The 0.84
-default is the measured operational threshold — the coverage/accuracy curve on
-the BANKING77 eval reaches 75.2% accuracy at 60.5% coverage there (full curve
-in [docs/results/phase2.md](docs/results/phase2.md)).
+https://github.com/Gjusev/laya-triage/raw/main/brag-output/brag.mp4
 
-**Known limitations (measured on the 20-ticket smoke set, not on BANKING77
-itself — Phase 2 measures that properly).** Coarse routing misclassifies a
-minority of tickets, sometimes with high confidence (e.g. "please close my
-account, I am done with this bank" lands in fees instead of account closure).
-The multilingual checkpoint ships an invalid temperature for choices with 11+
-options (laya clamps it and warns that confidence from the affected entries is
-uncalibrated), so confidence on the 12-option coarse stage in non-English
-languages must be treated with care; temperature recalibration is future work. On
-out-of-domain input (a batch of realistic IT-operations tickets: API outage,
-SSO lockout, dark-mode request), 7 of 8 escalate to a human at the measured
-0.84 threshold — the one auto-handled ticket (SSO lockout) maps to the closest
-banking analog, `unable_to_verify_identity`. That is the safety property that
-matters when the hierarchy cannot name the intent.
+<p align="center">
+  <a href="brag-output/brag.mp4"><strong>▶ Open the MP4 directly</strong></a>
+  ·
+  <a href="https://htmlpreview.github.io/?https://github.com/Gjusev/laya-triage/blob/main/docs/assets/how-it-works.html"><strong>Explore the animated pipeline</strong></a>
+</p>
+
+## Why hierarchical routing?
+
+A flat choice over all 77 intents is where choice quality collapses. The pipeline narrows the decision in two stages:
+
+```mermaid
+flowchart LR
+    T["Ticket<br/>any language"] --> R{"laya Router"}
+    R -->|detected English| E["English checkpoint"]
+    R -->|fallback / multilingual| M["Multilingual checkpoint"]
+    E --> C["Coarse pass<br/>12 clusters + 4 signals"]
+    M --> C
+    C --> F["Fine pass<br/>3–10 candidate intents"]
+    C --> S["Urgency · frustration<br/>churn · refund"]
+    F --> D["8 departments"]
+    C -. confidence below 0.84 .-> H["Human review"]
+    F -. confidence below 0.84 .-> H
+```
+
+1. **Coarse pass** — selects one of 12 clusters and scores urgency, frustration, churn risk, and refund intent in the same forward pass.
+2. **Fine pass** — chooses among only 3–10 intents inside the winning cluster.
+3. **Escalation** — sends the ticket to a human if either routing decision falls below `min_confidence` (default: `0.84`) and records the reason.
+
+Signal confidence is intentionally not used for escalation: score-type questions have structurally lower confidence and would hand off almost every ticket. The policy gates only `cluster` and `intent`.
+
+## Measured results
+
+All headline numbers come from committed artifacts in [`evals/results/`](evals/results) and can be reproduced with `python -m evals.run_all`.
+
+| Measurement | Result | Evaluation set |
+|---|---:|---|
+| Hierarchical intent accuracy | **51.0%** | 200 BANKING77 test tickets, seed 13 |
+| Flat 77-way intent accuracy | 36.5% | Same sample |
+| Improvement over flat routing | **+14.5 pp** | Same sample |
+| Accuracy at the `0.84` threshold | **75.2%** | 60.5% auto-handled coverage |
+| Coarse-cluster accuracy | 68.0% | Same sample |
+| Urgency / frustration MAE | 0.81 / 1.07 | Hand-labeled 200-ticket set |
+
+At roughly 60% coverage, the measured escalation curve reaches about 75% intent accuracy. This operating point is based on 200 tickets—use it as an evidence-backed starting point, not a universal production guarantee. See the [full Phase 2 report](docs/results/phase2.md) for macro-F1, the complete coverage/accuracy curve, multilingual breakdowns, annotation agreement, and timing.
+
+## Quickstart
+
+Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/) (or a regular virtual environment with `pip`).
+
+```bash
+git clone https://github.com/Gjusev/laya-triage.git
+cd laya-triage
+
+uv venv
+uv pip install -e ".[app]"
+```
+
+Triage one ticket:
 
 ```python
 from laya_triage import TriagePipeline, build_router
 
-pipeline = TriagePipeline(build_router(), min_confidence=0.6)
+pipeline = TriagePipeline(build_router(), min_confidence=0.84)
 result = pipeline.triage("me cobraron dos veces, reembolsen o cancelo")
-result.department, result.cluster, result.intent   # billing route
-result.urgency, result.frustration                  # 0-3 expected levels
-result.churn_risk, result.refund_requested          # P(true)
-result.escalate, result.escalation_reasons          # human handoff
-# long tickets: pipeline.triage(text, long=True) scores every window
+
+print(result.department, result.cluster, result.intent)
+print(result.urgency, result.frustration)
+print(result.churn_risk, result.refund_requested)
+print(result.escalate, result.escalation_reasons)
 ```
 
-## Phase 2 results (measured)
+Useful options:
 
-Full tables and reproducible artifacts: [docs/results/phase2.md](docs/results/phase2.md)
-(`python -m evals.run_all --limit 200` re-runs everything; the published artifact used seed 13).
+```python
+# Skip automatic language detection when the language is known.
+result = pipeline.triage(ticket, lang="es")
 
-- **Hierarchical beats flat by 14.5 points** on a 200-ticket BANKING77 test
-  sample (seed 13): 51.0% vs 36.5% intent accuracy (macro-F1 0.443 vs 0.284);
-  coarse accuracy 68.0%. The documented choice-collapse is real and the
-  hierarchy is the fix.
-- **Escalation curve published**: auto-handling 60% of tickets keeps 75.8%
-  accuracy; the chosen threshold is 0.84 (75.2% accuracy at 60.5% coverage).
-- **Hand-labeled dataset** (200 tickets, 6 languages; AI-authored and
-  AI-annotated per the published guide — two blind passes + adjudication):
-  inter-pass kappa 0.781 (urgency) / 0.792 (frustration), weighted 0.908 /
-  0.893. Model MAE: 0.81 urgency, 1.07 frustration.
-- **Multilingual in-domain coarse accuracy degrades off English**: en 71.7%,
-  es 55.0%, fr 52.0%, hi 53.3%, de 36.0%, ar 20.0% (small n per language) —
-  the clearest target for the Phase 3 fine-tune. On out-of-domain multilingual
-  input (MASSIVE), escalation is uniform and high in every language: 45–64%
-  at the old provisional 0.6 threshold and 69–79% at the measured 0.84 — no
-  language is silently auto-handled.
-- GPT-4o-mini baseline and fine-tuned comparison: TODO(run) / TODO(Phase 3).
+# Score every window of a long ticket.
+result = pipeline.triage(long_ticket, long=True)
 
-## App, fine-tune, deploy (Phase 3)
+# Share forward passes across many tickets.
+results = pipeline.triage_batch(tickets, batch_size=16)
+```
 
-**Visual explainer**: [docs/assets/how-it-works.html](docs/assets/how-it-works.html)
-animates the whole pipeline (ticket, router, both passes, escalation verdict)
-with the measured numbers. **Launch video**: `brag-output/brag.mp4` (20s,
-poster `brag-output/brag.jpg`, caption `brag-output/share-copy.txt`).
+The router defaults to the multilingual checkpoint when language detection is undecided. Detection-confident English still uses the English checkpoint; this matters for short, unaccented Latin text that may otherwise be ambiguous.
 
-**App** (`streamlit run app.py`, or `uv pip install -e ".[app]"`): three
-views — a single ticket in any language, a CSV batch with batched inference
-and downloadable results, and the published metrics with the escalation
-curve. `space/` holds the HuggingFace Space card and requirements; the
-deploy steps are in `space/README.md` (TODO(deploy): publish and link).
+## Streamlit app
 
-**Fine-tune** (`finetune/laya_triage_banking77.ipynb`): adapted from laya's
-official 2xT4 Kaggle notebook. Trains the two routing decisions jointly on
-BANKING77 (10,003 tickets x 2 sequences), leaves the signal heads untouched
-(BANKING77 has no signal labels — the notebook re-checks signal MAE
-afterwards), evaluates against the published zero-shot numbers on the same
-sample, and generates an honest model card from the run's own numbers,
-including the top confusion pairs. TODO(run): execute on Kaggle and publish
-the checkpoint.
+Launch the local UI:
 
-**Cost and latency** (honest):
+```bash
+streamlit run app.py
+```
 
-| Quantity | Value | Source |
-|---|---|---|
-| Zero-shot eval wall-clock (200 tickets) | 182.7s direct / 577.4s hierarchical | measured on the dev CPU, `evals/results/banking77.json` |
-| p50/p95 latency per decision | TODO(measure) | benchmark on the deployment target |
-| laya $ per 1,000 tickets | TODO(measure) | CPU-hour price x measured throughput |
-| GPT-4o-mini accuracy + $ per 1,000 | TODO(run) | `python -m evals.gpt_baseline` (needs OPENAI_API_KEY) |
+The app includes:
+
+- **Single ticket** — triage text in English, Spanish, French, German, Hindi, or Arabic, with an optional language hint.
+- **CSV batch** — upload a file with a `text` column, run batched inference, and download the enriched results.
+- **Metrics** — inspect the committed BANKING77, MASSIVE, and hand-labeled evaluation artifacts.
+
+Hugging Face Space scaffolding and deployment notes live in [`space/`](space). The public Space URL will be added after deployment.
+
+## Fine-tune on Kaggle
+
+The notebook adapts laya's official 2×T4 training workflow for the two routing decisions. It trains on 10,003 BANKING77 tickets (two sequences per ticket), evaluates against the committed zero-shot baseline, re-checks auxiliary-signal MAE, and builds a model card from the run's own results.
+
+<p align="center">
+  <a href="https://www.kaggle.com/kernels/welcome?src=https://github.com/Gjusev/laya-triage/blob/main/finetune/laya_triage_banking77.ipynb">
+    <img src="https://kaggle.com/static/images/open-in-kaggle.svg" alt="Open in Kaggle">
+  </a>
+</p>
+
+Kaggle settings:
+
+- Accelerator: **GPU T4 ×2**
+- Internet: **On**
+- Optional publishing secret: `HF_TOKEN`
+- Output: `/kaggle/working/laya_triage_banking77`
+
+You can also [inspect or download the notebook directly](finetune/laya_triage_banking77.ipynb). It has not yet been executed for the published Phase 3 checkpoint.
+
+## Intent map
+
+<details>
+<summary><strong>Show the 12 clusters and 8 destination departments</strong></summary>
+
+| Cluster | Intents | Department |
+|---|---:|---|
+| `card_ordering_and_delivery` | 6 | `cards` |
+| `card_types_and_linking` | 9 | `cards` |
+| `card_and_pin_malfunctions` | 6 | `cards` |
+| `card_payment_problems` | 6 | `payments_cash` |
+| `cash_and_atm` | 6 | `payments_cash` |
+| `transfers_and_beneficiaries` | 9 | `transfers` |
+| `top_ups_and_balance_updates` | 10 | `topups_deposits` |
+| `fees_charges_and_refunds` | 8 | `billing_fees` |
+| `exchange_rates` | 4 | `billing_fees` |
+| `identity_and_account_admin` | 7 | `account_access` |
+| `lost_stolen_compromised` | 3 | `fraud_security` |
+| `eligibility_and_coverage` | 3 | `general_service` |
+
+</details>
+
+BANKING77 is a neobank dataset and contains no loan or credit intents, so a loans department would be empty by construction. Intent labels retain the dataset's canonical spellings, including `Refund_not_showing_up` and `reverted_card_payment?`.
+
+## Reproduce the evaluation
+
+```bash
+uv pip install -e ".[dev]"
+uv pip install datasets
+
+pytest -q
+python -m evals.run_all --limit 200
+```
+
+The regular test suite is deterministic and does not download checkpoints. Real-checkpoint smoke tests are opt-in:
+
+```bash
+pytest -m slow
+```
+
+| Resource | Contents |
+|---|---|
+| [`docs/results/phase2.md`](docs/results/phase2.md) | Full tables, caveats, and methodology |
+| [`evals/results/`](evals/results) | Machine-readable evaluation artifacts |
+| [`data/annotation_guide.md`](data/annotation_guide.md) | Label definitions, provenance, and adjudication process |
+| [`data/hand_labeled_200.jsonl`](data/hand_labeled_200.jsonl) | Six-language signal evaluation set |
+| [`docs/assets/how-it-works.html`](docs/assets/how-it-works.html) | Standalone animated architecture explainer |
+| [`brag-output/`](brag-output) | Launch video, poster, share copy, and composition source |
+
+## Known limitations
+
+- The hierarchy is domain-specific: out-of-domain requests are mapped to the nearest banking concept when confidence is high enough. On an eight-ticket IT-operations smoke set, seven escalated at `0.84`; the remaining SSO lockout mapped to `unable_to_verify_identity`.
+- Multilingual in-domain coarse accuracy is lower than English on the small per-language evaluation, especially for Arabic and German. The multilingual fine-tune remains future work.
+- The multilingual checkpoint ships an invalid temperature for choices with 11+ options; laya clamps it. This affects calibration on the 12-option non-English coarse stage and is why recalibration is on the roadmap.
+- The published latency numbers were measured on the development CPU (182.7 s flat / 577.4 s hierarchical for 200 tickets), not a deployment target. p50/p95 latency and cost per 1,000 tickets remain to be benchmarked.
+- The GPT-4o-mini baseline and fine-tuned checkpoint comparison have not been run yet.
 
 ## Roadmap
 
-- [x] Hierarchical intent routing: coarse clusters to fine intents (BANKING77 mapping)
-- [x] Auxiliary signals in the same pass: urgency, frustration, churn risk, refund requested
-- [x] Escalation policy: coverage/accuracy curve over answer confidence, threshold documented
-- [x] Multilingual eval (MASSIVE: es, fr, de, hi, ar) plus a hand-labeled set of 200 tickets published
-- [ ] Fine-tuned checkpoint (BANKING77) released on HuggingFace; Streamlit app on HF Spaces (notebook, app and Space files ready; training run and deploy pending)
-
-## Development setup
-
-Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/) (or any venv + pip):
-
-```bash
-uv venv
-uv pip install -e ".[dev]"
-pytest                # deterministic unit tests, no checkpoint downloads
-pytest -m slow        # opt-in smoke on a real laya checkpoint (downloads on first run)
-```
-
-Optional extras: `.[app]` (Streamlit + pandas for the app), `.[gpt]` (the
-GPT-4o-mini baseline), `datasets` (the evals). Unit tests mock the laya
-Agent (`Router.attach` is the seam laya ships for this) and never download
-checkpoints; the slow smoke runs 20 Spanish/English tickets plus 8
-out-of-domain IT tickets through the real model.
+- [x] Coarse-to-fine BANKING77 routing
+- [x] Urgency, frustration, churn-risk, and refund signals
+- [x] Measured confidence-based escalation curve
+- [x] Multilingual and hand-labeled evaluations
+- [x] Streamlit app and Kaggle-ready fine-tuning notebook
+- [ ] Run and publish the fine-tuned checkpoint on Hugging Face
+- [ ] Deploy and link the Hugging Face Space
+- [ ] Publish deployment-target latency and cost benchmarks
+- [ ] Run the GPT-4o-mini comparison
 
 ## License
 
-Apache 2.0. See [LICENSE](LICENSE).
+Released under the [Apache License 2.0](LICENSE).
