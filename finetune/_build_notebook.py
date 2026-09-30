@@ -261,8 +261,10 @@ print(f"zero-shot hier    : {B77['summary']['hierarchical_accuracy']:.3f}")
 print(f"fine-tuned hier   : {ft_acc:.3f} (coarse {coarse_acc:.3f})")
 if chosen:
     print(f"escalation@75%    : threshold {chosen.threshold:.2f}, coverage {chosen.coverage:.1%}")
+    escalation_md = f"threshold {chosen.threshold:.2f} (auto-handles {chosen.coverage:.1%} of tickets)"
 else:
     print("escalation@75%    : target not reachable on this sample")
+    escalation_md = "not reachable at the 75% target on the eval sample"
 
 pairs = collections.Counter((r["label"], r["pred"]) for r in records if not r["correct"])
 top_failures = [(a, b, n) for (a, b), n in pairs.most_common(10)]
