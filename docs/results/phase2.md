@@ -6,7 +6,7 @@ stays TODO until that run happens.
 
 ## BANKING77 (test split)
 
-Sample: 200 tickets, seed 13 (PolyAI-LDN/task-specific-datasets banking_data).
+Sample: 200 tickets, seed 13, drawn from the official BANKING77 **test** split (PolyAI-LDN/task-specific-datasets banking_data); the 10,003-ticket train split was used only to fit the fine-tuned checkpoint.
 
 | Metric | direct 77-way | hierarchical | fine-tuned |
 |---|---|---|---|
@@ -44,6 +44,20 @@ Trained by `finetune/laya_triage_banking77.ipynb` on the BANKING77 train split (
 - Coarse accuracy 96.0%; fitted temperatures (choice, score, noul): [3.825, 1.2, 1.2].
 - Signal regression check (English hand-labeled subset, n=60): urgency MAE 0.701, frustration MAE 0.693 (zero-shot all-language baseline: 0.813 / 1.071).
 - Escalation: the 75% accuracy target is met at threshold **0.00** with 100.0% coverage (90.5% accuracy among auto-handled).
+
+### Pairwise significance (same tickets, exact McNemar)
+
+All configurations scored the identical sample, so the right test is
+paired: among the discordant tickets, is the split of wins one-sided?
+
+| Comparison | base wrong / cand right | base right / cand wrong | exact p |
+|---|---:|---:|---|
+| flat 77-way vs hierarchical (zero-shot) | 51 | 22 | p = 0.00091 |
+| hierarchical zero-shot vs fine-tuned | 81 | 2 | p < 0.00001 |
+| flat 77-way vs fine-tuned | 109 | 1 | p < 0.00001 |
+
+With n=200 the independent-confidence-interval view is too coarse for the
++14.5 pp hierarchy-vs-flat gap; the paired test above is the decisive one.
 
 ## Multilingual robustness (MASSIVE, cluster-only pass)
 

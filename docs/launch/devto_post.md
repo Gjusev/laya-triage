@@ -20,12 +20,19 @@ confidence on every decision.
 
 ## Flat choices collapse; hierarchies do not
 
-A flat 77-way intent choice over BANKING77 scores **36.5%** in my eval
-(200-ticket test sample). The documented failure mode is real: too many
-options, each option starved of meaning. The same model, asked to first
-pick one of 12 coarse clusters and then one of (at most) 10 intents inside
-that cluster, scores **51.0%**. That is a **+14.5 point** gain from structure
-alone, with zero extra training.
+A flat 77-way intent choice over BANKING77 scores **36.5%** in my eval.
+The documented failure mode is real: too many options, each option starved
+of meaning. The same model, asked to first pick one of 12 coarse clusters
+and then one of (at most) 10 intents inside that cluster, scores **51.0%**.
+That is a **+14.5 point** gain from structure alone, with zero extra training.
+
+Since both numbers come from n = 200, the honest question is whether that
+gap is real at this size. All configurations scored the **same tickets**
+(drawn with seed 13 from the official **test** split of 3,080; the
+10,003-ticket train split is only what the fine-tune fitted on), so the
+comparison is paired: among the 73 tickets the two approaches disagree on,
+the hierarchy wins 51 and loses 22 — exact McNemar **p = 0.0009**. The
+fine-tuned comparisons are more lopsided still (81–2 and 109–1).
 
 ## The escalation curve nobody publishes
 

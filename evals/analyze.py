@@ -41,6 +41,26 @@ def coverage_table(curve: list[dict], deciles=(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4
     return lines
 
 
+def _mcnemar(base: list[bool], cand: list[bool]) -> tuple[int, int, float] | None:
+    """Exact two-sided McNemar on paired correctness: (base wrong & cand right,
+    base right & cand wrong, p-value)."""
+    from math import comb
+
+    if len(base) != len(cand) or not base:
+        return None
+    b = sum(1 for x, y in zip(base, cand) if not x and y)
+    c = sum(1 for x, y in zip(base, cand) if x and not y)
+    n = b + c
+    if n == 0:
+        return b, c, 1.0
+    p = 2 * sum(comb(n, k) for k in range(min(b, c) + 1)) / 2**n
+    return b, c, min(p, 1.0)
+
+
+def _pval(p: float) -> str:
+    return "p < 0.00001" if p < 1e-5 else f"p = {p:.5f}"
+
+
 def _ft_cells(ft: dict | None) -> tuple[str, str, str]:
     """The fine-tuned column: measured values, or a TODO when no artifact exists."""
     if not ft:
@@ -75,7 +95,9 @@ def render() -> str:
         cfg = b77["config"]
         acc_c, f1_c, sec_c = _ft_cells(ft)
         lines += [
-            f"Sample: {cfg['n']} tickets, seed {cfg['seed']} ({cfg['source']}).",
+            f"Sample: {cfg['n']} tickets, seed {cfg['seed']}, drawn from the official BANKING77 "
+            f"**test** split ({cfg['source']}); the 10,003-ticket train split was used only "
+            f"to fit the fine-tuned checkpoint.",
             "",
             "| Metric | direct 77-way | hierarchical | fine-tuned |",
             "|---|---|---|---|",
@@ -145,6 +167,41 @@ def render() -> str:
                 if fesc.get("chosen_threshold") is not None
                 else "the accuracy target is not reachable at any threshold on this sample."
             ),
+            "",
+        ]
+
+    if b77:
+        recs = b77["records"]
+        flat = [r["direct_correct"] for r in recs]
+        hier = [r["hier_correct"] for r in recs]
+        lines += [
+            "### Pairwise significance (same tickets, exact McNemar)",
+            "",
+            "All configurations scored the identical sample, so the right test is",
+            "paired: among the discordant tickets, is the split of wins one-sided?",
+            "",
+            "| Comparison | base wrong / cand right | base right / cand wrong | exact p |",
+            "|---|---:|---:|---|",
+        ]
+        m = _mcnemar(flat, hier)
+        if m:
+            lines.append(f"| flat 77-way vs hierarchical (zero-shot) | {m[0]} | {m[1]} | {_pval(m[2])} |")
+        if ft and len(ft["records"]) == len(recs) and all(
+            a["text"] == b["text"] for a, b in zip(recs, ft["records"])
+        ):
+            ftc = [r["correct"] for r in ft["records"]]
+            m = _mcnemar(hier, ftc)
+            if m:
+                lines.append(f"| hierarchical zero-shot vs fine-tuned | {m[0]} | {m[1]} | {_pval(m[2])} |")
+            m = _mcnemar(flat, ftc)
+            if m:
+                lines.append(f"| flat 77-way vs fine-tuned | {m[0]} | {m[1]} | {_pval(m[2])} |")
+        else:
+            lines.append("| hierarchical zero-shot vs fine-tuned | — | — | sample mismatch |")
+        lines += [
+            "",
+            f"With n={b77['config']['n']} the independent-confidence-interval view is too coarse for the",
+            "+14.5 pp hierarchy-vs-flat gap; the paired test above is the decisive one.",
             "",
         ]
 
