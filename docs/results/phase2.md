@@ -59,6 +59,17 @@ paired: among the discordant tickets, is the split of wins one-sided?
 With n=200 the independent-confidence-interval view is too coarse for the
 +14.5 pp hierarchy-vs-flat gap; the paired test above is the decisive one.
 
+### Full test split (n=3,080, replication)
+
+All three configurations over every ticket of the official test split
+(kernel `laya-triage-full-split`): flat 37.4%, hierarchical
+51.1%, fine-tuned 89.8% (macro-F1 0.897).
+The sample numbers above replicate within a point on every row.
+
+- Paired gap flat vs hierarchical: +13.7 pp (95% CI roughly +11.4 to +16.0); discordant tickets 821-399, p < 0.00001.
+- Fine-tuned vs hierarchical: 1225-33 discordant.
+- Disagreement anatomy: the 821 hierarchy wins spread over 66 gold intents; 318 (39%) had flat's wrong answer inside the correct cluster (disambiguation), the rest were cross-cluster misroutes the coarse step recovered. The largest single confusion family is top-up variants collapsed by flat into `top_up_by_card_charge`.
+
 ## Multilingual robustness (MASSIVE, cluster-only pass)
 
 MASSIVE has no banking intents, so this is behavior, not accuracy:

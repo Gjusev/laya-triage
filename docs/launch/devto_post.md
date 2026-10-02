@@ -32,7 +32,13 @@ gap is real at this size. All configurations scored the **same tickets**
 10,003-ticket train split is only what the fine-tune fitted on), so the
 comparison is paired: among the 73 tickets the two approaches disagree on,
 the hierarchy wins 51 and loses 22 — exact McNemar **p = 0.0009**. The
-fine-tuned comparisons are more lopsided still (81–2 and 109–1).
+fine-tuned comparisons are more lopsided still (81-2 and 109–1).
+
+Update: the full test split is in (all 3,080 tickets, same three
+configurations). Flat 37.4%, hierarchical 51.1%, fine-tuned 89.8%
+(macro-F1 0.897). Every sample number replicates within a point, and
+the paired gap firms up to +13.7 pp with a 95% interval of roughly
++11.4 to +16.0 (discordant tickets 821-399).
 
 ## The escalation curve nobody publishes
 

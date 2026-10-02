@@ -99,6 +99,11 @@ All headline numbers come from committed artifacts in [`evals/results/`](evals/r
 | Coarse-cluster accuracy | 96.0% fine-tuned / 68.0% zero-shot | Same sample |
 | Urgency / frustration MAE | 0.81 / 1.07 | Hand-labeled 200-ticket set |
 
+All three configurations also ran over the full 3,080-ticket test split:
+flat 37.4%, hierarchical 51.1%, fine-tuned 89.8% (macro-F1 0.897), with
+the paired flat-vs-hierarchical gap at +13.7 pp (95% CI roughly +11.4 to
++16.0) — every sample number replicates within a point.
+
 At roughly 60% coverage, the measured escalation curve reaches about 75% intent accuracy. This operating point is based on 200 tickets—use it as an evidence-backed starting point, not a universal production guarantee. See the [full Phase 2 report](docs/results/phase2.md) for macro-F1, the complete coverage/accuracy curve, multilingual breakdowns, annotation agreement, and timing.
 
 ## Quickstart

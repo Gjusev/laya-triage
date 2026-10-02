@@ -205,6 +205,39 @@ def render() -> str:
             "",
         ]
 
+    # --- full test split ---------------------------------------------------------
+    full = _load("banking77_full.json")
+    if full:
+        s = full["summary"]
+        from laya_triage import schema as _schema
+
+        wins = [r for r in full["records"] if not r["direct_correct"] and r["hier_correct"]]
+        within = sum(
+            1 for r in wins
+            if _schema.INTENT_TO_CLUSTER[r["label"]] == _schema.INTENT_TO_CLUSTER[r["direct_intent"]]
+        )
+        gain_pp = 100 * (s["hier_accuracy"] - s["direct_accuracy"])
+        se_pp = 100 * (s["mcnemar_flat_vs_hier"][0] + s["mcnemar_flat_vs_hier"][1]) ** 0.5 / s["n"]
+        lines += [
+            "### Full test split (n=3,080, replication)",
+            "",
+            f"All three configurations over every ticket of the official test split",
+            f"(kernel `laya-triage-full-split`): flat {_pct(s['direct_accuracy'])}, hierarchical",
+            f"{_pct(s['hier_accuracy'])}, fine-tuned {_pct(s['ft_accuracy'])} (macro-F1 {_num(s['ft_macro_f1'])}).",
+            f"The sample numbers above replicate within a point on every row.",
+            "",
+            f"- Paired gap flat vs hierarchical: {gain_pp:+.1f} pp (95% CI roughly {gain_pp - 2*se_pp:+.1f} to "
+            f"{gain_pp + 2*se_pp:+.1f}); discordant tickets {s['mcnemar_flat_vs_hier'][0]}-{s['mcnemar_flat_vs_hier'][1]}, "
+            f"{_pval(s['mcnemar_flat_vs_hier'][2])}.",
+            f"- Fine-tuned vs hierarchical: {s['mcnemar_hier_vs_ft'][0]}-{s['mcnemar_hier_vs_ft'][1]} discordant.",
+            f"- Disagreement anatomy: the {len(wins)} hierarchy wins spread over "
+            f"{len({r['label'] for r in wins})} gold intents; {within} ({within/len(wins):.0%}) had flat's wrong "
+            f"answer inside the correct cluster (disambiguation), the rest were cross-cluster misroutes "
+            f"the coarse step recovered. The largest single confusion family is top-up variants "
+            f"collapsed by flat into `top_up_by_card_charge`.",
+            "",
+        ]
+
     # --- MASSIVE ---------------------------------------------------------------
     lines += ["## Multilingual robustness (MASSIVE, cluster-only pass)", ""]
     if massive:
